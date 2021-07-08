@@ -826,6 +826,12 @@ section {
   background: #f1f6fe;
 }
 
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
 .counts .count-box i {
   position: absolute;
   top: -28px;
@@ -1011,7 +1017,10 @@ section {
   position: relative;
   top: 10px;
 }
-
+.table-blue{
+  background-color: #0984e3 !important;
+  color: #fff;
+}
 .testimonials .testimonial-item p {
   font-style: italic;
   margin: 0 auto 15px auto;
