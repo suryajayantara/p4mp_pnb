@@ -7,7 +7,7 @@
         <h1>Karena Mutu Adalah <span>Segalanya</span> </h1>
         <h2>Di P4MP , Kami menjamin mutu dari lulusa kampus kami secara terpadu.</h2>
         <div class="d-flex">
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+            <a href="#featured-services" class="btn-get-started scrollto">Mari Mulai</a>
         </div>
     </div>
 </section><!-- End Hero -->

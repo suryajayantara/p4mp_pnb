@@ -1,22 +1,6 @@
 @extends('ui.ui')
 
 @section('main')
-<!-- ======= Breadcrumbs Section ======= -->
-<section class="breadcrumbs">
-    <div class="container">
-
-      <div class="d-flex justify-content-between align-items-center">
-        <h2>News Headline</h2>
-        <ol>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li>Portfolio Details</li>
-        </ol>
-      </div>
-    </div>
-    <hr>
-  </section><!-- Breadcrumbs Section -->
-
   <!-- ======= Portfolio Details Section ======= -->
   <section id="portfolio-details" class="portfolio-details">
     <div class="container">

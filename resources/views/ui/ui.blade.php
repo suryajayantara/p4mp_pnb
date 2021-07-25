@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title></title>
+  <title>PNB | P4MP</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -54,25 +54,24 @@
           {{-- Akreditasi --}}
           <li class="dropdown"><a href="#"><span>Akreditasi</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+              <li class="dropdown"><a href="#"><span>BAN PT</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
+                  <li><a href="#">Status Akredatsi Jurusan</a></li>
+                  <li><a href="#">Berkasi BAN PT</a></li>
                 </ul>
               </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li class="dropdown"><a href="#"><span>Akreditasi International</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Status Akredatsi International</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Informasi Terkait AIPT</a></li>
             </ul>
           </li>
           {{-- Akreditasi --}}
           <li class="dropdown"><a href="#"><span>Sertifikasi</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Drop Down 4</a></li>
+              <li><a href="#">AUN Program Studi</a></li>
             </ul>
           </li>
           {{-- Akreditasi --}}
@@ -127,7 +126,7 @@
 
     <div class="container py-4">
       <div class="copyright">
-        &copy; Copyright <strong><span>BizLand</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Politeknik Negeri Bali</span></strong>. All Rights Reserved
       </div>
     </div>
   </footer>
