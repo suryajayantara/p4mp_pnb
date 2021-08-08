@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\DepartementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,4 +40,5 @@ Route::prefix('dashboard')->group(function () {
 
     Route::resource('categories', CategoryController::class);
     Route::resource('faculties', FacultyController::class);
+    Route::resource('departements', DepartementController::class);
 });
