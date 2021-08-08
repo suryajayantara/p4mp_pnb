@@ -70,7 +70,8 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Faculty::find($id);
+        return view('dashboard.faculty.edit')->with(compact('data'));
     }
 
     /**
@@ -82,7 +83,15 @@ class FacultyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            Faculty::find($id)->update([
+                'faculty_name' => $request->faculty_name,
+                'desc' => $request->desc,
+            ]);
+            return redirect()->route('faculties.index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
@@ -95,8 +104,7 @@ class FacultyController extends Controller
     {
         try {
             Faculty::find($id)->delete();
-            
-
+            return redirect()->route('faculties.index');
         } catch (\Throwable $th) {
             echo 'sad';
         }

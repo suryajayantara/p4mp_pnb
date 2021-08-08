@@ -27,10 +27,11 @@
         <td>{{ $item->faculty_name }}</td>
         <td>{{ $item->desc }}</td>
         <td class="text-center">
-            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-            <form action="" method="post">
-                <a href="{{ route('faculties.destroy',$item->id) }}" class="btn btn-danger btn-sm">Hapus</a>
-            </form>
+            <a href="{{ route('faculties.edit',$item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+            {{ Form::open(array('url' => 'dashboard/faculties/' . $item->id, 'class' => 'pull-right')) }}
+                {{ Form::hidden('_method', 'DELETE') }}
+                {{ Form::submit('Hapus', array('class' => 'btn btn-danger btn-sm')) }}
+            {{ Form::close() }}
         </td>
       </tr>
       @endforeach
