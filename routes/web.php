@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,18 +31,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Public Route
 
 
 // Dashboard Route
 Route::prefix('dashboard')->group(function () {
 
-    // Index
-    Route::get('/', function () {
-        return view('dashboard.index');
-    })->name('dashboard.index');
+    Route::resource('categories', CategoryController::class);
 });

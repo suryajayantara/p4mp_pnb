@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Blank</title>
+    <title>P4MP</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('css/dashboard/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
 </head>
 
@@ -63,7 +64,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Blog:</h6>
                         <a class="collapse-item" href="cards.html">Berita Baru</a>
-                        <a class="collapse-item" href="buttons.html">List Berita</a>
+                        <a class="collapse-item" href="buttons.html">Kategori Berita</a>
                     </div>
                 </div>
             </li>
@@ -71,7 +72,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                     aria-expanded="true" aria-controls="collapseThree">
-                    <i class="fas fa-fw fa-newspaper"></i>
+                    <i class="fas fa-fw fa-graduation-cap"></i>
                     <span>Kegiatan</span>
                 </a>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -304,6 +305,8 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+    {{-- Data Table Script --}}
+    @stack('js')
 
 </body>
 
