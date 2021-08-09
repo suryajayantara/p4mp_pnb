@@ -9,7 +9,7 @@
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nama Jurusan</label>
-                <select class="form-control" name="id_faculty">
+                <select name="id_faculty" class="form-control mb-3" aria-label="Default select example">
                     @foreach ($dats as $key => $value)
                         <option value="{{ $key }}" {{ ( $key == $selectedID) ? 'selected' : '' }}> 
                             {{ $value }} 
@@ -17,7 +17,7 @@
                     @endforeach    
                 </select>
                 <label for="exampleInputEmail1" class="form-label">Nama Departement</label>
-                <input name="departement_name" value="{{ $data['departement_name'] }}" type="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input name="departement_name" value="{{ $data['departement_name'] }}" type="Name" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp">
             <button type="submit" class="btn btn-primary">Submit</button>
             {{ Form::close() }}
     </div>

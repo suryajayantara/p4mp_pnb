@@ -9,13 +9,13 @@
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nama Jurusan</label>
-                <select name="id_faculty" id="id_faculty" class="form-control">
+                <select name="id_faculty" id="id_faculty" class="form-control mb-3" aria-label="Default select example">
                     @foreach ($dats as $items)
                     <option value="{{ $items->id }}">{{ $items->faculty_name }}</option>
                     @endforeach
                 </select>
                 <label for="exampleInputEmail1" class="form-label">Nama Departement</label>
-                <input name="departement_name" type="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input name="departement_name" type="Name" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp">
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
     </div>

@@ -49,7 +49,7 @@ class DepartementController extends Controller
                 'id_faculty' => $request->id_faculty,
                 'departement_name' => $request->departement_name,
             ]);
-            return redirect()->route('faculties.index');
+            return redirect()->route('departements.index');
 
         } catch (\Throwable $th) {
             return $th;
@@ -75,11 +75,10 @@ class DepartementController extends Controller
      */
     public function edit($id)
     {
-        $dats = Faculty::all();
-        $selectedID= 6;
-        return view('dashboard.departement.edit', compact('id', 'dats'));
+        $dats = Faculty::pluck('faculty_name','id');
+        $selectedID= Departement::find('id_faculty');
         $data = Departement::find($id);
-        return view('dashboard.departement.edit')->with(compact('data'));
+        return view('dashboard.departement.edit')->with(compact('id','dats','data','selectedID'));
        
     }
 
@@ -113,6 +112,11 @@ class DepartementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Departement::find($id)->delete();
+            return redirect()->route('departements.index');
+        } catch (\Throwable $th) {
+            echo 'gagal';
+        }
     }
 }
