@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        return view('dashboard.category.index');
+        $categories = Category::orderBy('id','desc')->get();
+        return view('dashboard.category.index',compact('categories'));
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.category.add');
     }
 
     /**
@@ -35,7 +36,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'category_name' => 'required',
+            'desc' => 'required',
+        ]);
+        try {
+            Category::create([
+                'category_name' => $request->category_name,
+                'desc' => $request->desc,
+            ]);
+            return redirect()->route('categories.index');
+
+        } catch (\Throwable $th) {
+            return $th;
+        }
     }
 
     /**
@@ -55,9 +69,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('dashboard.category.edit',compact('category'));
     }
 
     /**
@@ -67,9 +81,22 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'category_name' => 'required',
+            'desc' => 'required',
+        ]);
+
+        try {
+            $category->update([
+                'category_name' => $request->category_name,
+                'desc' => $request->desc,
+            ]);
+            return redirect()->route('categories.index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
@@ -78,8 +105,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        try {
+            $category->delete();
+            return redirect()->route('categories.index');
+        } catch (\Throwable $th) {
+            echo 'sad';
+        }
     }
 }

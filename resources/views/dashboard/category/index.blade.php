@@ -7,51 +7,47 @@
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
 </div>
 <!-- Content Row -->
-<div class="row">
-    <div class="container-fluid">
-
-        <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-        <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-            For more information about DataTables, please visit the <a target="_blank"
-                href="https://datatables.net">official DataTables documentation</a>.</p>
-
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
+<div class="row my-5 mx-auto">
+    <div class="col-md-10">
+        <form>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Kategori">
+          </form>
+    </div>
+    <div class="col-md-2">
+        <a href="{{ route('categories.create') }}" class="btn btn-success">Tambah Kategori</a>
     </div>
 </div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Nama Kategori</th>
+        <th scope="col">Deskripsi</th>
+        <th scope="col" class="text-center">Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+        @php
+            $no = 1;
+        @endphp
+        @foreach ($categories as $category)
+            <tr>
+                <th scope="row">{{ $no++ }}</th>
+                <td> {{ ucwords($category->category_name) }} </td>
+                <td> {{ substr(strip_tags($category->desc),0,30) }}... </td>
+                <td class="text-center"> 
+                    <a href="{{ route('categories.edit',$category->id) }}"><button class="btn btn-warning">Edit</button></a>
+                    <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick = "return confirm('Yakin hapus kategori?')">Hapus</button> 
+                    </form>
+                    
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+  </table>
 @endsection
 
 @section('push')
