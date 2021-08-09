@@ -15,7 +15,7 @@ class Faculty extends Model
     ];
 
     public function departement(){
-        return $this->hasMany(Departement::class);
+        return $this->hasMany(Departement::class,'id','id_faculty');
     }
 
 }
