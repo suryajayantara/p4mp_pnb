@@ -4,13 +4,16 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    <h1 class="h3 mb-0 text-gray-800">Categories</h1>
 </div>
 <!-- Content Row -->
 <div class="row my-5 mx-auto">
     <div class="col-md-10">
-        <form>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Kategori">
+        <form action="{{ url()->current() }}" method="GET">
+            <div class="input-group mb-3">
+                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Kategori">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
+            </div>
           </form>
     </div>
     <div class="col-md-2">
@@ -27,12 +30,9 @@
       </tr>
     </thead>
     <tbody>
-        @php
-            $no = 1;
-        @endphp
         @foreach ($categories as $category)
             <tr>
-                <th scope="row">{{ $no++ }}</th>
+                <th scope="row">{{ ++$i }}</th>
                 <td> {{ ucwords($category->category_name) }} </td>
                 <td> {{ substr(strip_tags($category->desc),0,30) }}... </td>
                 <td class="text-center"> 
@@ -48,6 +48,10 @@
         @endforeach
     </tbody>
   </table>
+  <div class="d-flex justify-content-center">
+    {{ $categories->links() }}
+  </div>
+  
 @endsection
 
 @section('push')

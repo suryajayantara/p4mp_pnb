@@ -14,8 +14,15 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::orderBy('id','desc')->get();
-        return view('dashboard.category.index',compact('categories'));
+        $pagination = 5;
+        $categories = Category::when($request->cari, function($query) use ($request){
+            $query->where('category_name','LIKE','%'.$request->cari.'%');
+        })->orderBy('id','desc')->paginate($pagination);
+        
+        $categories->appends($request->only('cari'));
+
+        return view('dashboard.category.index',compact('categories'))
+        ->with('i', ($request->input('page', 1) - 1) * $pagination);;
     }
 
     /**
