@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\DepartementController;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +39,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // });
 
 
-Route::resource('categories', CategoryController::class);
+Route::resource('categories', CategoryController::class)->middleware('auth');
+Route::resource('posts', PostController::class)->middleware('auth');
 Route::resource('faculties', FacultyController::class);
 Route::resource('departements', DepartementController::class);
 
