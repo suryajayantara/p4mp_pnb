@@ -12,9 +12,9 @@
                 <label for="exampleInputEmail1" class="form-label">Nama Kategori</label>
                 <input name="category_name" type="Name" value="{{ $category->category_name }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 <textarea name="desc" class="form-control my-3" placeholder="Masukan Deksripsi Jurusan Disini" id="floatingTextarea2" style="height: 100px">{{ $category->desc }}</textarea>
-            <button type="submit" class="btn btn-primary">Edit</button>
+            <button type="submit" class="btn btn-lg btn-success w-100 my-2">Edit</button>
         </form>    
-        <a href="{{ route('categories.index') }}"><button type="button" class="btn btn-danger">Kembali</button></a>
+        <a href="{{ route('categories.index') }}"><button type="button" class="btn btn-lg btn-danger w-100">Kembali</button></a>
     </div>
 </div>
 

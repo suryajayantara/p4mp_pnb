@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $pagination = 5;
+        $pagination = 4;
         $posts = Post::when($request->cari, function($query) use ($request){
             $query->where('title','LIKE','%'.$request->cari.'%');
         })->orderBy('id','desc')->paginate($pagination);
@@ -55,7 +55,6 @@ class PostController extends Controller
             'content' => 'required'
         ]);
 
-        date_default_timezone_set('Asia/Singapore');
         $nama_foto = Str::replace(' ', '_', Auth::user()->name).date('_d_m_Y-H_i_s').".jpg";
 
         try {
