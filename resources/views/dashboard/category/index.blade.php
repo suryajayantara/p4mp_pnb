@@ -4,54 +4,54 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    <h1 class="h3 mb-0 text-gray-800">Categories</h1>
 </div>
 <!-- Content Row -->
-<div class="row">
-    <div class="container-fluid">
-
-        <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-        <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-            For more information about DataTables, please visit the <a target="_blank"
-                href="https://datatables.net">official DataTables documentation</a>.</p>
-
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+<div class="row my-5 mx-auto">
+    <div class="col-md-10">
+        <form action="{{ url()->current() }}" method="GET">
+            <div class="input-group mb-3">
+                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Kategori">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
+          </form>
+    </div>
+    <div class="col-md-2">
+        <a href="{{ route('categories.create') }}" class="btn btn-success">Tambah Kategori</a>
     </div>
 </div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Nama Kategori</th>
+        <th scope="col">Deskripsi</th>
+        <th scope="col" class="text-center">Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+        @foreach ($categories as $category)
+            <tr>
+                <th scope="row">{{ ++$i }}</th>
+                <td> {{ ucwords($category->category_name) }} </td>
+                <td> {{ substr(strip_tags($category->desc),0,30) }}... </td>
+                <td class="text-center"> 
+                    <a href="{{ route('categories.edit',$category->id) }}"><button class="btn btn-warning">Edit</button></a>
+                    <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick = "return confirm('Yakin hapus kategori?')">Hapus</button> 
+                    </form>
+                    
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    {{ $categories->links() }}
+  </div>
+  
 @endsection
 
 @section('push')

@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/news', function () {
+Route::get('/dashboard', function () {
     return view('dashboard.faculty.add');
 });
 
@@ -33,12 +33,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard.index');
+// });
 
 
-// Dashboard Route
-Route::prefix('dashboard')->group(function () {
+Route::resource('categories', CategoryController::class);
+Route::resource('faculties', FacultyController::class);
+Route::resource('departements', DepartementController::class);
 
-    Route::resource('categories', CategoryController::class);
-    Route::resource('faculties', FacultyController::class);
-    Route::resource('departements', DepartementController::class);
-});
