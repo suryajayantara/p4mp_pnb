@@ -17,8 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('category_id');
-            $table->string('code_posts')->unique();
-            $table->string('url-photo');
+            $table->string('url_photo');
             $table->string('title');
             $table->text('content');
             $table->timestamps();

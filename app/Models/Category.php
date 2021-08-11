@@ -13,4 +13,8 @@ class Category extends Model
         'category_name',
         'desc'
     ];
+
+    public function post(){
+        return $this->hasMany(Post::class);
+    }
 }
