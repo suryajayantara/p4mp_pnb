@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\DepartementController;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/news', function () {
+Route::get('/dashboard', function () {
     return view('dashboard.faculty.add');
 });
 
@@ -33,12 +34,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard.index');
+// });
 
 
-// Dashboard Route
-Route::prefix('dashboard')->group(function () {
+Route::resource('categories', CategoryController::class)->middleware('auth');
+Route::resource('posts', PostController::class)->middleware('auth');
+Route::resource('faculties', FacultyController::class);
+Route::resource('departements', DepartementController::class);
 
-    Route::resource('categories', CategoryController::class);
-    Route::resource('faculties', FacultyController::class);
-    Route::resource('departements', DepartementController::class);
-});

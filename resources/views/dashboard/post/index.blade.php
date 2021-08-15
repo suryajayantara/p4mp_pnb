@@ -4,43 +4,47 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Categories</h1>
+    <h1 class="h3 mb-0 text-gray-800">Posts</h1>
 </div>
 <!-- Content Row -->
 <div class="row my-5 mx-auto">
     <div class="col-md-10">
         <form action="{{ url()->current() }}" method="GET">
             <div class="input-group mb-3">
-                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Kategori">
+                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Post">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
             </div>
           </form>
     </div>
     <div class="col-md-2">
-        <a href="{{ route('categories.create') }}" class="btn btn-success">Tambah Kategori</a>
+        <a href="{{ route('posts.create') }}" class="btn btn-success">Tambah Post</a>
     </div>
 </div>
 <table class="table">
     <thead>
       <tr>
         <th scope="col">No</th>
-        <th scope="col">Nama Kategori</th>
-        <th scope="col">Deskripsi</th>
+        <th scope="col">Kategori</th>
+        <th scope="col">Nama</th>
+        <th scope="col">Judul Post</th>
+        <th scope="col">Konten</th>
         <th scope="col" class="text-center">Aksi</th>
       </tr>
     </thead>
     <tbody>
-        @foreach ($categories as $category)
+        @foreach ($posts as $post)
             <tr>
                 <th scope="row">{{ ++$i }}</th>
-                <td> {{ ucwords($category->category_name) }} </td>
-                <td> {{ substr(strip_tags($category->desc),0,30) }}... </td>
+                <td> {{ ucwords($post->category->category_name) }} </td>
+                <td> {{ ucwords($post->user->name) }} </td>
+                <td> {{ ucwords($post->title) }} </td>
+                <td> {{ substr(strip_tags($post->content),0,30) }}... </td>
                 <td class="text-center"> 
-                    <a href="{{ route('categories.edit',$category->id) }}"><button class="btn btn-warning">Edit</button></a>
-                    <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
+                    <a href="{{ route('posts.edit',$post->id) }}"><button class="btn btn-warning">Edit</button></a>
+                    <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick = "return confirm('Yakin hapus kategori?')">Hapus</button> 
+                        <button type="submit" class="btn btn-danger" onclick = "return confirm('Yakin hapus post?')">Hapus</button> 
                     </form>
                     
                 </td>
@@ -49,7 +53,7 @@
     </tbody>
   </table>
   <div class="d-flex justify-content-center">
-    {{ $categories->links() }}
+    {{ $posts->links() }}
   </div>
   
 @endsection
