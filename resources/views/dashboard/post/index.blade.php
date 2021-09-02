@@ -3,58 +3,73 @@
 @section('content')
 
 <!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
+{{-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Posts</h1>
-</div>
+</div> --}}
 <!-- Content Row -->
-<div class="row my-5 mx-auto">
+<div class="row my-3 mx-auto">
     <div class="col-md-10">
         <form action="{{ url()->current() }}" method="GET">
             <div class="input-group mb-3">
-                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Post">
+                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Berita">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
             </div>
           </form>
     </div>
     <div class="col-md-2">
-        <a href="{{ route('posts.create') }}" class="btn btn-success">Tambah Post</a>
+        <a href="{{ route('posts.create') }}" class="btn btn-success">Tambah Berita</a>
     </div>
 </div>
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">No</th>
-        <th scope="col">Kategori</th>
-        <th scope="col">Nama</th>
-        <th scope="col">Judul Post</th>
-        <th scope="col">Konten</th>
-        <th scope="col" class="text-center">Aksi</th>
-      </tr>
-    </thead>
-    <tbody>
-        @foreach ($posts as $post)
-            <tr>
-                <th scope="row">{{ ++$i }}</th>
-                <td> {{ ucwords($post->category->category_name) }} </td>
-                <td> {{ ucwords($post->user->name) }} </td>
-                <td> {{ ucwords($post->title) }} </td>
-                <td> {{ substr(strip_tags($post->content),0,30) }}... </td>
-                <td class="text-center"> 
-                    <a href="{{ route('posts.edit',$post->id) }}"><button class="btn btn-warning">Edit</button></a>
-                    <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick = "return confirm('Yakin hapus post?')">Hapus</button> 
-                    </form>
-                    
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-  </table>
-  <div class="d-flex justify-content-center">
-    {{ $posts->links() }}
-  </div>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card shadow mb-4 mx-2">
+            <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Daftar Berita</h6>
+                {{-- <div class="dropdown no-arrow"> --}}
+                    {{-- <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a> --}}
+                    {{-- <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header">Dropdown Header:</div>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div> --}}
+                {{-- </div> --}}
+            </div>
+            <div class="card-body my-3">
+                <div class="row mb-4">
+                    @foreach ($posts as $post)
+                        <div class="col-lg-3 col-md-6 my-3" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card border-0 shadow-lg" data-aos="flip-left">
+                                <img src="{{asset('foto_post')}}/{{ $post->url_photo }}" class="card-img-top" alt="brt-01">
+                                <div class="card-body m-2">
+                                    <p style="font-size: 11px" class="mb-2">Kategori : {{ ucwords($post->category->category_name) }}</p>
+                                    <h5 class="card-title">{{ ucwords($post->title) }}</h5>
+                                    <p class="card-text">{{ substr(strip_tags($post->content),0,30) }}...</p>
+                                    <a href="{{ route('posts.edit',$post->id) }}"><button class="btn btn-warning w-100 my-2">Edit</button></a>
+                                    <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger w-100" onclick = "return confirm('Yakin hapus post?')">Hapus</button> 
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="d-flex justify-content-center">
+                    {{ $posts->links() }}
+                  </div>
+            </div>
+        </div>
+    
+</div>
+  
   
 @endsection
 
