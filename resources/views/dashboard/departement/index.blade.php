@@ -21,11 +21,11 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($datass as $item)
+      @foreach ($datas as $item)
       <tr>
-        <th scope="row">1</th>
-        <td>{{ $item->id_faculty }}</td>
-        <td>{{ $item->departement_name }}</td>
+        <th scope="row">{{ $loop->iteration }}</th>
+        <td>{{ $item->faculty_name }}</td>
+        <td>{{ $item->departement_name}}</td>
         <td class="text-center">
             <a href="{{ route('departements.edit',$item->id) }}" class="btn btn-warning btn-sm">Edit</a>
             {{ Form::open(array('url' => 'dashboard/departements/' . $item->id, 'class' => 'pull-right')) }}

@@ -17,9 +17,9 @@ class DepartementController extends Controller
     public function index()
     {   
 
-        $datass = Departement::all();
-        return view('dashboard.departement.index')->with(compact('datass'));
-        
+        $datas = Departement::join('faculties','departements.id_faculty','=','faculties.id')->select('departements.*','faculties.faculty_name')->get();
+        return view('dashboard.departement.index')->with(compact('datas'));
+     
     }
 
     /**
@@ -71,14 +71,14 @@ class DepartementController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     * 
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $dats = Faculty::pluck('faculty_name','id');
-        $selectedID= Departement::find('id_faculty');
-        $data = Departement::find($id);
-        return view('dashboard.departement.edit')->with(compact('id','dats','data','selectedID'));
+        $faculty_data = Faculty::all();
+        $departement_data = Departement::find($id);
+        return view('dashboard.departement.edit')->with(compact('id','faculty_data','departement_data',));
        
     }
 
