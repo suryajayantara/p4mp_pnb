@@ -3,54 +3,88 @@
 @section('content')
 
 <!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
+{{-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Categories</h1>
-</div>
+</div> --}}
 <!-- Content Row -->
-<div class="row my-5 mx-auto">
-    <div class="col-md-10">
+<div class="row my-3 mx-auto">
+    {{-- <div class="col-md-10">
         <form action="{{ url()->current() }}" method="GET">
             <div class="input-group mb-3">
                 <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Kategori">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
             </div>
           </form>
-    </div>
+    </div> --}}
     <div class="col-md-2">
         <a href="{{ route('categories.create') }}" class="btn btn-success">Tambah Kategori</a>
     </div>
 </div>
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">No</th>
-        <th scope="col">Nama Kategori</th>
-        <th scope="col">Deskripsi</th>
-        <th scope="col" class="text-center">Aksi</th>
-      </tr>
-    </thead>
-    <tbody>
-        @foreach ($categories as $category)
-            <tr>
-                <th scope="row">{{ ++$i }}</th>
-                <td> {{ ucwords($category->category_name) }} </td>
-                <td> {{ substr(strip_tags($category->desc),0,30) }}... </td>
-                <td class="text-center"> 
-                    <a href="{{ route('categories.edit',$category->id) }}"><button class="btn btn-warning">Edit</button></a>
-                    <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick = "return confirm('Yakin hapus kategori?')">Hapus</button> 
-                    </form>
-                    
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-  </table>
-  <div class="d-flex justify-content-center">
-    {{ $categories->links() }}
-  </div>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card shadow mb-4 mx-2">
+            <!-- Card Header - Dropdown -->
+            <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Daftar Kategori</h6>
+                {{-- <div class="dropdown no-arrow"> --}}
+                    {{-- <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a> --}}
+                    {{-- <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header">Dropdown Header:</div>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div> --}}
+                {{-- </div> --}}
+            </div>
+            <!-- Card Body -->
+            <div class="card-body my-3">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Kategori</th>
+                        <th scope="col">Deskripsi</th>
+                        <th scope="col">Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($categories as $category)
+                            <tr>
+                                <th scope="row">{{ ++$i }}</th>
+                                <td> {{ ucwords($category->category_name) }} </td>
+                                <td> {{ substr(strip_tags($category->desc),0,30) }}... </td>
+                                <td class="row">
+                                    <div class="mx-1 my-1">
+                                        <a href="{{ route('categories.edit',$category->id) }}"><button class="btn btn-warning">Edit</button></a>
+                                    </div>
+                                    <div class="mx-1 my-1">
+                                        <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" onclick = "return confirm('Yakin hapus kategori?')">Hapus</button> 
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                  </table>
+                  <div class="d-flex justify-content-center">
+                    {{ $categories->links() }}
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  
   
 @endsection
 
