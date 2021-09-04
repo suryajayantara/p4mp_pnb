@@ -18,8 +18,9 @@
                 </select>
                 <label for="exampleInputEmail1" class="form-label">Nama Departement</label>
                 <input name="departement_name" value="{{ $departement_data['departement_name'] }}" type="Name" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <button type="submit" class="btn btn-primary">Submit</button>
-            {{ Form::close() }}
+            <button type="submit" class="btn btn-lg btn-success w-100 my-2">Submit</button>
+        {{ Form::close() }}
+        <a href="{{ route('departements.index') }}"><button type="button" class="btn btn-lg btn-danger w-100">Kembali</button></a>
     </div>
 </div>
 
