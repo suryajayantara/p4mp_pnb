@@ -17,21 +17,25 @@
         <th scope="col">#</th>
         <th scope="col">Nama Jurusan</th>
         <th scope="col">Deskripsi</th>
-        <th scope="col" class="text-center">Aksi</th>
+        <th scope="col">Aksi</th>
       </tr>
     </thead>
     <tbody>
       @foreach ($datas as $item)
       <tr>
-        <th scope="row">1</th>
+        <th scope="row">{{ $loop->iteration }}</th>
         <td>{{ $item->faculty_name }}</td>
         <td>{{ $item->desc }}</td>
-        <td class="text-center">
+        <td class="row">
+          <div class="mx-1 my-1">
             <a href="{{ route('faculties.edit',$item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-            {{ Form::open(array('url' => 'dashboard/faculties/' . $item->id, 'class' => 'pull-right')) }}
+          </div>
+          <div class="mx-1 my-1">
+            {{ Form::open(array('url' => 'faculties/' . $item->id, 'class' => 'pull-right')) }}
                 {{ Form::hidden('_method', 'DELETE') }}
                 {{ Form::submit('Hapus', array('class' => 'btn btn-danger btn-sm')) }}
             {{ Form::close() }}
+          </div>
         </td>
       </tr>
       @endforeach
