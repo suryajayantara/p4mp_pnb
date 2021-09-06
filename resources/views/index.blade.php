@@ -68,55 +68,19 @@
             </div>
 
             <div class="row">
-
+                @foreach ($posts as $post)
                 <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="card border-0 shadow-lg" data-aos="flip-right">
-                        <img src="{{asset('img/portfolio/portfolio-1.jpg')}}" class="card-img-top" alt="brt-01">
+                        <img src="{{asset('foto_post')}}/{{ $post->url_photo }}" class="card-img-top" alt="brt-01">
                         <div class="card-body m-3">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary w-100">Baca Selengkapnya</a>
+                            <p style="font-size: 11px" class="mb-2">Kategori : {{ ucwords($post->category->category_name) }}</p>
+                            <h5 class="card-title">{{ ucwords($post->title) }}</h5>
+                            <p class="card-text">{{ substr(strip_tags($post->content),0,30) }}...</p>
+                            <a href="{{ route('latestPosts.show',$post->id) }}" class="btn btn-primary w-100">Baca Selengkapnya</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card border-0 shadow-lg" data-aos="flip-up">
-                        <img src="{{asset('img/portfolio/portfolio-2.jpg')}}" class="card-img-top" alt="brt-01">
-                        <div class="card-body m-3">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary w-100 text-lead">Baca Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card border-0 shadow-lg" data-aos="flip-down">
-                        <img src="{{asset('img/portfolio/portfolio-2.jpg')}}" class="card-img-top" alt="brt-01">
-                        <div class="card-body m-3">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary w-100 text-lead">Baca Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card border-0 shadow-lg" data-aos="flip-left">
-                        <img src="{{asset('img/portfolio/portfolio-2.jpg')}}" class="card-img-top" alt="brt-01">
-                        <div class="card-body m-3">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary w-100 text-lead">Baca Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
 
 
             </div>
