@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,15 @@ class IndexController extends Controller
         $pagination = 4;
         $posts = Post::orderBy('id','desc')->paginate($pagination);
         return view('index',compact('posts'));
+    }
+
+    public function indextraining(Request $request){
+        $category = Category::where('category_name',$request->category)->get();
+        $category_id = $category[0]['id'];
+        $posts = Post::where('category_id',$category_id)->orderBy('id','desc')->get();
+        return view('training.index',compact('posts'),[
+            "category" => $request->category
+        ]);
     }
 
     /**

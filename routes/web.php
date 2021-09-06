@@ -46,5 +46,7 @@ Route::resource('posts', PostController::class)->middleware('auth');
 Route::resource('faculties', FacultyController::class);
 Route::resource('departements', DepartementController::class);
 Route::resource('/', IndexController::class);
-Route::resource('latestPosts', IndexController::class);
+Route::resource('detailPosts', IndexController::class);
+
+Route::get('/training', [IndexController::class,'indextraining']);
 

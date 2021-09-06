@@ -83,10 +83,10 @@
           {{-- Akreditasi --}}
           <li class="dropdown"><a href="#"><span>Pelatihan / Studi Banding</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Kunjungan / Studi Banding </a></li>
-              <li><a href="#">Formulir Pendaftaran Pelatihan</a></li>
-              <li><a href="#">Agenda Pelatihan</a></li>
-              <li><a href="#">Berkas Pelatihan</a></li>
+              <li><a href="/training?category=kunjungan / studi banding">Kunjungan / Studi Banding </a></li>
+              <li><a href="/training?category=formulir pendaftaran pelatihan">Formulir Pendaftaran Pelatihan</a></li>
+              <li><a href="/training?category=agenda pelatihan">Agenda Pelatihan</a></li>
+              <li><a href="/training?category=berkas pelatihan">Berkas Pelatihan</a></li>
             </ul>
           </li>
 

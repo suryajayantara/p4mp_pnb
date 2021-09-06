@@ -76,7 +76,7 @@
                             <p style="font-size: 11px" class="mb-2">Kategori : {{ ucwords($post->category->category_name) }}</p>
                             <h5 class="card-title">{{ ucwords($post->title) }}</h5>
                             <p class="card-text">{{ substr(strip_tags($post->content),0,30) }}...</p>
-                            <a href="{{ route('latestPosts.show',$post->id) }}" class="btn btn-primary w-100">Baca Selengkapnya</a>
+                            <a href="{{ route('detailPosts.show',$post->id) }}" class="btn btn-primary w-100">Baca Selengkapnya</a>
                         </div>
                     </div>
                 </div>
