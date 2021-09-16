@@ -17,7 +17,9 @@
                 <label for="exampleInputEmail1" class="form-label">Jenjang</label>
                 <input name="level" type="Name" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp">
                 <textarea name="result" class="form-control my-3" placeholder="Masukan Deksripsi Lembaga Akreditasi Disini" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="exampleInputEmail1" class="form-label">Masa Berlaku (Awal)</label>
                 <input name="start_date" type="date" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="exampleInputEmail1" class="form-label">Masa Berlaku (Akhir)</label>
                 <input name="end_date" type="date" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp">
             <button type="submit" class="btn btn-lg btn-primary w-100 my-2">Submit</button>
           </form>
