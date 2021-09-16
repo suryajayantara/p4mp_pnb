@@ -28,7 +28,7 @@
                         <div class="card-body m-3">
                             <p style="font-size: 11px" class="mb-2">Kategori : {{ ucwords($post->category->category_name) }}</p>
                             <h5 class="card-title">{{ ucwords($post->title) }}</h5>
-                            <p class="card-text">{{ $post->content }}</p>
+                            <p class="card-text"><?= $post->content ?></p>
                             <a href="{{ route('index') }}" class="btn btn-primary w-100">Kembali</a>
                         </div>
                     </div>
