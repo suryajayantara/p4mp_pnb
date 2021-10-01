@@ -17,7 +17,7 @@
         <th scope="col">#</th>
         <th scope="col">Nama Jurusan</th>
         <th scope="col">Nama Departemen</th>
-        <th scope="col" class="text-center">Aksi</th>
+        <th scope="col">Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -26,12 +26,16 @@
         <th scope="row">{{ $loop->iteration }}</th>
         <td>{{ $item->faculty_name }}</td>
         <td>{{ $item->departement_name}}</td>
-        <td class="text-center">
+        <td class="row">
+          <div class="mx-1 my-1">  
             <a href="{{ route('departements.edit',$item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-            {{ Form::open(array('url' => 'dashboard/departements/' . $item->id, 'class' => 'pull-right')) }}
+          </div>
+          <div class="mx-1 my-1">
+            {{ Form::open(array('url' => 'departements/' . $item->id, 'class' => 'pull-right')) }}
                 {{ Form::hidden('_method', 'DELETE') }}
                 {{ Form::submit('Hapus', array('class' => 'btn btn-danger btn-sm')) }}
             {{ Form::close() }}
+          </div>
         </td>
       </tr>
       @endforeach
