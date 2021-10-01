@@ -8,7 +8,6 @@
         <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, quae voluptates similique veniam a temporibus, dolorem repudiandae, necessitatibus commodi explicabo autem? Aperiam nesciunt reiciendis rem magnam iusto alias est tenetur!</h1>
                 <label for="exampleInputEmail1" class="form-label">Kategori</label>
                 <select class="form-control mb-3" aria-label="Default select example" name="category_id" required>
                     <option value="" selected>Pilih Kategori</option>
