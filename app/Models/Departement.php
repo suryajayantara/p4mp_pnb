@@ -16,4 +16,8 @@ class Departement extends Model
     public function faculty(){
         return $this->belongsTo(Faculty::class,'id','id_faculty');
     }
+
+    public function accreditation(){
+        return $this->hasMany(Accreditation::class,'id','id_study');
+    }
 }
