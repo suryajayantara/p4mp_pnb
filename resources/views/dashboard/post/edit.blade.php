@@ -22,7 +22,7 @@
                             <input name="url_photo" type="file" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp">
                             <label for="exampleInputEmail1" class="form-label">Judul Post</label>
                             <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value="{{ $post->title }}" required>
-                            <textarea name="content" class="form-control my-3" placeholder="Masukan isi post disini" id="floatingTextarea2" style="height: 100px" required>{{ $post->content }}</textarea>
+                            <textarea name="content" class="ckeditor" placeholder="Masukan isi post disini" id="wysiwyg" style="height: 100px" required>{{ $post->content }}</textarea>
                         <button type="submit" class="btn btn-lg w-100 my-2 btn-success">Edit</button>
                     <a href="{{ route('posts.index') }}"><button type="button" class="btn btn-lg w-100 btn-danger">Kembali</button></a>
                     </div>
