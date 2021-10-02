@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCertificationsInternationalsTable extends Migration
+class CreateCertificationInternationalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateCertificationsInternationalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('certifications_internationals', function (Blueprint $table) {
+        Schema::create('certification_internationals', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_faculties');
-            $table->integer('id_study');
+            $table->foreignId('id_faculties');
+            $table->foreignId('id_study');
             $table->string('level');
-            $table->string('result');
+            $table->text('result');
             $table->string('country');
-            $table->date('assessment');
+            $table->date('s_assessment');
+            $table->date('e_assessment');
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();
@@ -34,6 +35,6 @@ class CreateCertificationsInternationalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('certifications_internationals');
+        Schema::dropIfExists('certification_internationals');
     }
 }

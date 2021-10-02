@@ -17,7 +17,7 @@ class CreateCertificationsTable extends Migration
             $table->id();
             $table->integer('id_study');
             $table->string('level');
-            $table->string('result');
+            $table->text('result');
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();

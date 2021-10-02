@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CertificationInternational;
 use App\Http\Controllers\Controller;
-use App\Models\Certification;
 use App\Models\Departement;
+use App\Models\Faculty;
 use Illuminate\Http\Request;
 
-class CertificationController extends Controller
+class CertificationInternationalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,20 +18,16 @@ class CertificationController extends Controller
     public function index(Request $request)
     {
         $pagination = 5;
-
-        $certification =Certification::when($request->cari, function($query) use ($request){
-            $query->where('level','LIKE','%'.$request->cari.'%');
+        $internationals = CertificationInternational::when($request->cari, function($query) use ($request){
+            $query->where('level','LIKE',"%{$request->cari}%");
         })->orderBy('id','desc')->paginate($pagination);
 
+        $internationals->appends($request->only('cari'));
 
-        $certification->appends($request->only('cari'));
-
-        return view('dashboard.certification.index', compact('certification'))
+        return view('dashboard.international.index',compact('internationals'))
         ->with('i', ($request->input('page', 1) - 1) * $pagination);
+
     }
-
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -39,8 +36,10 @@ class CertificationController extends Controller
      */
     public function create()
     {
-        $data = Departement::all();
-        return view('dashboard.certification.add', compact('data'));
+        $departement_data = Departement::all();
+        $faculty_data = Faculty::all();
+        return view('dashboard.international.add',compact('departement_data','faculty_data'));
+
     }
 
     /**
@@ -52,34 +51,44 @@ class CertificationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'id_faculties' => 'required',
             'id_study' => 'required',
             'level' => 'required',
             'result' => 'required',
+            'country' => 'required',
+            's_assessment' => 'required',
+            'e_assessment' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'
         ]);
+
         try {
-            Certification::create([
+            CertificationInternational::create([
+                'id_faculties' => $request->id_faculties,
                 'id_study' => $request->id_study,
                 'level' => $request->level,
                 'result' => $request->result,
+                'country' => $request->country,
+                's_assessment' => $request->s_assessment,
+                'e_assessment' => $request->e_assessment,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
             ]);
-            return redirect()->route('certifications.index');
+            return redirect()->route('internationals.index');
 
         } catch (\Throwable $th) {
             return $th;
         }
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\CertificationInternational  $certificationInternational
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(CertificationInternational $certificationInternational)
     {
         //
     }
@@ -87,61 +96,73 @@ class CertificationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\CertificationInternational  $certificationInternational
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(CertificationInternational $certificationInternational)
     {
         $departement_data = Departement::all();
-        $certification_data = Certification::find($id);
-        return view('dashboard.certification.edit')->with(compact('id','departement_data','certification_data',));
+        $faculty_data = Faculty::all();
+        return view('dashboard.international.edit',compact('certificationInternational','departement_data','faculty_data'));
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\CertificationInternational  $certificationInternational
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, CertificationInternational $certificationInternational)
     {
         $request->validate([
+            'id_faculties' => 'required',
             'id_study' => 'required',
             'level' => 'required',
             'result' => 'required',
+            'country' => 'required',
+            's_assessment' => 'required',
+            'e_assessment' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'
         ]);
 
         try {
-            Certification::find($id)->update([
+            $certificationInternational->update([
+                'id_faculties' => $request->id_faculties,
                 'id_study' => $request->id_study,
                 'level' => $request->level,
                 'result' => $request->result,
+                'country' => $request->country,
+                's_assessment' => $request->s_assessment,
+                'e_assessment' => $request->e_assessment,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
             ]);
-            return redirect()->route('certifications.index');
+
+            return redirect()->route('internationals.index');
 
         } catch (\Throwable $th) {
             return $th;
         }
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\CertificationInternational  $certificationInternational
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(CertificationInternational $certificationInternational)
     {
         try {
-            Certification::find($id)->delete();
-            return redirect()->route('certifications.index');
+            $certificationInternational->delete();
+            return redirect()->route('internationals.index');
         } catch (\Throwable $th) {
-            echo 'gagal';
+            echo 'sad';
         }
+
     }
 }
