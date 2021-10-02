@@ -8,7 +8,7 @@
           </form>
     </div>
     <div class="col-md-2">
-        <a href="{{ route('accreditations.create') }}" class="btn btn-success">Tambah Data</a>
+        <a href="{{ route('certifications.create') }}" class="btn btn-success">Tambah Data</a>
     </div>
 </div>
 <table class="table">
@@ -34,13 +34,13 @@
         <td>{{ $item->end_date }}</td>
         <td class="row">
             <div class="mx-1 my-1">
-                <a href="{{ route('accreditations.edit',$item->id) }}" class="btn btn-sm btn-warning btn-sm">Edit</a>
+                <a href="{{ route('certifications.edit',$item->id) }}" class="btn btn-sm btn-warning btn-sm">Edit</a>
             </div>
             <div class="mx-1 my-1">
-                <form action="{{ route('accreditations.destroy',$item->id) }}" method="POST">
+                <form action="{{ route('certifications.destroy',$item->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger" onclick = "return confirm('Yakin hapus akreditasi?')">Hapus</button> 
+                    <button type="submit" class="btn btn-sm btn-danger" onclick = "return confirm('Yakin hapus akreditasi?')">Hapus</button>
                 </form>
             </div>
         </td>

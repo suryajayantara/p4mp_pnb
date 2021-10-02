@@ -5,7 +5,7 @@
 <div class="card">
     <div class="card-body">
 
-        <form action="{{ route('accreditations.store') }}" method="post" >
+        <form action="{{ route('certifications.store') }}" method="post" >
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Program Studi</label>
@@ -23,7 +23,7 @@
                 <input name="end_date" type="date" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp">
             <button type="submit" class="btn btn-lg btn-primary w-100 my-2">Submit</button>
           </form>
-          <a href="{{ route('accreditations.index') }}"><button type="button" class="btn btn-lg btn-danger w-100">Kembali</button></a>
+          <a href="{{ route('certifications.index') }}"><button type="button" class="btn btn-lg btn-danger w-100">Kembali</button></a>
     </div>
 </div>
 

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Accreditation;
+use App\Models\Certification;
 use App\Models\Departement;
 use Illuminate\Http\Request;
 
-class AccreditationController extends Controller
+class CertificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class AccreditationController extends Controller
      */
     public function index()
     {
-        $datas = Accreditation::join('departements','accreditations.id_study','=','departements.id')->select('accreditations.*','departements.departement_name')->get();
-        return view('dashboard.accreditation.index')->with(compact('datas'));
+        $datas = Certification::join('departements','certifications.id_study','=','departements.id')->select  ('certifications.*','departements.departement_name')->get();
+        return view('dashboard.certification.index')->with(compact('datas'));
     }
 
     /**
@@ -28,7 +28,7 @@ class AccreditationController extends Controller
     public function create()
     {
         $data = Departement::all();
-        return view('dashboard.accreditation.add', compact('data'));
+        return view('dashboard.certification.add', compact('data'));
     }
 
     /**
@@ -40,14 +40,14 @@ class AccreditationController extends Controller
     public function store(Request $request)
     {
         try {
-            Accreditation::create([
+            Certification::create([
                 'id_study' => $request->id_study,
                 'level' => $request->level,
                 'result' => $request->result,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
             ]);
-            return redirect()->route('accreditations.index');
+            return redirect()->route('certifications.index');
 
         } catch (\Throwable $th) {
             return $th;
@@ -74,8 +74,8 @@ class AccreditationController extends Controller
     public function edit($id)
     {
         $departement_data = Departement::all();
-        $accreditation_data = Accreditation::find($id);
-        return view('dashboard.accreditation.edit')->with(compact('id','departement_data','accreditation_data',));
+        $certification_data = Certification::find($id);
+        return view('dashboard.certification.edit')->with(compact('id','departement_data','certification_data',));
     }
 
     /**
@@ -87,15 +87,15 @@ class AccreditationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try { 
-            Accreditation::find($id)->update([
+        try {
+            Certification::find($id)->update([
                 'id_study' => $request->id_study,
                 'level' => $request->level,
                 'result' => $request->result,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
             ]);
-            return redirect()->route('accreditations.index');
+            return redirect()->route('certifications.index');
 
         } catch (\Throwable $th) {
             return $th;
@@ -111,8 +111,8 @@ class AccreditationController extends Controller
     public function destroy($id)
     {
         try {
-            Accreditation::find($id)->delete();
-            return redirect()->route('accreditations.index');
+            Certification::find($id)->delete();
+            return redirect()->route('certifications.index');
         } catch (\Throwable $th) {
             echo 'gagal';
         }

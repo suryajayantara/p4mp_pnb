@@ -104,7 +104,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Akreditasi:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Bidang Studi</a>
+                        <a class="collapse-item" href="{{ route('certifications.index') }}">Bidang Studi</a>
                         <a class="collapse-item" href="utilities-border.html">International</a>
                     </div>
                 </div>
@@ -206,9 +206,9 @@
                             </div>
                         </li>
 
-                        
 
-                     
+
+
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
