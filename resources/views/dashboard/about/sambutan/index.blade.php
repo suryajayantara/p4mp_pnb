@@ -8,16 +8,21 @@
 </div> --}}
 <!-- Content Row -->
 <div class="row my-3 mx-auto">
-    <div class="col-md-10">
+    {{-- <div class="col-md-10">
         <form action="{{ url()->current() }}" method="GET">
             <div class="input-group mb-3">
                 <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Berita">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
             </div>
           </form>
-    </div>
-    <div class="col-md-2">
-        <a href="{{ route('posts.create') }}" class="btn btn-success">Tambah Berita</a>
+    </div> --}}
+    <div class="col-md-12">
+        @if ($posts->count() == 0)
+            <a href="{{ route('about.create') }}?category=sambutan" class="btn btn-success" style="float: right">Tambah</a>
+        @else
+            <a class="btn btn-success" style="display:none">Tambah</a>
+        @endif
+        
     </div>
 </div>
 <div class="row">
@@ -25,7 +30,7 @@
         <div class="card shadow mb-4 mx-2">
             <div
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Daftar Berita</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Sambutan</h6>
                 {{-- <div class="dropdown no-arrow"> --}}
                     {{-- <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -41,34 +46,21 @@
                     </div> --}}
                 {{-- </div> --}}
             </div>
-            <div class="card-body my-3">
+            <div class="card-body mx-3">
                 <div class="row mb-4">
                     @foreach ($posts as $post)
-                        <div class="col-lg-3 col-md-6 my-3" data-aos="fade-up" data-aos-delay="100">
-                            <div class="card border-0 shadow-lg" data-aos="flip-left">
-                                @if ($post->url_photo != NULL)
-                                    <img src="{{asset('foto_post')}}/{{ $post->url_photo }}" class="card-img-top" alt="brt-01">
-                                @endif
-                                @if ($post->url_photo == NULL)
-                                    <img src="{{asset('img')}}/default.png" class="card-img-top" alt="brt-01">
-                                @endif
-                                <div class="card-body m-2">
-                                    <p style="font-size: 11px" class="mb-2">Kategori : {{ ucwords($post->category->category_name) }}</p>
-                                    <h5 class="card-title">{{ ucwords($post->title) }}</h5>
-                                    <p class="card-text">{{ substr(strip_tags($post->content),0,30) }}...</p>
-                                    <a href="{{ route('posts.edit',$post->id) }}"><button class="btn btn-warning w-100 my-2">Edit</button></a>
-                                    <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger w-100" onclick = "return confirm('Yakin hapus post?')">Hapus</button> 
-                                    </form>
-                                </div>
-                            </div>
+                        <div class="col-md-12">
+                            <a href="/sambutan/edit/{{ $post->id }}" class="btn btn-success" style="float: right">Edit</a>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="mb-5">Tanggal Dibuat : {{ date('d-m-Y', strtotime($post->created_at)) }}</p>
+                            <h3>{{ ucwords($post->title) }}</h3>
+                            <p><?= $post->content ?></p>
                         </div>
                     @endforeach
                 </div>
                 <div class="d-flex justify-content-center">
-                    {{ $posts->links() }}
+                    
                   </div>
             </div>
         </div>

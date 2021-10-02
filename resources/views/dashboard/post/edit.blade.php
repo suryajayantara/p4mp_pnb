@@ -8,7 +8,12 @@
             @method('PUT')
             <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
                 <div class="card border-0 shadow-lg" data-aos="flip-right">
-                    <img src="{{ asset('foto_post') }}/{{ $post->url_photo }}" class="card-img-top" alt="brt-01" style="height: 400px">
+                    @if ($post->url_photo != NULL)
+                        <img src="{{ asset('foto_post') }}/{{ $post->url_photo }}" class="card-img-top" alt="brt-01" style="height: 400px">
+                    @endif
+                    @if ($post->url_photo == NULL)
+                        <img src="{{ asset('img') }}/default.png" class="card-img-top" alt="brt-01" style="height: 400px">
+                    @endif
                     <div class="card-body m-3">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Kategori</label>

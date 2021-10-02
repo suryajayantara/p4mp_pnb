@@ -58,15 +58,52 @@ class PostController extends Controller
         $nama_foto = Str::replace(' ', '_', Auth::user()->name).date('_d_m_Y-H_i_s').".jpg";
 
         try {
-            Post::create([
-                'user_id' => Auth::user()->id,
-                'category_id' => $request->category_id,
-                'url_photo' => $nama_foto,
-                'title' => $request->title,
-                'content' => $request->content
-            ]);
-            $request->file('url_photo')->move(public_path('foto_post'),$nama_foto);
-            return redirect()->route('posts.index');
+            $categories = Category::where('id',$request->category_id)->get();
+            foreach($categories as $category){
+                $category_id = $category->id;
+                $category_name = $category->category_name;
+            }
+            if($category_name == 'sejarah' || $category_name == 'visi_misi' || $category_name == 'sambutan'){
+                $posts = Post::where('category_id',$category_id)->get();
+                if($posts->count() == 0){
+                    Post::create([
+                        'user_id' => Auth::user()->id,
+                        'category_id' => $request->category_id,
+                        'url_photo' => $nama_foto,
+                        'title' => $request->title,
+                        'content' => $request->content
+                    ]);
+                    $request->file('url_photo')->move(public_path('foto_post'),$nama_foto);
+                    return redirect()->route('posts.index');
+                }
+                else{
+                    return "<script>
+                                alert('Untuk Kategori Ini Tidak bisa Ditambah Lagi!');
+                                location.href = '/posts'
+                            </script>";
+                }
+            }
+            else{
+                $posts = Post::where('category_id',$category_id)->get();
+                if($posts->count() >= 0){
+                    Post::create([
+                        'user_id' => Auth::user()->id,
+                        'category_id' => $request->category_id,
+                        'url_photo' => $nama_foto,
+                        'title' => $request->title,
+                        'content' => $request->content
+                    ]);
+                    $request->file('url_photo')->move(public_path('foto_post'),$nama_foto);
+                    return redirect()->route('posts.index');
+                }
+                else{
+                    return "<script>
+                                alert('Tidak berhasil');
+                                location.href = '/posts'
+                            </script>";
+                }
+            }
+            
 
         } catch (\Throwable $th) {
             return $th;
@@ -117,13 +154,47 @@ class PostController extends Controller
 
         if($request->file('url_photo') == ""){
             try {
-                $post->update([
-                    'category_id' => $request->category_id,
-                    'url_photo' => $post->url_photo,
-                    'title' => $request->title,
-                    'content' => $request->content
-                ]);
-                return redirect()->route('posts.index');
+                $categories = Category::where('id',$request->category_id)->get();
+                foreach($categories as $category){
+                    $category_id = $category->id;
+                    $category_name = $category->category_name;
+                }
+                if($category_name == 'sejarah' || $category_name == 'visi_misi' || $category_name == 'sambutan'){
+                    $posts = Post::where('category_id',$category_id)->get();
+                    if($posts->count() == 0){
+                        $post->update([
+                            'category_id' => $request->category_id,
+                            'url_photo' => $post->url_photo,
+                            'title' => $request->title,
+                            'content' => $request->content
+                        ]);
+                        return redirect()->route('posts.index');
+                    }
+                    else{
+                        return "<script>
+                                alert('Untuk Kategori Ini Tidak bisa Diedit disini');
+                                location.href = '/posts'
+                            </script>";
+                    }
+                }
+                else{
+                    $posts = Post::where('category_id',$category_id)->get();
+                    if($posts->count() >= 0){
+                        $post->update([
+                            'category_id' => $request->category_id,
+                            'url_photo' => $post->url_photo,
+                            'title' => $request->title,
+                            'content' => $request->content
+                        ]);
+                        return redirect()->route('posts.index');
+                    }
+                    else{
+                        return "<script>
+                                alert('Tidak Berhasil!');
+                                location.href = '/posts'
+                            </script>";
+                    }
+                }
     
             } catch (\Throwable $th) {
                 return $th;

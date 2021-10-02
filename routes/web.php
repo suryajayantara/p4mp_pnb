@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\AccreditationController;
@@ -49,6 +50,14 @@ Route::resource('departements', DepartementController::class);
 Route::resource('accreditations', AccreditationController::class);
 Route::resource('/', IndexController::class);
 Route::resource('detailPosts', IndexController::class);
+
+Route::resource('about', AboutController::class)->middleware('auth');
+Route::get('/sambutan', [AboutController::class,'sambutan'])->middleware('auth');
+Route::get('/sambutan/edit/{id}', [AboutController::class,'editsambutan'])->middleware('auth');
+Route::get('/sejarah', [AboutController::class,'sejarah'])->middleware('auth');
+Route::get('/sejarah/edit/{id}', [AboutController::class,'editsejarah'])->middleware('auth');
+Route::get('/visimisi', [AboutController::class,'visimisi'])->middleware('auth');
+Route::get('/visimisi/edit/{id}', [AboutController::class,'editvisimisi'])->middleware('auth');
 
 Route::get('/training', [IndexController::class,'indextraining']);
 
