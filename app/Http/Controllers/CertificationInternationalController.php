@@ -99,11 +99,18 @@ class CertificationInternationalController extends Controller
      * @param  \App\Models\CertificationInternational  $certificationInternational
      * @return \Illuminate\Http\Response
      */
-    public function edit(CertificationInternational $certificationInternational)
+    public function edit($id)
     {
-        $departement_data = Departement::all();
-        $faculty_data = Faculty::all();
-        return view('dashboard.international.edit',compact('certificationInternational','departement_data','faculty_data'));
+
+        try {
+            $certificationInternational = CertificationInternational::find($id);
+            $departement_data = Departement::all();
+            $faculty_data = Faculty::all();
+            echo($certificationInternational);
+            // return view('dashboard.international.edit',compact('certificationInternational','departement_data','faculty_data'));
+        } catch (\Throwable $th) {
+            echo($th);
+        }
 
     }
 

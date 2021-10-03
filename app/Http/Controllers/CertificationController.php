@@ -19,7 +19,8 @@ class CertificationController extends Controller
         $pagination = 5;
 
         $certification =Certification::when($request->cari, function($query) use ($request){
-            $query->where('level','LIKE','%'.$request->cari.'%');
+            $query->where('level','LIKE','%'.$request->cari.'%')
+            ->orWhere('result','LIKE','%'.$request->cari.'%');
         })->orderBy('id','desc')->paginate($pagination);
 
 

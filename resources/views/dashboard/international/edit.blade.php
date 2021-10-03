@@ -4,9 +4,8 @@
 
 <div class="card">
     <div class="card-body">
-        <form action="{{ route('internationals.update', $certificationInternational->id) }}" method="POST" >
+        {{ Form::model($certificationInternational, array('route' => array('internationals.update', $certificationInternational->id), 'method' => 'PUT')) }}
             @csrf
-            @method('PUT')
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Fakultas</label>
                 <select name="id_faculties" class="form-control mb-3" aria-label="Default select example" required>
@@ -40,7 +39,7 @@
                 <label for="exampleInputEmail1" class="form-label">Masa Berlaku (Akhir)</label>
                 <input name="end_date" type="date" value="{{ $certificationInternational->end_date }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
             <button type="submit" class="btn btn-lg btn-success w-100 my-2">Edit</button>
-        </form>
+        {{ Form::close() }}
         <a href="{{ route('internationals.index') }}"><button type="button" class="btn btn-lg btn-danger w-100">Kembali</button></a>
     </div>
 </div>

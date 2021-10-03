@@ -8,7 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class CertificationInternational extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+    use HasFactory;
+    protected $fillable = [
+        'id_faculties',
+        'id_study',
+        'level',
+        'result',
+        'country',
+        's_assessment',
+        'e_assessment',
+        'start_date',
+        'end_date'
+    ];
 
     public function departement(){
         return $this->belongsTo(Departement::class, 'id_study');
