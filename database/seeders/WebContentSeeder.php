@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
 use Illuminate\Database\Seeder;
 
-class category_seeder extends Seeder
+class WebContentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,9 +15,6 @@ class category_seeder extends Seeder
     {
         //
 
-        Category::create([
-            'category_name' => "visi",
-            'desc' => "anjayy"
-        ]);
+
     }
 }

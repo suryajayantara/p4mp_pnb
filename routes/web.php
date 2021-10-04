@@ -42,13 +42,18 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // });
 
 
-Route::resource('categories', CategoryController::class)->middleware('auth');
-Route::resource('posts', PostController::class)->middleware('auth');
-Route::resource('faculties', FacultyController::class);
-Route::resource('departements', DepartementController::class);
-Route::resource('accreditations', AccreditationController::class);
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('categories', CategoryController::class);
+    Route::resource('posts', PostController::class);
+    Route::resource('faculties', FacultyController::class);
+    Route::resource('departements', DepartementController::class);
+    Route::resource('accreditations', AccreditationController::class);
+});
+
+
+
 Route::resource('/', IndexController::class);
 Route::resource('detailPosts', IndexController::class);
 
-Route::get('/training', [IndexController::class,'indextraining']);
-
+Route::get('/training', [IndexController::class, 'indextraining']);
