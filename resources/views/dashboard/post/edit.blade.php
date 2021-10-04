@@ -23,15 +23,16 @@
                             <label for="exampleInputEmail1" class="form-label">Judul Post</label>
                             <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value="{{ $post->title }}" required>
                             <textarea name="content" class="ckeditor" placeholder="Masukan isi post disini" id="wysiwyg" style="height: 100px" required>{{ $post->content }}</textarea>
-                        <button type="submit" class="btn btn-lg w-100 my-2 btn-success">Edit</button>
+                        <button type="submit" class="btn btn-lg w-100 my-2 btn-success">Simpan</button>
                     <a href="{{ route('posts.index') }}"><button type="button" class="btn btn-lg w-100 btn-danger">Kembali</button></a>
                     </div>
                 </div>
             </div>
-        </form> 
+        </form>
 @endsection
 
 @section('push')
 {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> --}}
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
 @endsection
+

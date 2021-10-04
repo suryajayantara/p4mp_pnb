@@ -35,7 +35,7 @@
                 <input name="start_date" type="date" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                 <label for="exampleInputEmail1" class="form-label">Masa Berlaku (Akhir)</label>
                 <input name="end_date" type="date" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-            <button type="submit" class="btn btn-lg btn-primary w-100 my-2">Submit</button>
+            <button type="submit" class="btn btn-lg btn-primary w-100 my-2">Tambah</button>
           </form>
           <a href="{{ route('internationals.index') }}"><button type="button" class="btn btn-lg btn-danger w-100">Kembali</button></a>
     </div>
