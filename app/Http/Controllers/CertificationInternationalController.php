@@ -20,7 +20,9 @@ class CertificationInternationalController extends Controller
     {
         $pagination = 5;
         $internationals = CertificationInternational::when($request->cari, function($query) use ($request){
-            $query->where('level','LIKE',"%{$request->cari}%");
+            $query->where('level','LIKE',"%{$request->cari}%")
+            ->orWhere('country','LIKE',"%{$request->cari}%")
+            ->orWhere('result','LIKE',"%{$request->cari}%");
         })->orderBy('id','desc')->paginate($pagination);
 
         $internationals->appends($request->only('cari'));

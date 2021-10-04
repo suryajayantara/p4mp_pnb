@@ -5,7 +5,7 @@
     <div class="col-md-10">
         <form form action="{{ url()->current() }}" method="GET">
             <div class="input-group mb-3">
-                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Sertifikasi Internasional">
+                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Jenjang atau Lembaga Akreditasi">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
             </div>
         </form>
