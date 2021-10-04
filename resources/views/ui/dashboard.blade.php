@@ -129,9 +129,9 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu :</h6>
-                        <a class="collapse-item" href="login.html">Sambutan</a>
-                        <a class="collapse-item" href="register.html">Visi Misi</a>
-                        <a class="collapse-item" href="forgot-password.html">Sejarah</a>
+                        <a class="collapse-item" href="{{ url('/sambutan') }}">Sambutan</a>
+                        <a class="collapse-item" href="{{ url('/visimisi') }}">Visi Misi</a>
+                        <a class="collapse-item" href="{{ url('/sejarah') }}">Sejarah</a>
                     </div>
                 </div>
             </li>
