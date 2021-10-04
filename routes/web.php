@@ -52,5 +52,4 @@ Route::resource('internationals', CertificationInternationalController::class);
 Route::resource('/', IndexController::class);
 Route::resource('detailPosts', IndexController::class);
 
-Route::get('/training', [IndexController::class,'indextraining']);
-
+Route::get('/training', [IndexController::class, 'indextraining']);

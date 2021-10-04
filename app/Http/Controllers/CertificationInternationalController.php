@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CertificationInternational;
 use App\Http\Controllers\Controller;
+use App\Models\CertificationInternational;
 use App\Models\Departement;
 use App\Models\Faculty;
 use Illuminate\Http\Request;
+
 
 class CertificationInternationalController extends Controller
 {
@@ -39,7 +40,6 @@ class CertificationInternationalController extends Controller
         $departement_data = Departement::all();
         $faculty_data = Faculty::all();
         return view('dashboard.international.add',compact('departement_data','faculty_data'));
-
     }
 
     /**
@@ -85,10 +85,10 @@ class CertificationInternationalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CertificationInternational  $certificationInternational
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(CertificationInternational $certificationInternational)
+    public function show($id)
     {
         //
     }
@@ -96,35 +96,26 @@ class CertificationInternationalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\CertificationInternational  $certificationInternational
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-
-        // try {
-        //     $certificationInternational = CertificationInternational::find($id);
-        //     $departement_data = Departement::all();
-        //     $faculty_data = Faculty::all();
-        //     echo($certificationInternational);
-        //     // return view('dashboard.international.edit',compact('certificationInternational','departement_data','faculty_data'));
-        // } catch (\Throwable $th) {
-            //     echo($th);
-            // }
-            $certificationInternational = CertificationInternational::find($id);
-            $departement_data = Departement::all();
-            $faculty_data = Faculty::all();
-            return view('dashboard.international.edit',compact('id','certificationInternational','departement_data','faculty_data'));
+        $certificationInternational = CertificationInternational::find($id);
+        $departement_data = Departement::all();
+        $faculty_data = Faculty::all();
+        return view('dashboard.international.edit',compact('id','certificationInternational','departement_data','faculty_data'));
     }
+
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CertificationInternational  $certificationInternational
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CertificationInternational $certificationInternational)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'id_faculties' => 'required',
@@ -139,7 +130,7 @@ class CertificationInternationalController extends Controller
         ]);
 
         try {
-            $certificationInternational->update([
+            CertificationInternational::find($id)->update([
                 'id_faculties' => $request->id_faculties,
                 'id_study' => $request->id_study,
                 'level' => $request->level,
@@ -162,13 +153,13 @@ class CertificationInternationalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CertificationInternational  $certificationInternational
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CertificationInternational $certificationInternational)
+    public function destroy($id)
     {
         try {
-            $certificationInternational->delete();
+            CertificationInternational::find($id)->delete();
             return redirect()->route('internationals.index');
         } catch (\Throwable $th) {
             echo 'sad';
