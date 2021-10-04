@@ -105,7 +105,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Akreditasi:</h6>
                         <a class="collapse-item" href="{{ route('certifications.index') }}">Bidang Studi</a>
-                        <a class="collapse-item" href="utilities-border.html">International</a>
+                        <a class="collapse-item" href="{{ route('internationals.index') }}">International</a>
                     </div>
                 </div>
             </li>
@@ -136,7 +136,7 @@
                 </div>
             </li>
 
-           
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

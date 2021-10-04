@@ -6,21 +6,20 @@
     <div class="card-body">
         {{ Form::model($certificationInternational, array('route' => array('internationals.update', $certificationInternational->id), 'method' => 'PUT')) }}
             @csrf
+            @method('PUT')
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Fakultas</label>
                 <select name="id_faculties" class="form-control mb-3" aria-label="Default select example" required>
-                    <option value="" selected>Pilih Fakultas</option>
                     @foreach ($faculty_data as $faculty)
-                        <option value="{{ $faculty->id }}" {{ ( $faculty->id == $faculty_data->id_faculties) ? 'selected' : '' }}>
+                        <option value="{{ $faculty->id }}" {{ ( $faculty->id == $certificationInternational->id_faculties) ? 'selected' : '' }}>
                             {{ $faculty->faculty_name }}
                         </option>
                     @endforeach
                 </select>
                 <label for="exampleInputEmail1" class="form-label">Program Studi</label>
                 <select name="id_study" class="form-control mb-3" aria-label="Default select example" required>
-                    <option value="" selected>Pilih Departemen</option>
                     @foreach ($departement_data as $departement)
-                        <option value="{{ $departement->id }}" {{ ( $departement->id == $departement_data->id_study) ? 'selected' : '' }}>
+                        <option value="{{ $departement->id }}" {{ ( $departement->id == $certificationInternational->id_study) ? 'selected' : '' }}>
                             {{ $departement->departement_name }}
                         </option>
                     @endforeach
@@ -39,7 +38,7 @@
                 <label for="exampleInputEmail1" class="form-label">Masa Berlaku (Akhir)</label>
                 <input name="end_date" type="date" value="{{ $certificationInternational->end_date }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
             <button type="submit" class="btn btn-lg btn-success w-100 my-2">Edit</button>
-        {{ Form::close() }}
+            {{ Form::close() }}
         <a href="{{ route('internationals.index') }}"><button type="button" class="btn btn-lg btn-danger w-100">Kembali</button></a>
     </div>
 </div>

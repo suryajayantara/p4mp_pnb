@@ -102,16 +102,19 @@ class CertificationInternationalController extends Controller
     public function edit($id)
     {
 
-        try {
+        // try {
+        //     $certificationInternational = CertificationInternational::find($id);
+        //     $departement_data = Departement::all();
+        //     $faculty_data = Faculty::all();
+        //     echo($certificationInternational);
+        //     // return view('dashboard.international.edit',compact('certificationInternational','departement_data','faculty_data'));
+        // } catch (\Throwable $th) {
+            //     echo($th);
+            // }
             $certificationInternational = CertificationInternational::find($id);
             $departement_data = Departement::all();
             $faculty_data = Faculty::all();
-            echo($certificationInternational);
-            // return view('dashboard.international.edit',compact('certificationInternational','departement_data','faculty_data'));
-        } catch (\Throwable $th) {
-            echo($th);
-        }
-
+            return view('dashboard.international.edit',compact('id','certificationInternational','departement_data','faculty_data'));
     }
 
     /**
