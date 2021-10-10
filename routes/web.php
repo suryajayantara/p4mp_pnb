@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\CertificationController;
@@ -43,13 +44,29 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // });
 
 
-Route::resource('categories', CategoryController::class)->middleware('auth');
-Route::resource('posts', PostController::class)->middleware('auth');
-Route::resource('faculties', FacultyController::class);
-Route::resource('departements', DepartementController::class);
-Route::resource('certifications', CertificationController::class);
-Route::resource('internationals', CertificationInternationalController::class);
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('categories', CategoryController::class);
+    Route::resource('posts', PostController::class);
+    Route::resource('faculties', FacultyController::class);
+    Route::resource('departements', DepartementController::class);
+    Route::resource('accreditations', AccreditationController::class);
+    Route::resource('abouts', AboutController::class);
+
+    Route::get('/sambutan', [AboutController::class, 'sambutan']);
+    Route::get('/sambutan/edit/{id}', [AboutController::class, 'editsambutan']);
+
+    Route::get('/sejarah', [AboutController::class, 'sejarah']);
+    Route::get('/sejarah/edit/{id}', [AboutController::class, 'editsejarah']);
+
+    Route::get('/visimisi', [AboutController::class, 'visimisi']);
+    Route::get('/visimisi/edit/{id}', [AboutController::class, 'editvisimisi']);
+});
+
+
+
 Route::resource('/', IndexController::class);
 Route::resource('detailPosts', IndexController::class);
 
 Route::get('/training', [IndexController::class, 'indextraining']);
+Route::get('/about', [AboutController::class, 'indexabout']);
