@@ -23,7 +23,14 @@
                     @endforeach
                 </select>
                 <label for="exampleInputEmail1" class="form-label">Jenjang</label>
-                <input name="level" type="Name" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                <select name="level" id="level" class="form-control mb-3" aria-label="Default select example" required>
+                    <option >d1</option>
+                    <option >d2</option>
+                    <option >d3</option>
+                    <option >s1</option>
+                    <option >s2</option>
+                    <option >s3</option>
+                </select>
                 <textarea name="result" class="form-control my-3" placeholder="Masukan Deksripsi Lembaga Akreditasi Disini" id="floatingTextarea2" style="height: 100px" required></textarea>
                 <label for="exampleInputEmail1" class="form-label">Negara</label>
                 <input name="country" type="Name" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp" required>
