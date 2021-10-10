@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\WebContent;
 use Illuminate\Database\Seeder;
 
 class WebContentSeeder extends Seeder
@@ -13,8 +14,19 @@ class WebContentSeeder extends Seeder
      */
     public function run()
     {
-        //
+        WebContent::create([
+            'section' => "sejarah",
+            'content' => "belum ada content"
+        ]);
 
+        WebContent::create([
+            'section' => "visi_misi",
+            'content' => "belum ada content"
+        ]);
 
+        WebContent::create([
+            'section' => "sambutan",
+            'content' => "belum ada content"
+        ]);
     }
 }

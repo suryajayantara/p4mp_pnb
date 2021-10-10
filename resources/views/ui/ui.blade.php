@@ -53,9 +53,9 @@
           {{-- About --}}
           <li class="dropdown"><a href="#"><span>Tentang P4MP</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Sambutan Kepala P4MP</a></li>
-              <li><a href="#">Visi dan Misi</a></li>
-              <li><a href="#">Sejarah</a></li>
+              <li><a href="/about?section=sambutan">Sambutan Kepala P4MP</a></li>
+              <li><a href="/about?section=visi_misi">Visi dan Misi</a></li>
+              <li><a href="/about?section=sejarah">Sejarah</a></li>
               <li><a href="#">Manual Mutu</a></li>
             </ul>
           </li>
