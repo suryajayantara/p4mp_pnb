@@ -30,11 +30,6 @@ Route::get('/dashboard', function () {
     return view('dashboard.faculty.add');
 });
 
-
-Route::get('/academy', function () {
-    return view('certificate.academy');
-});
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
