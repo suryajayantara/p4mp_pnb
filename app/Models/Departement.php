@@ -14,10 +14,14 @@ class Departement extends Model
     ];
 
     public function faculty(){
-        return $this->belongsTo(Faculty::class,'id','id_faculty');
+        return $this->belongsTo(Faculty::class, 'id_faculty');
     }
 
-    public function accreditation(){
-        return $this->hasMany(Accreditation::class,'id','id_study');
+    public function certification(){
+        return $this->hasMany(Certification::class);
+    }
+
+    public function certificationInternational(){
+        return $this->hasMany(CertificationInternational::class);
     }
 }

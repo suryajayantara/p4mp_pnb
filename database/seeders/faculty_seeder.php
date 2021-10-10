@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\WebContent;
 use Illuminate\Database\Seeder;
 
-class WebContentSeeder extends Seeder
+class faculty_seeder extends Seeder
 {
     /**
      * Run the database seeds.

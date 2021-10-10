@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Faculty;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\TryCatch;
 
 class FacultyController extends Controller
 {
@@ -14,11 +13,17 @@ class FacultyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $pagination = 5;
+        $faculties = Faculty::when($request->cari, function($query) use ($request){
+            $query->where('faculty_name','LIKE','%'.$request->cari.'%');
+        })->orderBy('id','desc')->paginate($pagination);
 
-        $datas = Faculty::all();
-        return view('dashboard.faculty.index')->with(compact('datas'));
+        $faculties->appends($request->only('cari'));
+
+        return view('dashboard.faculty.index', compact('faculties'))->with('i', ($request->input('page', 1) - 1) * $pagination);
+
     }
 
     /**
@@ -39,6 +44,11 @@ class FacultyController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'faculty_name' => 'required',
+            'desc' => 'required'
+        ]);
+
         try {
             Faculty::create([
                 'faculty_name' => $request->faculty_name,
@@ -49,15 +59,16 @@ class FacultyController extends Controller
         } catch (\Throwable $th) {
             return $th;
         }
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Faculty $faculty)
     {
         //
     }
@@ -65,26 +76,30 @@ class FacultyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Faculty $faculty)
     {
-        $data = Faculty::find($id);
-        return view('dashboard.faculty.edit')->with(compact('data'));
+        return view('dashboard.faculty.edit')->with(compact('faculty'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Faculty $faculty)
     {
+        $request->validate([
+            'faculty_name' => 'required',
+            'desc' => 'required'
+        ]);
+
         try {
-            Faculty::find($id)->update([
+            $faculty->update([
                 'faculty_name' => $request->faculty_name,
                 'desc' => $request->desc,
             ]);
@@ -92,21 +107,23 @@ class FacultyController extends Controller
         } catch (\Throwable $th) {
             throw $th;
         }
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Faculty $faculty)
     {
         try {
-            Faculty::find($id)->delete();
+            $faculty->delete();
             return redirect()->route('faculties.index');
         } catch (\Throwable $th) {
             echo 'sad';
         }
+
     }
 }

@@ -3,9 +3,12 @@
 @section('content')
 <div class="row my-5 mx-auto">
     <div class="col-md-10">
-        <form>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Jurusan">
-          </form>
+        <form action="{{ url()->current() }}" method="GET">
+            <div class="input-group mb-3">
+                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Jurusan">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
+            </div>
+        </form>
     </div>
     <div class="col-md-2">
         <a href="{{ route('faculties.create') }}" class="btn btn-success">Tambah Data</a>
@@ -21,27 +24,30 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($datas as $item)
+      @foreach ($faculties as $faculty)
       <tr>
         <th scope="row">{{ $loop->iteration }}</th>
-        <td>{{ $item->faculty_name }}</td>
-        <td>{{ $item->desc }}</td>
+        <td>{{ $faculty->faculty_name }}</td>
+        <td>{{ $faculty->desc }}</td>
         <td class="row">
           <div class="mx-1 my-1">
-            <a href="{{ route('faculties.edit',$item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+            <a href="{{ route('faculties.edit',$faculty->id) }}" class="btn btn-warning btn-sm">Edit</a>
           </div>
           <div class="mx-1 my-1">
-            {{ Form::open(array('url' => 'faculties/' . $item->id, 'class' => 'pull-right')) }}
-                {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit('Hapus', array('class' => 'btn btn-danger btn-sm')) }}
-            {{ Form::close() }}
+            <form action="{{ route('faculties.destroy',$faculty->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-sm btn-danger" onclick = "return confirm('Yakin hapus akreditasi?')">Hapus</button>
+            </form>
           </div>
         </td>
       </tr>
       @endforeach
     </tbody>
   </table>
-
+  <div class="d-flex justify-content-center">
+    {{ $faculties->links() }}
+  </div>
 @endsection
 
 @section('push')

@@ -9,9 +9,9 @@
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nama Jurusan</label>
-                <input name="faculty_name" type="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <textarea name="desc" class="form-control my-3" placeholder="Masukan Deksripsi Jurusan Disini" id="floatingTextarea2" style="height: 100px"></textarea>
-            <button type="submit" class="btn btn-lg btn-primary w-100 my-2">Submit</button>
+                <input name="faculty_name" type="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                <textarea name="desc" class="form-control my-3" placeholder="Masukan Deksripsi Jurusan Disini" id="floatingTextarea2" style="height: 100px" required></textarea>
+            <button type="submit" class="btn btn-lg btn-primary w-100 my-2">Tambah</button>
           </form>
           <a href="{{ route('faculties.index') }}"><button type="button" class="btn btn-lg btn-danger w-100">Kembali</button></a>
     </div>
