@@ -5,25 +5,25 @@
 <div class="card">
     <div class="card-body">
 
-        <form action="{{ route('accreditations.store') }}" method="post" >
+        <form action="{{ route('certifications.store') }}" method="post" >
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Program Studi</label>
-                <select name="id_study" id="id_faculty" class="form-control mb-3" aria-label="Default select example">
+                <select name="id_study" id="id_faculty" class="form-control mb-3" aria-label="Default select example" required>
                     @foreach ($data as $items)
                     <option value="{{ $items->id }}">{{ $items->departement_name }}</option>
                     @endforeach
                 </select>
                 <label for="exampleInputEmail1" class="form-label">Jenjang</label>
-                <input name="level" type="Name" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <textarea name="result" class="form-control my-3" placeholder="Masukan Deksripsi Lembaga Akreditasi Disini" id="floatingTextarea2" style="height: 100px"></textarea>
+                <input name="level" type="Name" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                <textarea name="result" class="form-control my-3" placeholder="Masukan Deksripsi Lembaga Akreditasi Disini" id="floatingTextarea2" style="height: 100px" required></textarea>
                 <label for="exampleInputEmail1" class="form-label">Masa Berlaku (Awal)</label>
-                <input name="start_date" type="date" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input name="start_date" type="date" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                 <label for="exampleInputEmail1" class="form-label">Masa Berlaku (Akhir)</label>
-                <input name="end_date" type="date" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <button type="submit" class="btn btn-lg btn-primary w-100 my-2">Submit</button>
+                <input name="end_date" type="date" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <button type="submit" class="btn btn-lg btn-primary w-100 my-2">Tambah</button>
           </form>
-          <a href="{{ route('accreditations.index') }}"><button type="button" class="btn btn-lg btn-danger w-100">Kembali</button></a>
+          <a href="{{ route('certifications.index') }}"><button type="button" class="btn btn-lg btn-danger w-100">Kembali</button></a>
     </div>
 </div>
 

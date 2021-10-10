@@ -14,12 +14,19 @@ class DepartementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {   
+    public function index(Request $request)
+    {
+        $pagination=5;
+        $datas =Departement::when($request->cari, function($query) use ($request){
+            $query->where('departement_name','LIKE','%'.$request->cari.'%');
+        })->orderBy('id','desc')->paginate($pagination);
 
-        $datas = Departement::join('faculties','departements.id_faculty','=','faculties.id')->select('departements.*','faculties.faculty_name')->get();
-        return view('dashboard.departement.index')->with(compact('datas'));
-     
+
+        $datas->appends($request->only('cari'));
+
+        return view('dashboard.departement.index', compact('datas'))
+        ->with('i', ($request->input('page', 1) - 1) * $pagination);
+
     }
 
     /**
@@ -30,8 +37,8 @@ class DepartementController extends Controller
     public function create()
     {
         $dats = Faculty::all();
-        return view('dashboard.departement.add', compact('dats')); 
-        
+        return view('dashboard.departement.add', compact('dats'));
+
     }
 
     /**
@@ -41,10 +48,13 @@ class DepartementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {  
-        
+    {
+        $request->validate([
+            'id_faculty' => 'required',
+            'departement_name' => 'required'
+        ]);
+
         try {
-            
             Departement::create([
                 'id_faculty' => $request->id_faculty,
                 'departement_name' => $request->departement_name,
@@ -64,14 +74,14 @@ class DepartementController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -79,7 +89,7 @@ class DepartementController extends Controller
         $faculty_data = Faculty::all();
         $departement_data = Departement::find($id);
         return view('dashboard.departement.edit')->with(compact('id','faculty_data','departement_data',));
-       
+
     }
 
     /**
@@ -91,8 +101,12 @@ class DepartementController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'id_faculty' => 'required',
+            'departement_name' => 'required'
+        ]);
+
         try {
-            
             Departement::find($id)->update([
                 'id_faculty' => $request->id_faculty,
                 'departement_name' => $request->departement_name,

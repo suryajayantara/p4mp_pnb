@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class category_seeder extends Seeder
@@ -15,10 +14,5 @@ class category_seeder extends Seeder
     public function run()
     {
         //
-
-        Category::create([
-            'category_name' => "visi",
-            'desc' => "anjayy"
-        ]);
     }
 }

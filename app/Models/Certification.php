@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Accreditation extends Model
+class Certification extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -17,6 +17,6 @@ class Accreditation extends Model
     ];
 
     public function departement(){
-        return $this->belongsTo(Departement::class,'id','id_study');
+        return $this->belongsTo(Departement::class,'id_study');
     }
 }
