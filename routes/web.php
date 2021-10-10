@@ -43,6 +43,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // });
 
 
+Route::get('/test', function () {
+    return view('about.certification');
+});
+
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('categories', CategoryController::class);
