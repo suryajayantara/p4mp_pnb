@@ -50,7 +50,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('posts', PostController::class);
     Route::resource('faculties', FacultyController::class);
     Route::resource('departements', DepartementController::class);
-    Route::resource('accreditations', AccreditationController::class);
+    Route::resource('certifications', CertificationController::class);
+    Route::resource('internationals', CertificationInternationalController::class);
     Route::resource('abouts', AboutController::class);
 
     Route::get('/sambutan', [AboutController::class, 'sambutan']);
