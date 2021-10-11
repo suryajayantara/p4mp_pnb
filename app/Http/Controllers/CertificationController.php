@@ -18,16 +18,16 @@ class CertificationController extends Controller
     {
         $pagination = 5;
 
-        $certification =Certification::when($request->cari, function($query) use ($request){
-            $query->where('level','LIKE','%'.$request->cari.'%')
-            ->orWhere('result','LIKE','%'.$request->cari.'%');
-        })->orderBy('id','desc')->paginate($pagination);
+        $certification = Certification::when($request->cari, function ($query) use ($request) {
+            $query->where('level', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('result', 'LIKE', '%' . $request->cari . '%');
+        })->orderBy('id', 'desc')->paginate($pagination);
 
 
         $certification->appends($request->only('cari'));
 
         return view('dashboard.certification.index', compact('certification'))
-        ->with('i', ($request->input('page', 1) - 1) * $pagination);
+            ->with('i', ($request->input('page', 1) - 1) * $pagination);
     }
 
 
@@ -53,11 +53,13 @@ class CertificationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_study' => 'required',
+            'id_study' => 'required|unique:certifications,id_study',
             'level' => 'required',
             'result' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'
+        ], [
+            'id_study.unique' => "Data Sudah Ada !"
         ]);
         try {
             Certification::create([
@@ -68,7 +70,6 @@ class CertificationController extends Controller
                 'end_date' => $request->end_date,
             ]);
             return redirect()->route('certifications.index');
-
         } catch (\Throwable $th) {
             return $th;
         }
@@ -95,7 +96,7 @@ class CertificationController extends Controller
     {
         $departement_data = Departement::all();
         $certification_data = Certification::find($id);
-        return view('dashboard.certification.edit')->with(compact('id','departement_data','certification_data',));
+        return view('dashboard.certification.edit')->with(compact('id', 'departement_data', 'certification_data',));
     }
 
     /**
@@ -124,7 +125,6 @@ class CertificationController extends Controller
                 'end_date' => $request->end_date,
             ]);
             return redirect()->route('certifications.index');
-
         } catch (\Throwable $th) {
             return $th;
         }
