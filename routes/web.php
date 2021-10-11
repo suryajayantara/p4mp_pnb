@@ -6,8 +6,10 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\CertificationController;
+use App\Http\Controllers\ViewCertificationController;
 use App\Http\Controllers\CertificationInternationalController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ViewCertification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -44,9 +46,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // });
 
 
-Route::get('/test', function () {
-    return view('about.certification');
-});
+Route::get('/certificate', [ViewCertificationController::class, 'indexCertification']);
+Route::get('/international', [ViewCertificationController::class, 'indexInternational']);
 
 
 Route::middleware(['auth'])->group(function () {

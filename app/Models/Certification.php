@@ -19,4 +19,5 @@ class Certification extends Model
     public function departement(){
         return $this->belongsTo(Departement::class,'id_study');
     }
+    
 }
