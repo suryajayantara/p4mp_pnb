@@ -25,7 +25,15 @@
                     @endforeach
                 </select>
                 <label for="exampleInputEmail1" class="form-label">Jenjang</label>
-                <input name="level" type="Name" value="{{ $certificationInternational->level }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <select name="level" id="level" class="form-control mb-3" aria-label="Default select example" required>
+                    <option >{{ $certificationInternational->level }}</option>
+                    <option >d1</option>
+                    <option >d2</option>
+                    <option >d3</option>
+                    <option >s1</option>
+                    <option >s2</option>
+                    <option >s3</option>
+                </select>
                 <textarea name="result" class="form-control my-3" placeholder="Masukan Deksripsi Lembaga Akreditasi Disini" id="floatingTextarea2" style="height: 100px" required>{{ $certificationInternational->result }}</textarea>
                 <label for="exampleInputEmail1" class="form-label">Negara</label>
                 <input name="country" type="Name" value="{{ $certificationInternational->country }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>

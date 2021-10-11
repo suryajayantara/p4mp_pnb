@@ -20,7 +20,7 @@
         <th scope="col">#</th>
         <th scope="col">Program Studi</th>
         <th scope="col">Jenjang</th>
-        <th scope="col">Lembaga Akreditasi</th>
+        <th scope="col">Hasil</th>
         <th scope="col">Masa Berlaku (Awal)</th>
         <th scope="col">Masa Berlaku (Akhir)</th>
         <th scope="col">Aksi</th>
