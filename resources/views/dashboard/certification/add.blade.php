@@ -42,8 +42,10 @@
                 @enderror
                 </div>
                 
+               <div class="form-group row">
                 <label for="exampleInputEmail1" class="form-label">Hasil</label>
                 <input name="result" type="Name" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+               </div>
                 
                 <label for="exampleInputEmail1" class="form-label">Masa Berlaku (Awal)</label>
                 <input name="start_date" type="date" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp" required>

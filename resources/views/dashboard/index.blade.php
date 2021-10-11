@@ -2,12 +2,9 @@
 
 @section('content')
 
-<!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-</div>
+
 <!-- Content Row -->
-<div class="row">
+{{-- <div class="row">
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
@@ -91,8 +88,25 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-body m-5">
+           
+                <h3 class="font-weight-bold"> Selamat Datang , <span class="text-capitalize  "> {{Auth::user()->name}} </span> &#128075;  </h3>
+                <p class="my-4">Dashboard ini ditujukan untuk mengatur content dari website P4MP , Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eius, illo eum voluptate debitis quasi dolorum esse inventore modi nam harum reiciendis, quibusdam sequi perspiciatis facere odio ipsam accusamus quae.</p>
+                <div class="row">
+                    <button class="btn btn-primary mx-1"> Selengkapnya </button>
+                    <button class="btn btn-outline-primary mx-1"> Tutup </button>
+                </div>
+
+        </div>
+    </div>
+
+</div>
 
 
     

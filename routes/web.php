@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/dashboard', function () {
-    return view('dashboard.faculty.add');
+    return view('dashboard.index');
 });
 
 Auth::routes();
