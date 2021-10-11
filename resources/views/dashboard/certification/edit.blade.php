@@ -17,8 +17,17 @@
                     @endforeach
                 </select>
                 <label for="exampleInputEmail1" class="form-label">Jenjang</label>
-                <input name="level" type="Name" value="{{ $certification_data->level }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-                <textarea name="result" class="form-control my-3" placeholder="Masukan Deksripsi Jurusan Disini" id="floatingTextarea2" style="height: 100px" required>{{ $certification_data->result }}</textarea>
+                <select name="level" id="level" class="form-control mb-3" aria-label="Default select example" required>
+                    <option >{{ $certification_data->level }}</option>
+                    <option >d1</option>
+                    <option >d2</option>
+                    <option >d3</option>
+                    <option >s1</option>
+                    <option >s2</option>
+                    <option >s3</option>
+                </select>
+                <label for="exampleInputEmail1" class="form-label">Hasil</label>
+                <input name="result" type="Name" value="{{ $certification_data->result }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                 <label for="exampleInputEmail1" class="form-label">Masa Berlaku (Awal)</label>
                 <input name="start_date" type="date" value="{{ $certification_data->start_date }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                 <label for="exampleInputEmail1" class="form-label">Masa Berlaku (Akhir)</label>
