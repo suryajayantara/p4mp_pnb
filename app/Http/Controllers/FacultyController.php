@@ -45,8 +45,10 @@ class FacultyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'faculty_name' => 'required',
+            'faculty_name' => 'required|unique:faculties,faculty_name,id',
             'desc' => 'required'
+        ],[
+            'faculty_name.unique' => "Data Sudah Ada !"
         ]);
 
         try {
