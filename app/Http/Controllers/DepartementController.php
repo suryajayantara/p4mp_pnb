@@ -50,8 +50,11 @@ class DepartementController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_faculty' => 'required',
-            'departement_name' => 'required'
+            'id_faculty' => 'required|unique:departements,id_faculty',
+            'departement_name' => 'required|unique:departements,departement_name,id'
+        ], [
+            'id_faculty.unique' => "Data Sudah Ada !",
+            'departement_name.unique' => "Data Sudah Ada !"
         ]);
 
         try {

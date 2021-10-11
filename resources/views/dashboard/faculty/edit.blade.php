@@ -8,13 +8,31 @@
         <form action="{{ route('faculties.update', $faculty->id) }}" method="post">
             @csrf
             @method('PUT')
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nama Jurusan</label>
-                <input name="faculty_name" type="Name" value="{{ $faculty->faculty_name }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-                <textarea name="desc" class="form-control my-3" placeholder="Masukan Deksripsi Jurusan Disini" id="floatingTextarea2" style="height: 100px" required>{{ $faculty->desc }}</textarea>
-            <button type="submit" class="btn btn-lg btn-success w-100 my-2">Simpan</button>
+            <div class="m-3">
+
+                {{-- nama jurusan --}}
+                <div class="form-group row">
+                    <label for="exampleInputEmail1" class="form-label">Nama Jurusan</label>
+                    <input name="faculty_name" type="Name" value="{{ $faculty->faculty_name }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                </div>
+
+                {{-- deskripsi --}}
+                <div class="form-group row">
+                    <textarea name="desc" class="form-control " placeholder="Masukan Deksripsi Jurusan Disini" id="floatingTextarea2" style="height: 100px" required>{{ $faculty->desc }}</textarea>
+                </div>
+
+                {{-- tambah --}}
+                <div class="form-group row">
+                    <button type="submit" class="btn btn-lg btn-success w-100 mt-3">Simpan</button>
+                </div>
+
         </form>
-        <a href="{{ route('faculties.index') }}"><button type="button" class="btn btn-lg btn-danger w-100">Kembali</button></a>
+        <a href="{{ route('faculties.index') }}">
+            {{-- kembali --}}
+            <div class="form-group row">
+                <button type="button" class="btn btn-lg btn-danger w-100">Kembali</button>
+            </div>
+        </a>
     </div>
 </div>
 
