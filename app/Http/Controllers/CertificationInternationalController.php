@@ -53,8 +53,8 @@ class CertificationInternationalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_faculties' => 'required',
-            'id_study' => 'required',
+            'id_faculties' => 'required|unique:certification_internationals,id_faculties',
+            'id_study' => 'required|unique:certification_internationals,id_study',
             'level' => 'required',
             'result' => 'required',
             'country' => 'required',
@@ -62,6 +62,9 @@ class CertificationInternationalController extends Controller
             'e_assessment' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'
+        ], [
+            'id_faculties.unique' => "Data Sudah Ada !",
+            'id_study.unique' => "Data Sudah Ada !"
         ]);
 
         try {
