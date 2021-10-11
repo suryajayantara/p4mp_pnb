@@ -12,7 +12,7 @@
             <h2>Tentang</h2>
             <ol>
               <li><a href="{{ route('index') }}">Home</a></li>
-              <li>BAN PT / Status Akreditasi Jurusan</li>
+              <li>AUN Program Studi</li>
             </ol>
           </div>
   
@@ -30,9 +30,13 @@
                                     <thead>
                                       <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">Jurusan</th>
                                         <th scope="col">Program Studi</th>
                                         <th scope="col">Jenjang</th>
-                                        <th scope="col">Hasil Akreditasi</th>
+                                        <th scope="col">Hasil</th>
+                                        <th scope="col">Negara</th>
+                                        <th scope="col">Assessment(Awal)</th>
+                                        <th scope="col">Assessment(Akhir)</th>
                                         <th scope="col">Masa Berlaku(Awal)</th>
                                         <th scope="col">Masa Berlaku(Akhir)</th>
                                       </tr>
@@ -41,9 +45,13 @@
                                       @foreach ($certifications as $certificate)
                                         <tr>
                                           <th scope="row">{{ ++$i }}</th>
+                                          <td>{{ $certificate->faculty->faculty_name }}</td>
                                           <td>{{ $certificate->departement->departement_name }}</td>
                                           <td>{{ $certificate->level }}</td>
                                           <td>{{ $certificate->result }}</td>
+                                          <td>{{ $certificate->country }}</td>
+                                          <td>{{ $certificate->s_assessment }}</td>
+                                          <td>{{ $certificate->e_assessment }}</td>
                                           <td>{{ $certificate->start_date }}</td>
                                           <td>{{ $certificate->end_date }}</td>
                                         </tr>

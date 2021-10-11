@@ -26,7 +26,7 @@ class PostController extends Controller
         $posts->appends($request->only('cari'));
 
         return view('dashboard.post.index',compact('posts'))
-        ->with('i', ($request->input('page', 1) - 1) * $pagination);;
+        ->with('i', ($request->input('page', 1) - 1) * $pagination);
     }
 
     /**

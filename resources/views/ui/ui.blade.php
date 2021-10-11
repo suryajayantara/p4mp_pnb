@@ -49,7 +49,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           {{-- Home --}}
-          <li><a class="nav-link scrollto active" href="#">Beranda</a></li>
+          <li><a class="nav-link scrollto active" href="{{ url('/') }}">Beranda</a></li>
           {{-- About --}}
           <li class="dropdown"><a href="#"><span>Tentang P4MP</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -64,7 +64,7 @@
             <ul>
               <li class="dropdown"><a href="#"><span>BAN PT</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="#">Status Akredatsi Jurusan</a></li>
+                  <li><a href="{{ url('/certificate') }}">Status Akredatsi Jurusan</a></li>
                   <li><a href="#">Berkasi BAN PT</a></li>
                 </ul>
               </li>
@@ -79,7 +79,7 @@
           {{-- Akreditasi --}}
           <li class="dropdown"><a href="#"><span>Sertifikasi</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">AUN Program Studi</a></li>
+              <li><a href="{{ url('/international') }}">AUN Program Studi</a></li>
             </ul>
           </li>
           {{-- Akreditasi --}}
