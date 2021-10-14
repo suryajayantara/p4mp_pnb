@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AccreditationController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\CertificationController;
@@ -49,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('posts', PostController::class);
     Route::resource('faculties', FacultyController::class);
+    Route::resource('accreditations', AccreditationController::class);
     Route::resource('departements', DepartementController::class);
     Route::resource('certifications', CertificationController::class);
     Route::resource('internationals', CertificationInternationalController::class);
