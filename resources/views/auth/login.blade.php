@@ -18,7 +18,7 @@
             <div class="row">
               <div class="col-sm-6 login-section-wrapper">
                 <div class="brand-wrapper">
-                  P4MP
+                  <a href="{{ url('/') }}"><img src="{{ asset('img/logo.png') }}" alt="" style="width: 70%;"></a>
                 </div>
                 <div class="login-wrapper my-auto">
                   <h1 class="login-title">Masuk</h1>
