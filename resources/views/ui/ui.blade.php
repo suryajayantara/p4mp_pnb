@@ -42,7 +42,7 @@
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center shadow">
     <div class="container d-flex align-items-center justify-content-between">
-      <h1 class="logo"><a href="index.html">P4MP<span>.</span></a></h1>
+      <a href="{{ url('/') }}" class="logo"><img src="{{ asset('img/logo.png') }}" alt=""></a>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
 
