@@ -10,8 +10,8 @@ class Certification extends Model
     use HasFactory;
     protected $fillable = [
         'id_study',
-        'level',
-        'result',
+        'id_level',
+        'id_result',
         'start_date',
         'end_date'
     ];
@@ -19,5 +19,13 @@ class Certification extends Model
     public function departement(){
         return $this->belongsTo(Departement::class,'id_study');
     }
-    
+
+    public function level(){
+        return $this->belongsTo(Level::class,'id_level');
+    }
+
+    public function result(){
+        return $this->belongsTo(Accreditation::class,'id_result');
+    }
+
 }

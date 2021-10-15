@@ -13,8 +13,8 @@
                 <div class="form-group row">
                     <label for="exampleInputEmail1" class="form-label">Program Studi</label>
                     <select name="id_study" id="id_faculty" class="form-control   @error('id_study') is-invalid @enderror" aria-label="Default select example" required>
-                        @foreach ($data as $items)
-                            <option value="{{ $items->id }}">{{ $items->departement_name }}</option>
+                        @foreach ($departements as $departement)
+                            <option value="{{ $departement->id }}">{{ $departement->departement_name }}</option>
                         @endforeach
                     </select>
                     @error('id_study')
@@ -27,25 +27,21 @@
                 {{-- Jenjang --}}
                 <div class="form-group row">
                     <label for="exampleInputEmail1" class="form-label">Jenjang</label>
-                    <select name="level" id="level" class="form-control  @error('level') is-invalid @enderror" aria-label="Default select example" required>
-                        <option value="d1">D1</option>
-                        <option value="d2">D2</option>
-                        <option value="d3">D3</option>
-                        <option value="s1">S1</option>
-                        <option value="s2">S2</option>
-                        <option value="s3">S3</option>
+                    <select name="id_level" id="id_level" class="form-control " aria-label="Default select example" required>
+                        @foreach ($levels as $level)
+                            <option value="{{ $level->id }}">{{ $level->level_name }}</option>
+                        @endforeach
                     </select>
-                    @error('level')
-                    <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
                 </div>
 
                 {{-- Hasil --}}
                 <div class="form-group row">
                     <label for="exampleInputEmail1" class="form-label">Hasil</label>
-                <input name="result" type="Name" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                    <select name="id_result" id="id_result" class="form-control " aria-label="Default select example" required>
+                        @foreach ($results as $result)
+                            <option value="{{ $result->id }}">{{ $result->accreditation_name }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 {{-- Masa Berlaku (Awal) --}}

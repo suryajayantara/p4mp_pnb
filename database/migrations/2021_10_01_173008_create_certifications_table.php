@@ -16,8 +16,8 @@ class CreateCertificationsTable extends Migration
         Schema::create('certifications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_study');
-            $table->string('level');
-            $table->text('result');
+            $table->foreignId('id_level');
+            $table->foreignId('id_result');
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();

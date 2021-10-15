@@ -5,7 +5,7 @@
     <div class="col-md-10">
         <form action="{{ url()->current() }}" method="GET">
             <div class="input-group mb-3">
-                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Jenjang atau Lembaga Akreditasi">
+                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Sertifikasi">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
             </div>
         </form>
@@ -31,8 +31,8 @@
       <tr>
         <th scope="row">{{ $loop->iteration }}</th>
         <td>{{ $item->departement->departement_name }}</td>
-        <td>{{ $item->level }}</td>
-        <td>{{ $item->result }}</td>
+        <td>{{ $item->level->level_name }}</td>
+        <td>{{ $item->result->accreditation_name }}</td>
         <td>{{ $item->start_date }}</td>
         <td>{{ $item->end_date }}</td>
         <td class="row">

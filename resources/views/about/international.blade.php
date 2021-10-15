@@ -7,7 +7,7 @@
     <!-- ======= Breadcrumbs ======= -->
     <section class="breadcrumbs">
         <div class="container">
-  
+
           <div class="d-flex justify-content-between align-items-center">
             <h2>Tentang</h2>
             <ol>
@@ -15,10 +15,10 @@
               <li>AUN Program Studi</li>
             </ol>
           </div>
-  
+
         </div>
       </section><!-- End Breadcrumbs -->
-  
+
       <section class="inner-page">
         <div class="container">
             <div class="row">
@@ -47,7 +47,7 @@
                                           <th scope="row">{{ ++$i }}</th>
                                           <td>{{ $certificate->faculty->faculty_name }}</td>
                                           <td>{{ $certificate->departement->departement_name }}</td>
-                                          <td>{{ $certificate->level }}</td>
+                                          <td>{{ $certificate->level->level_name }}</td>
                                           <td>{{ $certificate->result }}</td>
                                           <td>{{ $certificate->country }}</td>
                                           <td>{{ $certificate->s_assessment }}</td>
@@ -56,22 +56,22 @@
                                           <td>{{ $certificate->end_date }}</td>
                                         </tr>
                                       @endforeach
-                                      
-                                      
+
+
                                     </tbody>
                                   </table>
                                   <div class="d-flex justify-content-end">
                                     {{ $certifications->links() }}
                                   </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
       </section>
-  
+
     </main><!-- End #main -->
 
 

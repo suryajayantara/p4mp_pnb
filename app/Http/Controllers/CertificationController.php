@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Accreditation;
 use App\Models\Certification;
 use App\Models\Departement;
+use App\Models\Level;
 use Illuminate\Http\Request;
 
 class CertificationController extends Controller
@@ -19,8 +21,7 @@ class CertificationController extends Controller
         $pagination = 5;
 
         $certification = Certification::when($request->cari, function ($query) use ($request) {
-            $query->where('level', 'LIKE', '%' . $request->cari . '%')
-                ->orWhere('result', 'LIKE', '%' . $request->cari . '%');
+            $query->where('id_level', 'LIKE', '%' . $request->cari . '%');
         })->orderBy('id', 'desc')->paginate($pagination);
 
 
@@ -40,8 +41,10 @@ class CertificationController extends Controller
      */
     public function create()
     {
-        $data = Departement::all();
-        return view('dashboard.certification.add', compact('data'));
+        $departements = Departement::all();
+        $levels = Level::all();
+        $results = Accreditation::all();
+        return view('dashboard.certification.add', compact('departements', 'levels', 'results'));
     }
 
     /**
@@ -54,8 +57,8 @@ class CertificationController extends Controller
     {
         $request->validate([
             'id_study' => 'required|unique:certifications,id_study',
-            'level' => 'required',
-            'result' => 'required',
+            'id_level' => 'required',
+            'id_result' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'
         ], [
@@ -64,8 +67,8 @@ class CertificationController extends Controller
         try {
             Certification::create([
                 'id_study' => $request->id_study,
-                'level' => $request->level,
-                'result' => $request->result,
+                'id_level' => $request->id_level,
+                'id_result' => $request->id_result,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
             ]);
@@ -95,8 +98,10 @@ class CertificationController extends Controller
     public function edit($id)
     {
         $departement_data = Departement::all();
+        $level_data = Level::all();
+        $result_data = Accreditation::all();
         $certification_data = Certification::find($id);
-        return view('dashboard.certification.edit')->with(compact('id', 'departement_data', 'certification_data',));
+        return view('dashboard.certification.edit')->with(compact('id', 'departement_data', 'level_data', 'accreditation_data', 'certification_data',));
     }
 
     /**
@@ -110,8 +115,8 @@ class CertificationController extends Controller
     {
         $request->validate([
             'id_study' => 'required',
-            'level' => 'required',
-            'result' => 'required',
+            'id_level' => 'required',
+            'id_result' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'
         ]);
@@ -119,8 +124,8 @@ class CertificationController extends Controller
         try {
             Certification::find($id)->update([
                 'id_study' => $request->id_study,
-                'level' => $request->level,
-                'result' => $request->result,
+                'id_level' => $request->id_level,
+                'id_result' => $request->id_result,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
             ]);

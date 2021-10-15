@@ -13,4 +13,9 @@ class Accreditation extends Model
         'accreditation_name',
         'desc'
     ];
+
+    public function certification(){
+        return $this->hasMany(Certification::class);
+    }
+
 }

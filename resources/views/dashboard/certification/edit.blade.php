@@ -13,9 +13,9 @@
                 <div class="form-group row">
                     <label for="exampleInputEmail1" class="form-label">Program Studi</label>
                     <select name="id_study" class="form-control " aria-label="Default select example" required>
-                    @foreach ($departement_data as $value)
-                        <option value="{{ $value->id }}" {{ ( $value->id == $certification_data['id_study']) ? 'selected' : '' }}>
-                            {{ $value->departement_name }}
+                    @foreach ($departement_data as $v_departement)
+                        <option value="{{ $v_departement->id }}" {{ ( $v_departement->id == $certification_data['id_study']) ? 'selected' : '' }}>
+                            {{ $v_departement->departement_name }}
                         </option>
                     @endforeach
                     </select>
@@ -24,21 +24,25 @@
                 {{-- Jenjang --}}
                 <div class="form-group row">
                     <label for="exampleInputEmail1" class="form-label">Jenjang</label>
-                    <select name="level" id="level" class="form-control " aria-label="Default select example" required>
-                        <option >{{ $certification_data->level }}</option>
-                        <option value="d1">D1</option>
-                        <option value="d2">D2</option>
-                        <option value="d3">D3</option>
-                        <option value="s1">S1</option>
-                        <option value="s2">S2</option>
-                        <option value="s3">S3</option>
+                    <select name="id_level" id="id_level" class="form-control " aria-label="Default select example" required>
+                        @foreach ($level_data as $v_level)
+                        <option value="{{ $v_level->id }}" {{ ( $v_level->id == $certification_data['id_level']) ? 'selected' : '' }}>
+                            {{ $v_level->value_name }}
+                        </option>
+                    @endforeach
                     </select>
                 </div>
 
                 {{-- Hasil --}}
                 <div class="form-group row">
                     <label for="exampleInputEmail1" class="form-label">Hasil</label>
-                    <input name="result" type="Name" value="{{ $certification_data->result }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                    <select name="id_result" id="id_result" class="form-control " aria-label="Default select example" required>
+                        @foreach ($result_data as $v_result)
+                        <option value="{{ $v_result->id }}" {{ ( $v_result->id == $certification_data['id_result']) ? 'selected' : '' }}>
+                            {{ $v_level->accreditation_name }}
+                        </option>
+                    @endforeach
+                    </select>
                 </div>
 
                 {{-- Masa Berlaku (Awal) --}}

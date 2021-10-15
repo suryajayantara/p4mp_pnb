@@ -36,7 +36,7 @@
         <th scope="row">{{ $loop->iteration }}</th>
         <td>{{ $item->faculty->faculty_name }}</td>
         <td>{{ $item->departement->departement_name }}</td>
-        <td>{{ $item->level }}</td>
+        <td>{{ $item->level->level_name }}</td>
         <td>{{ $item->result }}</td>
         <td>{{ $item->country }}</td>
         <td>{{ $item->s_assessment }}</td>
