@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(category_seeder::class);
 
-        $this->call(WebContentSeeder::class);
+        // $this->call(WebContentSeeder::class);
     }
 }

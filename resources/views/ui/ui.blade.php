@@ -86,7 +86,7 @@
           <li class="dropdown"><a href="#"><span>Berita</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               @foreach ($categories as $item)
-                <li><a href="/training"> {{$item->name}} </a></li>
+                <li><a href="/training"> {{$item->category_name}} </a></li>
               @endforeach
             </ul>
           </li>
