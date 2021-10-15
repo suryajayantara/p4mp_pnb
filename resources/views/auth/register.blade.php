@@ -62,6 +62,7 @@
                       </div>
                     <input name="login" id="login" class="btn btn-block  login-btn" type="submit" value="Login">
                   </form>
+                  <p>Sudah punya akun ? <a href={{url('/login')}}>Masuk disini</a></p>
 
                 </div>
               </div>

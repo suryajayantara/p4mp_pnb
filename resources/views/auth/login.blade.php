@@ -43,7 +43,7 @@
                     </div>
                     <input name="login" id="login" class="btn btn-block  login-btn" type="submit" value="Login">
                   </form>
-
+                  <p>Belum punya akun ? <a href={{url('/register')}}>Daftar disini</a></p>
                 </div>
               </div>
               <div class="col-sm-6 px-0 d-none d-sm-block">

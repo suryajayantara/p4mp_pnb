@@ -90,9 +90,10 @@
               @endforeach
             </ul>
           </li>
-          <li><a class="nav-link scrollto text-white btn btn-primary px-3 py-1" href="{{ url('/login') }}">Login <span class="text-bold ml-2">&#8594;</span> </a></li>
+          <a class="nav-link scrollto text-white btn btn-primary px-3 py-1 m-3" href="{{ url('/login') }}">Login <span class="text-bold ml-2">&#8594;</span> </a>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
+        
       </nav><!-- .navbar -->
 
     </div>
