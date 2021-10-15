@@ -9,5 +9,8 @@ class WebContent extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['section','content'];
+    protected $fillable = [
+        'section',
+        'content'
+    ];
 }
