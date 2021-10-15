@@ -21,18 +21,29 @@
                   P4MP
                 </div>
                 <div class="login-wrapper my-auto">
-                  <h1 class="login-title">Log in</h1>
+                  <h1 class="login-title">Masuk</h1>
                   <form action="#!">
                     <div class="form-group" id="con_email">
                       <label for="email">Email</label>
-                      <input type="email" name="email" id="email" class="form-control" placeholder="email@example.com">
+                      <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="email@example.com">
+                      @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                      @enderror
                     </div>
                     <div class="form-group mb-4">
                       <label for="password">Password</label>
-                      <input type="password" name="password" id="password" class="form-control" placeholder="enter your passsword">
+                      <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="enter your passsword">
+                      @error('password')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
                     </div>
-                    <input name="login" id="login" class="btn btn-block login-btn" type="submit" value="Login">
+                    <input name="login" id="login" class="btn btn-block  login-btn" type="submit" value="Login">
                   </form>
+
                 </div>
               </div>
               <div class="col-sm-6 px-0 d-none d-sm-block">

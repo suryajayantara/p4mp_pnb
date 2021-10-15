@@ -16,16 +16,18 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
+        $categories = Category::all();
         $pagination = 4;
-        $posts = Post::orderBy('id','desc')->paginate($pagination);
-        return view('index',compact('posts'));
+        $posts = Post::orderBy('id', 'desc')->paginate($pagination);
+        return view('index', compact('posts', 'categories'));
     }
 
-    public function indextraining(Request $request){
-        $category = Category::where('category_name',$request->category)->get();
+    public function indextraining(Request $request)
+    {
+        $category = Category::where('category_name', $request->category)->get();
         $category_id = $category[0]['id'];
-        $posts = Post::where('category_id',$category_id)->orderBy('id','desc')->get();
-        return view('training.index',compact('posts'),[
+        $posts = Post::where('category_id', $category_id)->orderBy('id', 'desc')->get();
+        return view('training.index', compact('posts'), [
             "category" => $request->category
         ]);
     }
@@ -60,7 +62,7 @@ class IndexController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('latestPosts.index',compact('post'));
+        return view('latestPosts.index', compact('post'));
     }
 
     /**

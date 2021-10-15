@@ -83,15 +83,14 @@
             </ul>
           </li>
           {{-- Akreditasi --}}
-          <li class="dropdown"><a href="#"><span>Pelatihan / Studi Banding</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><span>Berita</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="/training?category=kunjungan / studi banding">Kunjungan / Studi Banding </a></li>
-              <li><a href="/training?category=formulir pendaftaran pelatihan">Formulir Pendaftaran Pelatihan</a></li>
-              <li><a href="/training?category=agenda pelatihan">Agenda Pelatihan</a></li>
-              <li><a href="/training?category=berkas pelatihan">Berkas Pelatihan</a></li>
+              @foreach ($categories as $item)
+                <li><a href="/training"> {{$item->name}} </a></li>
+              @endforeach
             </ul>
           </li>
-
+          <li><a class="nav-link scrollto text-white btn btn-primary px-3 py-1" href="{{ url('/login') }}">Login <span class="text-bold ml-2">&#8594;</span> </a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
