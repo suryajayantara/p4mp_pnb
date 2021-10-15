@@ -12,7 +12,7 @@ class CertificationInternational extends Model
     protected $fillable = [
         'id_faculties',
         'id_study',
-        'level',
+        'id_level',
         'result',
         'country',
         's_assessment',
@@ -27,6 +27,10 @@ class CertificationInternational extends Model
 
     public function faculty(){
         return $this->belongsTo(Faculty::class,'id_faculties');
+    }
+
+    public function level(){
+        return $this->belongsTo(Level::class,'id_level');
     }
 }
 

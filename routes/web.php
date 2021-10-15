@@ -3,12 +3,14 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AccreditationController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\CertificationController;
 use App\Http\Controllers\ViewCertificationController;
 use App\Http\Controllers\CertificationInternationalController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ViewCertification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +51,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('posts', PostController::class);
     Route::resource('faculties', FacultyController::class);
+    Route::resource('levels', LevelController::class);
+    Route::resource('accreditations', AccreditationController::class);
     Route::resource('departements', DepartementController::class);
     Route::resource('certifications', CertificationController::class);
     Route::resource('internationals', CertificationInternationalController::class);

@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\CertificationInternational;
 use App\Models\Departement;
 use App\Models\Faculty;
+use App\Models\Level;
 use Illuminate\Http\Request;
-
 
 class CertificationInternationalController extends Controller
 {
@@ -20,8 +20,7 @@ class CertificationInternationalController extends Controller
     {
         $pagination = 5;
         $internationals = CertificationInternational::when($request->cari, function($query) use ($request){
-            $query->where('level','LIKE',"%{$request->cari}%")
-            ->orWhere('country','LIKE',"%{$request->cari}%")
+            $query->where('country','LIKE',"%{$request->cari}%")
             ->orWhere('result','LIKE',"%{$request->cari}%");
         })->orderBy('id','desc')->paginate($pagination);
 
@@ -41,7 +40,8 @@ class CertificationInternationalController extends Controller
     {
         $departement_data = Departement::all();
         $faculty_data = Faculty::all();
-        return view('dashboard.international.add',compact('departement_data','faculty_data'));
+        $level_data = Level::all();
+        return view('dashboard.international.add',compact('departement_data','faculty_data','level_data'));
     }
 
     /**
@@ -55,7 +55,7 @@ class CertificationInternationalController extends Controller
         $request->validate([
             'id_faculties' => 'required|unique:certification_internationals,id_faculties',
             'id_study' => 'required|unique:certification_internationals,id_study',
-            'level' => 'required',
+            'id_level' => 'required',
             'result' => 'required',
             'country' => 'required',
             's_assessment' => 'required',
@@ -71,7 +71,7 @@ class CertificationInternationalController extends Controller
             CertificationInternational::create([
                 'id_faculties' => $request->id_faculties,
                 'id_study' => $request->id_study,
-                'level' => $request->level,
+                'id_level' => $request->id_level,
                 'result' => $request->result,
                 'country' => $request->country,
                 's_assessment' => $request->s_assessment,
@@ -109,7 +109,8 @@ class CertificationInternationalController extends Controller
         $certificationInternational = CertificationInternational::find($id);
         $departement_data = Departement::all();
         $faculty_data = Faculty::all();
-        return view('dashboard.international.edit',compact('id','certificationInternational','departement_data','faculty_data'));
+        $level_data = Level::all();
+        return view('dashboard.international.edit',compact('id','certificationInternational','departement_data','faculty_data', 'level_data'));
     }
 
 
@@ -125,7 +126,7 @@ class CertificationInternationalController extends Controller
         $request->validate([
             'id_faculties' => 'required',
             'id_study' => 'required',
-            'level' => 'required',
+            'id_level' => 'required',
             'result' => 'required',
             'country' => 'required',
             's_assessment' => 'required',
@@ -138,7 +139,7 @@ class CertificationInternationalController extends Controller
             CertificationInternational::find($id)->update([
                 'id_faculties' => $request->id_faculties,
                 'id_study' => $request->id_study,
-                'level' => $request->level,
+                'id_level' => $request->id_level,
                 'result' => $request->result,
                 'country' => $request->country,
                 's_assessment' => $request->s_assessment,

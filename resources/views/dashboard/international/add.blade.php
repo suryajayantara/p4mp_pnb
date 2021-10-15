@@ -44,13 +44,10 @@
                 {{-- jenjang --}}
                 <div class="form-group row">
                     <label for="exampleInputEmail1" class="form-label">Jenjang</label>
-                    <select name="level" id="level" class="form-control " aria-label="Default select example" required>
-                        <option value="d1">D1</option>
-                        <option value="d2">D2</option>
-                        <option value="d3">D3</option>
-                        <option value="s1">S1</option>
-                        <option value="s2">S2</option>
-                        <option value="s3">S3</option>
+                    <select name="id_level" id="id_level" class="form-control " aria-label="Default select example" required>
+                        @foreach ($level_data as $level)
+                            <option value="{{ $level->id }}">{{ $level->level_name }}</option>
+                        @endforeach
                     </select>
                 </div>
 

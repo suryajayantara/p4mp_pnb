@@ -37,7 +37,7 @@
             <form action="{{ route('departements.destroy',$item->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-sm btn-danger" onclick = "return confirm('Yakin hapus akreditasi?')">Hapus</button>
+                <button type="submit" class="btn btn-sm btn-danger" onclick = "return confirm('Yakin hapus departemen?')">Hapus</button>
             </form>
           </div>
         </td>

@@ -5,39 +5,39 @@
     <div class="col-md-10">
         <form action="{{ url()->current() }}" method="GET">
             <div class="input-group mb-3">
-                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Jurusan">
+                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Jenjang">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
             </div>
         </form>
     </div>
     <div class="col-md-2">
-        <a href="{{ route('faculties.create') }}" class="btn btn-success">Tambah Data</a>
+        <a href="{{ route('levels.create') }}" class="btn btn-success">Tambah Data</a>
     </div>
 </div>
 <table class="table">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Nama Jurusan</th>
+        <th scope="col">Nama Jenjang</th>
         <th scope="col">Deskripsi</th>
         <th scope="col">Aksi</th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($faculties as $faculty)
+      @foreach ($levels as $level)
       <tr>
         <th scope="row">{{ $loop->iteration }}</th>
-        <td>{{ $faculty->faculty_name }}</td>
-        <td>{{ $faculty->desc }}</td>
+        <td>{{ $level->level_name }}</td>
+        <td>{{ $level->desc }}</td>
         <td class="row">
           <div class="mx-1 my-1">
-            <a href="{{ route('faculties.edit',$faculty->id) }}" class="btn btn-warning btn-sm">Edit</a>
+            <a href="{{ route('levels.edit',$level->id) }}" class="btn btn-warning btn-sm">Edit</a>
           </div>
           <div class="mx-1 my-1">
-            <form action="{{ route('faculties.destroy',$faculty->id) }}" method="POST">
+            <form action="{{ route('levels.destroy',$level->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-sm btn-danger" onclick = "return confirm('Yakin hapus jurusan?')">Hapus</button>
+                <button type="submit" class="btn btn-sm btn-danger" onclick = "return confirm('Yakin hapus jenjang?')">Hapus</button>
             </form>
           </div>
         </td>
@@ -46,7 +46,7 @@
     </tbody>
   </table>
   <div class="d-flex justify-content-center">
-    {{ $faculties->links() }}
+    {{ $levels->links() }}
   </div>
 @endsection
 

@@ -17,7 +17,7 @@ class CreateCertificationInternationalsTable extends Migration
             $table->id();
             $table->foreignId('id_faculties');
             $table->foreignId('id_study');
-            $table->string('level');
+            $table->foreignId('id_level');
             $table->text('result');
             $table->string('country');
             $table->date('s_assessment');
