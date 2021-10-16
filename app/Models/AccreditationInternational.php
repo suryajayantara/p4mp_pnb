@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CertificationInternational extends Model
+class AccreditationInternational extends Model
 {
-    use HasFactory;
     use HasFactory;
     protected $fillable = [
         'id_faculties',
         'id_study',
         'id_level',
-        'result',
+        'accreditatition_agency',
         'country',
         's_assessment',
         'e_assessment',
@@ -33,4 +32,3 @@ class CertificationInternational extends Model
         return $this->belongsTo(Level::class,'id_level');
     }
 }
-

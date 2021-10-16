@@ -98,7 +98,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('certifications.index') }}" data-toggle="collapse" data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="{{ route('accreditations.index') }}" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-certificate"></i>
                     <span>Sertifikasi</span>
@@ -107,8 +107,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Akreditasi:</h6>
-                        <a class="collapse-item" href="{{ route('certifications.index') }}">Bidang Studi</a>
-                        <a class="collapse-item" href="{{ route('internationals.index') }}">International</a>
+                        <a class="collapse-item" href="{{ route('accreditations.index') }}">Bidang Studi</a>
+                        <a class="collapse-item" href="{{ route('accreditation_internationals.index') }}">International</a>
                     </div>
                 </div>
             </li>

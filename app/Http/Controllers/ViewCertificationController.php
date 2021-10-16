@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Certification;
-use App\Models\CertificationInternational;
 use App\Http\Controllers\Controller;
+use App\Models\Accreditation;
+use App\Models\AccreditationInternational;
 use Illuminate\Http\Request;
 
 class ViewCertificationController extends Controller
@@ -22,7 +22,7 @@ class ViewCertificationController extends Controller
     public function indexCertification(Request $request)
     {
         $pagination = 7;
-        $certifications = Certification::orderBy('id','desc')->paginate($pagination);
+        $certifications = Accreditation::orderBy('id','desc')->paginate($pagination);
         return view('about.certification',compact('certifications'))
         ->with('i', ($request->input('page', 1) - 1) * $pagination);
     }
@@ -30,7 +30,7 @@ class ViewCertificationController extends Controller
     public function indexInternational(Request $request)
     {
         $pagination = 7;
-        $certifications = CertificationInternational::orderBy('id','desc')->paginate($pagination);
+        $certifications = AccreditationInternational::orderBy('id','desc')->paginate($pagination);
         return view('about.international',compact('certifications'))
         ->with('i', ($request->input('page', 1) - 1) * $pagination);
     }
@@ -59,10 +59,9 @@ class ViewCertificationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Certification  $certification
      * @return \Illuminate\Http\Response
      */
-    public function show(Certification $certification)
+    public function show($id)
     {
         //
     }
@@ -70,10 +69,9 @@ class ViewCertificationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Certification  $certification
      * @return \Illuminate\Http\Response
      */
-    public function edit(Certification $certification)
+    public function edit($id)
     {
         //
     }
@@ -81,11 +79,10 @@ class ViewCertificationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Certification  $certification
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Certification $certification)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -93,10 +90,9 @@ class ViewCertificationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Certification  $certification
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Certification $certification)
+    public function destroy($id)
     {
         //
     }

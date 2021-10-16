@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\CertificationInternational;
+use App\Models\AccreditationInternational;
 use App\Models\Departement;
 use App\Models\Faculty;
 use App\Models\Level;
 use Illuminate\Http\Request;
 
-class CertificationInternationalController extends Controller
+class AccreditationInternationalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,16 +19,15 @@ class CertificationInternationalController extends Controller
     public function index(Request $request)
     {
         $pagination = 5;
-        $internationals = CertificationInternational::when($request->cari, function($query) use ($request){
+        $internationals = AccreditationInternational::when($request->cari, function($query) use ($request){
             $query->where('country','LIKE',"%{$request->cari}%")
-            ->orWhere('result','LIKE',"%{$request->cari}%");
+            ->orWhere('accreditatition_agency','LIKE',"%{$request->cari}%");
         })->orderBy('id','desc')->paginate($pagination);
 
         $internationals->appends($request->only('cari'));
 
-        return view('dashboard.international.index',compact('internationals'))
+        return view('dashboard.accreditationinternational.index',compact('internationals'))
         ->with('i', ($request->input('page', 1) - 1) * $pagination);
-
     }
 
     /**
@@ -41,7 +40,7 @@ class CertificationInternationalController extends Controller
         $departement_data = Departement::all();
         $faculty_data = Faculty::all();
         $level_data = Level::all();
-        return view('dashboard.international.add',compact('departement_data','faculty_data','level_data'));
+        return view('dashboard.accreditationinternational.add',compact('departement_data','faculty_data','level_data'));
     }
 
     /**
@@ -53,10 +52,10 @@ class CertificationInternationalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_faculties' => 'required|unique:certification_internationals,id_faculties',
-            'id_study' => 'required|unique:certification_internationals,id_study',
+            'id_faculties' => 'required|unique:accreditation_internationals,id_faculties',
+            'id_study' => 'required|unique:accreditation_internationals,id_study',
             'id_level' => 'required',
-            'result' => 'required',
+            'accreditatition_agency' => 'required',
             'country' => 'required',
             's_assessment' => 'required',
             'e_assessment' => 'required',
@@ -68,23 +67,22 @@ class CertificationInternationalController extends Controller
         ]);
 
         try {
-            CertificationInternational::create([
+            AccreditationInternational::create([
                 'id_faculties' => $request->id_faculties,
                 'id_study' => $request->id_study,
                 'id_level' => $request->id_level,
-                'result' => $request->result,
+                'accreditatition_agency' => $request->accreditatition_agency,
                 'country' => $request->country,
                 's_assessment' => $request->s_assessment,
                 'e_assessment' => $request->e_assessment,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
             ]);
-            return redirect()->route('internationals.index');
+            return redirect()->route('accreditation_internationals.index');
 
         } catch (\Throwable $th) {
             return $th;
         }
-
     }
 
     /**
@@ -106,13 +104,12 @@ class CertificationInternationalController extends Controller
      */
     public function edit($id)
     {
-        $certificationInternational = CertificationInternational::find($id);
+        $accreditationInternational = AccreditationInternational::find($id);
         $departement_data = Departement::all();
         $faculty_data = Faculty::all();
         $level_data = Level::all();
-        return view('dashboard.international.edit',compact('id','certificationInternational','departement_data','faculty_data', 'level_data'));
+        return view('dashboard.accreditationinternational.edit',compact('id','accreditationInternational','departement_data','faculty_data', 'level_data'));
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -127,7 +124,7 @@ class CertificationInternationalController extends Controller
             'id_faculties' => 'required',
             'id_study' => 'required',
             'id_level' => 'required',
-            'result' => 'required',
+            'accreditatition_agency' => 'required',
             'country' => 'required',
             's_assessment' => 'required',
             'e_assessment' => 'required',
@@ -136,11 +133,11 @@ class CertificationInternationalController extends Controller
         ]);
 
         try {
-            CertificationInternational::find($id)->update([
+            AccreditationInternational::find($id)->update([
                 'id_faculties' => $request->id_faculties,
                 'id_study' => $request->id_study,
                 'id_level' => $request->id_level,
-                'result' => $request->result,
+                'accreditatition_agency' => $request->accreditatition_agency,
                 'country' => $request->country,
                 's_assessment' => $request->s_assessment,
                 'e_assessment' => $request->e_assessment,
@@ -148,12 +145,11 @@ class CertificationInternationalController extends Controller
                 'end_date' => $request->end_date,
             ]);
 
-            return redirect()->route('internationals.index');
+            return redirect()->route('accreditation_internationals.index');
 
         } catch (\Throwable $th) {
             return $th;
         }
-
     }
 
     /**
@@ -165,11 +161,10 @@ class CertificationInternationalController extends Controller
     public function destroy($id)
     {
         try {
-            CertificationInternational::find($id)->delete();
-            return redirect()->route('internationals.index');
+            AccreditationInternational::find($id)->delete();
+            return redirect()->route('accreditation_internationals.index');
         } catch (\Throwable $th) {
             echo 'sad';
         }
-
     }
 }
