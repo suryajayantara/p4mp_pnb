@@ -73,22 +73,21 @@
                   <li><a href="#">Status Akredatsi International</a></li>
                 </ul>
               </li>
+              <li class="dropdown"><a href="#"><span>Sertifikasi</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{ url('/international') }}">AUN Program Studi</a></li>
+                </ul>
+              </li>
               <li><a href="#">Informasi Terkait AIPT</a></li>
             </ul>
           </li>
           {{-- Akreditasi --}}
-          <li class="dropdown"><a href="#"><span>Sertifikasi</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="{{ url('/international') }}">AUN Program Studi</a></li>
-            </ul>
-          </li>
-          {{-- Akreditasi --}}
           <li class="dropdown"><a href="#"><span>Berita</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
+            {{-- <ul>
               @foreach ($categories as $item)
                 <li><a href="/training"> {{$item->category_name}} </a></li>
               @endforeach
-            </ul>
+            </ul> --}}
           </li>
           <a class="nav-link scrollto text-white btn btn-primary px-3 py-1 m-3" href="{{ url('/login') }}">Login <span class="text-bold ml-2">&#8594;</span> </a>
         </ul>

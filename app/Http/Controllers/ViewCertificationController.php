@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Accreditation;
+use App\Models\Result;
 use App\Models\AccreditationInternational;
 use Illuminate\Http\Request;
 
@@ -21,10 +22,10 @@ class ViewCertificationController extends Controller
 
     public function indexCertification(Request $request)
     {
-        $pagination = 7;
-        $certifications = Accreditation::orderBy('id','desc')->paginate($pagination);
-        return view('about.certification',compact('certifications'))
-        ->with('i', ($request->input('page', 1) - 1) * $pagination);
+        $pagination = 1;
+        $certifications = Accreditation::orderBy('id','desc')->get();
+        $levels = Accreditation::orderBy('id','desc')->get();
+        return view('about.certification',compact('certifications','levels'));
     }
 
     public function indexInternational(Request $request)
