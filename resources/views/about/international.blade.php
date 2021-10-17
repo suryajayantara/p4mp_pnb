@@ -48,7 +48,7 @@
                                           <td>{{ $certificate->faculty->faculty_name }}</td>
                                           <td>{{ $certificate->departement->departement_name }}</td>
                                           <td>{{ $certificate->level->level_name }}</td>
-                                          <td>{{ $certificate->result }}</td>
+                                          <td>{{ $certificate->accreditatition_agency }}</td>
                                           <td>{{ $certificate->country }}</td>
                                           <td>{{ $certificate->s_assessment }}</td>
                                           <td>{{ $certificate->e_assessment }}</td>

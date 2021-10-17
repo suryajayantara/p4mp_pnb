@@ -5,19 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Level extends Model
+class Result extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'level_name',
+        'accreditation_name',
         'desc'
     ];
 
     public function accreditation(){
         return $this->hasMany(Accreditation::class);
-    }
-
-    public function accreditationInternational(){
-        return $this->hasMany(AccreditationInternational::class);
     }
 }

@@ -9,30 +9,62 @@
             @csrf
             <div class="m-3">
 
-                {{-- nama akreditasi --}}
+                {{-- Prodi --}}
                 <div class="form-group row">
-                    <label for="exampleInputEmail1" class="form-label">Nama Akreditasi</label>
-                    <input name="accreditation_name" type="Name" class="form-control @error('accreditation_name') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-                    @error('accreditation_name')
-                        <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                        </span>
+                    <label for="exampleInputEmail1" class="form-label">Program Studi</label>
+                    <select name="id_study" id="id_faculty" class="form-control   @error('id_study') is-invalid @enderror" aria-label="Default select example" required>
+                        @foreach ($departements as $departement)
+                            <option value="{{ $departement->id }}">{{ $departement->departement_name }}</option>
+                        @endforeach
+                    </select>
+                    @error('id_study')
+                    <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
                 </div>
 
-                {{-- deskripsi --}}
+                {{-- Jenjang --}}
                 <div class="form-group row">
-                    <textarea name="desc" class="form-control" placeholder="Masukan Deksripsi Akreditasi Disini" id="floatingTextarea2" style="height: 100px" required></textarea>
+                    <label for="exampleInputEmail1" class="form-label">Jenjang</label>
+                    <select name="id_level" id="id_level" class="form-control " aria-label="Default select example" required>
+                        @foreach ($levels as $level)
+                            <option value="{{ $level->id }}">{{ $level->level_name }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
-                {{-- tambah --}}
+                {{-- Hasil --}}
+                <div class="form-group row">
+                    <label for="exampleInputEmail1" class="form-label">Hasil</label>
+                    <select name="id_result" id="id_result" class="form-control " aria-label="Default select example" required>
+                        @foreach ($results as $result)
+                            <option value="{{ $result->id }}">{{ $result->accreditation_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                {{-- Masa Berlaku (Awal) --}}
+                <div class="form-group row">
+                    <label for="exampleInputEmail1" class="form-label">Masa Berlaku (Awal)</label>
+                    <input name="start_date" type="date" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                </div>
+
+                {{-- Masa Berlaku (Akhir) --}}
+                <div class="form-group row">
+                    <label for="exampleInputEmail1" class="form-label">Masa Berlaku (Akhir)</label>
+                    <input name="end_date" type="date" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                </div>
+
+                {{-- Tambah --}}
                 <div class="form-group row">
                     <button type="submit" class="btn btn-lg btn-primary w-100 mt-3">Tambah</button>
                 </div>
 
           </form>
+
+          {{-- Kembali --}}
           <a href="{{ route('accreditations.index') }}">
-            {{-- kembali --}}
             <div class="form-group row">
                 <button type="button" class="btn btn-lg btn-danger w-100">Kembali</button>
             </div>

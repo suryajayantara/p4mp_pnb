@@ -18,28 +18,34 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Akreditasi</th>
-        <th scope="col">Deskripsi</th>
+        <th scope="col">Program Studi</th>
+        <th scope="col">Jenjang</th>
+        <th scope="col">Hasil</th>
+        <th scope="col">Masa Berlaku (Awal)</th>
+        <th scope="col">Masa Berlaku (Akhir)</th>
         <th scope="col">Aksi</th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($accreditations as $accreditation)
+      @foreach ($accreditations as $item)
       <tr>
         <th scope="row">{{ $loop->iteration }}</th>
-        <td>{{ $accreditation->accreditation_name }}</td>
-        <td>{{ $accreditation->desc }}</td>
+        <td>{{ $item->departement->departement_name }}</td>
+        <td>{{ $item->level->level_name }}</td>
+        <td>{{ $item->result->accreditation_name }}</td>
+        <td>{{ $item->start_date }}</td>
+        <td>{{ $item->end_date }}</td>
         <td class="row">
-          <div class="mx-1 my-1">
-            <a href="{{ route('accreditations.edit',$accreditation->id) }}" class="btn btn-warning btn-sm">Edit</a>
-          </div>
-          <div class="mx-1 my-1">
-            <form action="{{ route('accreditations.destroy',$accreditation->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-sm btn-danger" onclick = "return confirm('Yakin hapus akreditasi?')">Hapus</button>
-            </form>
-          </div>
+            <div class="mx-1 my-1">
+                <a href="{{ route('accreditations.edit',$item->id) }}" class="btn btn-sm btn-warning btn-sm">Edit</a>
+            </div>
+            <div class="mx-1 my-1">
+                <form action="{{ route('accreditations.destroy',$item->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-danger" onclick = "return confirm('Yakin hapus sertifikasi?')">Hapus</button>
+                </form>
+            </div>
         </td>
       </tr>
       @endforeach

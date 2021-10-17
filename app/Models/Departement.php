@@ -17,11 +17,11 @@ class Departement extends Model
         return $this->belongsTo(Faculty::class, 'id_faculty');
     }
 
-    public function certification(){
-        return $this->hasMany(Certification::class);
+    public function accreditation(){
+        return $this->hasMany(Accreditation::class);
     }
 
-    public function certificationInternational(){
-        return $this->hasMany(CertificationInternational::class);
+    public function accreditationInternational(){
+        return $this->hasMany(AccreditationInternational::class);
     }
 }

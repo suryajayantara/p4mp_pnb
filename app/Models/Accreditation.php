@@ -8,14 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Accreditation extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'accreditation_name',
-        'desc'
+        'id_study',
+        'id_level',
+        'id_result',
+        'start_date',
+        'end_date'
     ];
 
-    public function certification(){
-        return $this->hasMany(Certification::class);
+    public function departement(){
+        return $this->belongsTo(Departement::class,'id_study');
+    }
+
+    public function level(){
+        return $this->belongsTo(Level::class,'id_level');
+    }
+
+    public function result(){
+        return $this->belongsTo(Result::class,'id_result');
     }
 
 }

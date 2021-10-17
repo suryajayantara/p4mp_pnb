@@ -18,7 +18,7 @@ class Faculty extends Model
         return $this->hasMany(Departement::class);
     }
 
-    public function certificationInternational(){
-        return $this->hasMany(CertificationInternational::class);
+    public function accreditationInternational(){
+        return $this->hasMany(AccreditationInternational::class);
     }
 }

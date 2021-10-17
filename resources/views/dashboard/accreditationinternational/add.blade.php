@@ -5,7 +5,7 @@
 <div class="card">
     <div class="card-body">
 
-        <form action="{{ route('internationals.store') }}" method="post" >
+        <form action="{{ route('accreditation_internationals.store') }}" method="post" >
             @csrf
             <div class="m-3">
 
@@ -53,7 +53,7 @@
 
                 {{-- deskripsi --}}
                 <div class="form-group row">
-                    <textarea name="result" class="form-control " placeholder="Masukan Deksripsi Lembaga Akreditasi Disini" id="floatingTextarea2" style="height: 100px" required></textarea>
+                    <textarea name="accreditatition_agency" class="form-control " placeholder="Masukan Deksripsi Lembaga Akreditasi Disini" id="floatingTextarea2" style="height: 100px" required></textarea>
                 </div>
 
                 {{-- negara --}}
@@ -93,7 +93,7 @@
           </form>
 
         {{-- kembali --}}
-        <a href="{{ route('internationals.index') }}">
+        <a href="{{ route('accreditation_internationals.index') }}">
             <div class="form-group row">
                 <button type="button" class="btn btn-lg btn-danger w-100">Kembali</button>
             </div>

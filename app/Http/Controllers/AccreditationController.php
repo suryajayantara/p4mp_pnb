@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Accreditation;
 use App\Http\Controllers\Controller;
+use App\Models\Accreditation;
+use App\Models\Departement;
+use App\Models\Level;
+use App\Models\Result;
 use Illuminate\Http\Request;
 
 class AccreditationController extends Controller
@@ -16,13 +19,16 @@ class AccreditationController extends Controller
     public function index(Request $request)
     {
         $pagination = 5;
-        $accreditations = Accreditation::when($request->cari, function($query) use ($request){
-            $query->where('accreditation_name','LIKE','%'.$request->cari.'%');
-        })->orderBy('id','desc')->paginate($pagination);
+
+        $accreditations = Accreditation::when($request->cari, function ($query) use ($request) {
+            $query->where('id_level', 'LIKE', '%' . $request->cari . '%');
+        })->orderBy('id', 'desc')->paginate($pagination);
+
 
         $accreditations->appends($request->only('cari'));
 
-        return view('dashboard.accreditation.index', compact('accreditations'))->with('i', ($request->input('page', 1) - 1) * $pagination);
+        return view('dashboard.accreditation.index', compact('accreditations'))
+            ->with('i', ($request->input('page', 1) - 1) * $pagination);
     }
 
     /**
@@ -32,7 +38,10 @@ class AccreditationController extends Controller
      */
     public function create()
     {
-        return view('dashboard.accreditation.add');
+        $departements = Departement::all();
+        $levels = Level::all();
+        $results = Result::all();
+        return view('dashboard.accreditation.add', compact('departements', 'levels', 'results'));
     }
 
     /**
@@ -44,19 +53,23 @@ class AccreditationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'accreditation_name' => 'required|unique:accreditations,accreditation_name,id',
-            'desc' => 'required'
-        ],[
-            'accreditation_name.unique' => "Data Sudah Ada !"
+            'id_study' => 'required|unique:accreditations,id_study',
+            'id_level' => 'required',
+            'id_result' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required'
+        ], [
+            'id_study.unique' => "Data Sudah Ada !"
         ]);
-
         try {
             Accreditation::create([
-                'accreditation_name' => $request->accreditation_name,
-                'desc' => $request->desc,
+                'id_study' => $request->id_study,
+                'id_level' => $request->id_level,
+                'id_result' => $request->id_result,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
             ]);
             return redirect()->route('accreditations.index');
-
         } catch (\Throwable $th) {
             return $th;
         }
@@ -65,10 +78,10 @@ class AccreditationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Accreditation  $accreditation
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Accreditation $accreditation)
+    public function show($id)
     {
         //
     }
@@ -76,52 +89,62 @@ class AccreditationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Accreditation  $accreditation
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Accreditation $accreditation)
+    public function edit($id)
     {
-        return view('dashboard.accreditation.edit')->with(compact('accreditation'));
+        $departement_data = Departement::all();
+        $level_data = Level::all();
+        $result_data = Result::all();
+        $accreditation_data = Accreditation::find($id);
+        return view('dashboard.accreditation.edit')->with(compact('id', 'departement_data', 'level_data', 'accreditation_data', 'result_data',));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Accreditation  $accreditation
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Accreditation $accreditation)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'accreditation_name' => 'required',
-            'desc' => 'required'
+            'id_study' => 'required',
+            'id_level' => 'required',
+            'id_result' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required'
         ]);
 
         try {
-            $accreditation->update([
-                'accreditation_name' => $request->accreditation_name,
-                'desc' => $request->desc,
+            Accreditation::find($id)->update([
+                'id_study' => $request->id_study,
+                'id_level' => $request->id_level,
+                'id_result' => $request->id_result,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
             ]);
             return redirect()->route('accreditations.index');
         } catch (\Throwable $th) {
-            throw $th;
+            return $th;
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Accreditation  $accreditation
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Accreditation $accreditation)
+    public function destroy($id)
     {
         try {
-            $accreditation->delete();
+            Accreditation::find($id)->delete();
             return redirect()->route('accreditations.index');
         } catch (\Throwable $th) {
-            echo 'sad';
+            echo 'gagal';
         }
     }
 }
