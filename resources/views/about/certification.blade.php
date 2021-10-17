@@ -35,11 +35,11 @@
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach ($certifications as $certificate)
+                                      @foreach ($accreditations as $accreditate)
                                         <tr>
                                           <th scope="row">{{ $loop->iteration }}</th>
-                                          <td>{{ $certificate->result->accreditation_name }}</td>
-                                          <td>{{ $certificate->count() }}</td>
+                                          <td>{{ $accreditate->result->accreditation_name }}</td>
+                                          <td>{{ $accreditate->count() }}</td>
                                         </tr>
                                       @endforeach
 
@@ -106,7 +106,7 @@
                                 <tbody>
                                   @foreach ($certifications as $certificate)
                                     <tr>
-                                      <th scope="row">{{ $loop->iteration }}</th>
+                                      <th scope="row">{{ ++$i }}</th>
                                       <td>{{ $certificate->departement->departement_name }}</td>
                                       <td>{{ $certificate->level->level_name }}</td>
                                       <td>{{ $certificate->result->accreditation_name }}</td>
@@ -118,9 +118,9 @@
 
                                 </tbody>
                               </table>
-                              {{-- <div class="d-flex justify-content-end">
-                                {{ $levels->links() }}
-                              </div> --}}
+                              <div class="d-flex justify-content-end">
+                                {{ $certifications->links() }}
+                              </div>
                         </div>
 
                     </div>

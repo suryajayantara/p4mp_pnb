@@ -22,10 +22,12 @@ class ViewCertificationController extends Controller
 
     public function indexCertification(Request $request)
     {
-        $pagination = 1;
-        $certifications = Accreditation::orderBy('id','desc')->get();
+        $pagination = 7;
+        $certifications = Accreditation::orderBy('id','desc')->paginate($pagination);
+        $accreditations = Accreditation::orderBy('id','desc')->get();
         $levels = Accreditation::orderBy('id','desc')->get();
-        return view('about.certification',compact('certifications','levels'));
+        return view('about.certification',compact('certifications','accreditations','levels'))
+        ->with('i', ($request->input('page', 1) - 1) * $pagination);;
     }
 
     public function indexInternational(Request $request)
