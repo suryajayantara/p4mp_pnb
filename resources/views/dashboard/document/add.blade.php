@@ -24,7 +24,7 @@
 
                 {{-- deskripsi --}}
                 <div class="form-group row">
-                    <textarea name="desc" class="form-control" placeholder="Masukan Deksripsi Jenjang Disini" id="floatingTextarea2" style="height: 100px" required></textarea>
+                    <textarea name="desc" class="form-control" placeholder="Masukan Deksripsi Dokumen Disini" id="floatingTextarea2" style="height: 100px" required></textarea>
                 </div>
 
                 {{-- tambah --}}
