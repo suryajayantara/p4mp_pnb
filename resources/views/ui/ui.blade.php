@@ -24,12 +24,12 @@
   <link href="{{asset('vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
   <link href="{{asset('vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
-  
+
 
   {{-- Data Tables --}}
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-   
+
 
 
   <!-- Template Main CSS File -->
@@ -65,7 +65,7 @@
               <li class="dropdown"><a href="#"><span>BAN PT</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="{{ url('/certificate') }}">Status Akredatsi Jurusan</a></li>
-                  <li><a href="#">Berkasi BAN PT</a></li>
+                  <li><a href="{{ url('/document') }}">Berkasi BAN PT</a></li>
                 </ul>
               </li>
               <li class="dropdown"><a href="#"><span>Akreditasi International</span> <i class="bi bi-chevron-right"></i></a>
@@ -92,13 +92,13 @@
           <a class="nav-link scrollto text-white btn btn-primary px-3 py-1 m-3" href="{{ url('/login') }}">Login <span class="text-bold ml-2">&#8594;</span> </a>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-        
+
       </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
 
-  
+
   @yield('main')
 
   <!-- ======= Footer ======= -->

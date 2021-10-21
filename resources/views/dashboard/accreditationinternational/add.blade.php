@@ -11,7 +11,7 @@
 
                 {{-- program studi --}}
                 <div class="form-group row">
-                    <label for="exampleInputEmail1" class="form-label">Program Studi</label>
+                    <label for="exampleInputEmail1" class="form-label">Fakultas</label>
                     <select name="id_faculties"  class="form-control @error('id_faculties') is-invalid @enderror" aria-label="Default select example" required>
                         <option value="" selected>Pilih Fakultas</option>
                         @foreach ($faculty_data as $faculty)
@@ -27,7 +27,7 @@
 
                 {{-- fakultas --}}
                 <div class="form-group row">
-                    <label for="exampleInputEmail1" class="form-label">Fakultas</label>
+                    <label for="exampleInputEmail1" class="form-label">Program Studi</label>
                     <select name="id_study" id="id_faculty" class="form-control @error('id_study') is-invalid @enderror" aria-label="Default select example" required>
                         <option value="" selected>Pilih Departemen</option>
                         @foreach ($departement_data as $departement)

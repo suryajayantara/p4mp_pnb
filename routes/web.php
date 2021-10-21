@@ -7,11 +7,13 @@ use App\Http\Controllers\AccreditationController;
 use App\Http\Controllers\AccreditationInternationalController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ViewCertificationController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\ViewCertification;
+use App\Http\Controllers\ViewDocumentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +32,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('index');
 // });
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-});
+
 
 Auth::routes();
 
@@ -45,13 +45,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/certificate', [ViewCertificationController::class, 'indexCertification']);
 Route::get('/international', [ViewCertificationController::class, 'indexInternational']);
+Route::get('/document', [ViewDocumentController::class, 'indexDocument']);
 
 
 Route::middleware(['auth'])->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('dashboard.index');
+    })->name('dashboard');
+
     Route::resource('categories', CategoryController::class);
     Route::resource('posts', PostController::class);
     Route::resource('faculties', FacultyController::class);
     Route::resource('levels', LevelController::class);
+    Route::resource('documents', DocumentController::class);
     Route::resource('accreditations', AccreditationController::class);
     Route::resource('results', ResultController::class);
     Route::resource('departements', DepartementController::class);
