@@ -117,7 +117,7 @@ class DocumentController extends Controller
             }
         }
         else{
-            $filename = date('d_m_Y-H_i_s').'.'.$request->file('url_file')->getClientOriginalName();
+            $filename = date('d_m_                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Y-H_i_s').'.'.$request->file('url_file')->getClientOriginalName();
                 try {
                     $document->update([
                         'url_file' => $filename,

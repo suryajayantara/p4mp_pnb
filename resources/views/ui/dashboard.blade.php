@@ -73,6 +73,20 @@
             </li>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+                    aria-expanded="true" aria-controls="collapseFour">
+                    <i class="fas fa-fw fa-file-alt"></i>
+                    <span>Dokumen Mutu</span>
+                </a>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Dokumen :</h6>
+                        <a class="collapse-item" href="{{ route('documents.index' ) }}">Dokumen Mutu</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                     aria-expanded="true" aria-controls="collapseThree">
                     <i class="fas fa-fw fa-graduation-cap"></i>
@@ -98,7 +112,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('accreditations.index') }}" data-toggle="collapse" data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-certificate"></i>
                     <span>Sertifikasi</span>
@@ -109,6 +123,24 @@
                         <h6 class="collapse-header">Akreditasi:</h6>
                         <a class="collapse-item" href="{{ route('accreditations.index') }}">Bidang Studi</a>
                         <a class="collapse-item" href="{{ route('accreditation_internationals.index') }}">International</a>
+                        <a class="collapse-item" href="{{ route('results.index') }}">Hasil Akreditasi</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInstitution"
+                    aria-expanded="true" aria-controls="headingInstitution">
+                    <i class="fas fa-fw fa-university"></i>
+                    <span>Lembaga</span>
+                </a>
+                <div id="collapseInstitution" class="collapse" aria-labelledby="headingInstitution"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Lembaga:</h6>
+                        <a class="collapse-item" href="{{ route('faculties.index') }}">Jurusan</a>
+                        <a class="collapse-item" href="{{ route('departements.index') }}">Program Studi</a>
+                        <a class="collapse-item" href="{{ route('levels.index') }}">Jenjang</a>
                     </div>
                 </div>
             </li>
