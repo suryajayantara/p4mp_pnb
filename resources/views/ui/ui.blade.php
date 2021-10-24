@@ -56,7 +56,7 @@
               <li><a href="/about?section=sambutan">Sambutan Kepala P4MP</a></li>
               <li><a href="/about?section=visi_misi">Visi dan Misi</a></li>
               <li><a href="/about?section=sejarah">Sejarah</a></li>
-              <li><a href="#">Manual Mutu</a></li>
+              <li><a href="{{ url('/document') }}">Manual Mutu</a></li>
             </ul>
           </li>
           {{-- Akreditasi --}}
@@ -65,7 +65,7 @@
               <li class="dropdown"><a href="#"><span>BAN PT</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="{{ url('/certificate') }}">Status Akredatsi Jurusan</a></li>
-                  <li><a href="{{ url('/document') }}">Berkasi BAN PT</a></li>
+                  <li><a href="">Berkasi BAN PT</a></li>
                 </ul>
               </li>
               <li class="dropdown"><a href="#"><span>Akreditasi International</span> <i class="bi bi-chevron-right"></i></a>

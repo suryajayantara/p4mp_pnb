@@ -30,10 +30,8 @@
                                     <thead>
                                       <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Dokumen</th>
                                         <th scope="col">Nama Dokumen</th>
                                         <th scope="col">Diuload Pada Tanggal</th>
-                                        <th scope="col">Diedit Pada Tanggal</th>
                                         <th scope="col">Aksi</th>
                                       </tr>
                                     </thead>
@@ -41,10 +39,8 @@
                                       @foreach ($documents as $document)
                                         <tr>
                                           <th scope="row">{{ ++$i }}</th>
-                                          <td>{{ $document->url_file }}</td>
                                           <td>{{ $document->title }}</td>
                                           <td>{{ $document->created_at }}</td>
-                                          <td>{{ $document->updated_at }}</td>
                                           <td><a href="">Download</a></td>
                                         </tr>
                                       @endforeach
