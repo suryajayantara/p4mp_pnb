@@ -24,6 +24,17 @@
                     <input name="title" value="{{ $document->title }}" type="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                 </div>
 
+                <div class="form-group row">
+                    <label for="exampleInputEmail1" class="form-label">Kategori</label>
+                    <select name="id_category" class="form-control " aria-label="Default select example" required>
+                        @foreach ($category_document as $value)
+                            <option value="{{ $value->id }}" {{ ( $value->id == $document['id_category']) ? 'selected' : '' }}>
+                                {{ $value->category_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
                 {{-- deskripsi --}}
                 <div class="form-group row">
                     <textarea name="desc" class="form-control" id="floatingTextarea2" style="height: 100px" required>{{ $document->desc }}</textarea>

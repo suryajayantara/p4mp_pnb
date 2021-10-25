@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Document;
 use App\Http\Controllers\Controller;
+use App\Models\CategoryDocument;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
@@ -34,7 +35,8 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        return view('dashboard.document.add');
+        $category_document = CategoryDocument::all();
+        return view('dashboard.document.add', compact('category_document'));
     }
 
     /**
@@ -48,6 +50,7 @@ class DocumentController extends Controller
         $request->validate([
             'url_file' => 'required|mimes:pdf,xlsx|max:5000',
             'title' => 'required',
+            'id_category' => 'required',
             'desc' => 'required'
         ]);
         $filename = date('d_m_Y-H_i_s').'.'.$request->file('url_file')->getClientOriginalName();
@@ -55,6 +58,7 @@ class DocumentController extends Controller
             Document::create([
                 'url_file' => $filename,
                 'title' => $request->title,
+                'id_category' => $request->id_category,
                 'desc' => $request->desc
             ]);
             $request->file('url_file')->move(public_path('document_post'),$filename);
@@ -84,7 +88,8 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        return view('dashboard.document.edit')->with(compact('document'));
+        $category_document = CategoryDocument::all();
+        return view('dashboard.document.edit', compact('document', 'category_document'));
     }
 
     /**
@@ -99,6 +104,7 @@ class DocumentController extends Controller
         $request->validate([
             'url_file' => 'mimes:pdf,xlsx|max:5000',
             'title' => 'required',
+            'id_category' => 'required',
             'desc' => 'required'
         ]);
 
@@ -109,6 +115,7 @@ class DocumentController extends Controller
                 $document->update([
                     'url_file' => $document->url_file,
                     'title' =>$request->title,
+                    'id_category' =>$request->id_category,
                     'desc' => $request->desc,
                 ]);
                 return redirect()->route('documents.index');
