@@ -71,20 +71,7 @@
                     </div>
                 </div>
             </li>
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
-                    aria-expanded="true" aria-controls="collapseFour">
-                    <i class="fas fa-fw fa-file-alt"></i>
-                    <span>Dokumen Mutu</span>
-                </a>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Dokumen :</h6>
-                        <a class="collapse-item" href="{{ route('documents.index' ) }}">Dokumen Mutu</a>
-                    </div>
-                </div>
-            </li>
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
@@ -167,6 +154,22 @@
                         <a class="collapse-item" href="{{ url('/sambutan') }}">Sambutan</a>
                         <a class="collapse-item" href="{{ url('/visimisi') }}">Visi Misi</a>
                         <a class="collapse-item" href="{{ url('/sejarah') }}">Sejarah</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+                    aria-expanded="true" aria-controls="collapseFour">
+                    <i class="fas fa-fw fa-file-alt"></i>
+                    <span>Dokumen Mutu</span>
+                </a>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Dokumen :</h6>
+                        <a class="collapse-item" href="{{ route('documents.index' ) }}">Dokumen Mutu</a>
+                        <a class="collapse-item" href="{{ route('category_documents.index' ) }}">Kategori Dokumen</a>
                     </div>
                 </div>
             </li>

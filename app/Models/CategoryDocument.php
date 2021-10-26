@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Document extends Model
+class CategoryDocument extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'url_file',
-        'title',
-        'id_category',
+        'category_name',
         'desc'
     ];
 
-    public function categoryDocument(){
-        return $this->belongsTo(CategoryDocument::class, 'id_category');
+    public function document(){
+        return $this->hasMany(Document::class);
     }
 }
