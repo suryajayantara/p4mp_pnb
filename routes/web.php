@@ -82,3 +82,5 @@ Route::resource('detailPosts', IndexController::class);
 
 Route::get('/training', [IndexController::class, 'indextraining']);
 Route::get('/about', [AboutController::class, 'indexabout']);
+
+Route::get('/download/{url}', [ViewDocumentController::class, 'downloadDocument'])->name('document.download');

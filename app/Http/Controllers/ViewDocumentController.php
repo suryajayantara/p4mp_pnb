@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ViewDocumentController extends Controller
 {
@@ -21,9 +22,9 @@ class ViewDocumentController extends Controller
     public function indexDocument(Request $request)
     {
         $pagination = 7;
-        $documents = Document::orderBy('id','desc')->paginate($pagination);
-        return view('about.document',compact('documents'))
-        ->with('i', ($request->input('page', 1) - 1) * $pagination);;
+        $documents = Document::orderBy('id', 'desc')->paginate($pagination);
+        return view('about.document', compact('documents'))
+            ->with('i', ($request->input('page', 1) - 1) * $pagination);;
     }
     /**
      * Show the form for creating a new resource.
@@ -89,5 +90,22 @@ class ViewDocumentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function downloadDocument($url)
+    {
+
+
+        if (Auth::check()) {
+            $file_path = public_path('document_post/' . $url);
+            return response()->download($file_path);
+        } else {
+
+            return redirect()->route('login');
+        }
+
+
+
+        // echo $file_path;
     }
 }
