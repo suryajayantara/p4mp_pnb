@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccreditationController;
 use App\Http\Controllers\AccreditationInternationalController;
+use App\Http\Controllers\CategoryDocumentController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\DocumentController;
@@ -59,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('faculties', FacultyController::class);
     Route::resource('levels', LevelController::class);
     Route::resource('documents', DocumentController::class);
+    Route::resource('category_documents', CategoryDocumentController::class);
     Route::resource('accreditations', AccreditationController::class);
     Route::resource('results', ResultController::class);
     Route::resource('departements', DepartementController::class);

@@ -22,6 +22,16 @@
                     <input name="title" type="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                 </div>
 
+                {{-- Kategori --}}
+                <div class="form-group row">
+                    <label for="exampleInputEmail1" class="form-label">Kategori</label>
+                    <select name="id_category" id="id_category" class="form-control " aria-label="Default select example" required>
+                        @foreach ($category_document as $items)
+                        <option value="{{ $items->id }}">{{ $items->category_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 {{-- deskripsi --}}
                 <div class="form-group row">
                     <textarea name="desc" class="form-control" placeholder="Masukan Deksripsi Dokumen Disini" id="floatingTextarea2" style="height: 100px" required></textarea>

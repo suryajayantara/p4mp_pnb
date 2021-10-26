@@ -5,43 +5,39 @@
     <div class="col-md-10">
         <form action="{{ url()->current() }}" method="GET">
             <div class="input-group mb-3">
-                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Dokumen">
+                <input name="cari" value="{{ request('cari') }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cari Dokumen Kategori">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
             </div>
         </form>
     </div>
     <div class="col-md-2">
-        <a href="{{ route('documents.create') }}" class="btn btn-success">Tambah Data</a>
+        <a href="{{ route('category_documents.create') }}" class="btn btn-success">Tambah Data</a>
     </div>
 </div>
 <table class="table">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Dokumen</th>
-        <th scope="col">Nama dokumen</th>
-        <th scope="col">Kategori</th>
+        <th scope="col">Nama Dokumen Kategori</th>
         <th scope="col">Deskripsi</th>
         <th scope="col">Aksi</th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($documents as $document)
+      @foreach ($category_documents as $category_document)
       <tr>
         <th scope="row">{{ $loop->iteration }}</th>
-        <td>{{ $document->url_file }}</td>
-        <td>{{ $document->title }}</td>
-        <td>{{ $document->categoryDocument->category_name }}</td>
-        <td>{{ $document->desc }}</td>
+        <td>{{ $category_document->category_name }}</td>
+        <td>{{ $category_document->desc }}</td>
         <td class="row">
           <div class="mx-1 my-1">
-            <a href="{{ route('documents.edit',$document->id) }}" class="btn btn-warning btn-sm">Edit</a>
+            <a href="{{ route('category_documents.edit',$category_document->id) }}" class="btn btn-warning btn-sm">Edit</a>
           </div>
           <div class="mx-1 my-1">
-            <form action="{{ route('documents.destroy',$document->id) }}" method="POST">
+            <form action="{{ route('category_documents.destroy',$category_document->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-sm btn-danger" onclick = "return confirm('Yakin hapus dokumen?')">Hapus</button>
+                <button type="submit" class="btn btn-sm btn-danger" onclick = "return confirm('Yakin hapus jurusan?')">Hapus</button>
             </form>
           </div>
         </td>
@@ -50,7 +46,7 @@
     </tbody>
   </table>
   <div class="d-flex justify-content-center">
-    {{ $documents->links() }}
+    {{ $category_documents->links() }}
   </div>
 @endsection
 

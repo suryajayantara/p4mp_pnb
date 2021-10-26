@@ -31,6 +31,7 @@
                                       <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Nama Dokumen</th>
+                                        <th scope="col">Kategori</th>
                                         <th scope="col">Diuload Pada Tanggal</th>
                                         <th scope="col">Aksi</th>
                                       </tr>
@@ -40,6 +41,7 @@
                                         <tr>
                                           <th scope="row">{{ ++$i }}</th>
                                           <td>{{ $document->title }}</td>
+                                          <td>{{ $document->categoryDocument->category_name }}</td>
                                           <td>{{ $document->created_at }}</td>
                                           <td><a class="btn btn-primary btn-sm" href="{{route('document.download',['url' => $document->url_file ])}}">Download</a></td>
                                         </tr>
