@@ -100,7 +100,6 @@ class ViewDocumentController extends Controller
             $file_path = public_path('document_post/' . $url);
             return response()->download($file_path);
         } else {
-
             return redirect()->route('login');
         }
 
