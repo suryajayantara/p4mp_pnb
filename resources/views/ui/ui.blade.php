@@ -54,7 +54,7 @@
           <li class="dropdown"><a href="#"><span>Tentang P4MP</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="/about?section=sambutan">Sambutan Kepala P4MP</a></li>
-              <li><a href="/about?section=visi_misi">Visi dan Misi</a></li>
+              <li><a href="{{ route('indexvisimisi') }}">Visi dan Misi</a></li>
               <li><a href="/about?section=sejarah">SPMI</a></li>
               <li><a href="{{ url('/document') }}">AMI</a></li>
             </ul>

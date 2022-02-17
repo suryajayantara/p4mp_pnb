@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\WebContent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller
 {
@@ -18,26 +19,11 @@ class AboutController extends Controller
         //
     }
 
-    public function indexabout(Request $request)
-    {
-        $sections = WebContent::where('section',$request->section)->get();
-        return view('about.index',compact('sections'),[
-            "section" => ucwords(str_replace('_', ' ', $request->section)   )
-        ]);
-    }
-
     public function sambutan()
     {
         $webs = WebContent::where('section','sambutan')->get();
         return view('dashboard.about.sambutan.index',compact('webs'));
     }
-
-    public function visimisi()
-    {
-        $webs = WebContent::where('section','visi_misi')->get();
-        return view('dashboard.about.visimisi.index',compact('webs'));
-    }
-
     public function sejarah()
     {
         $webs = WebContent::where('section','sejarah')->get();
