@@ -11,7 +11,8 @@ class Accreditation extends Model
     protected $fillable = [
         'id_study',
         'id_level',
-        'id_result',
+        'institution',
+        'result',
         'start_date',
         'end_date'
     ];
@@ -22,10 +23,6 @@ class Accreditation extends Model
 
     public function level(){
         return $this->belongsTo(Level::class,'id_level');
-    }
-
-    public function result(){
-        return $this->belongsTo(Result::class,'id_result');
     }
 
 }

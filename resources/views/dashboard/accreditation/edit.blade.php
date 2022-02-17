@@ -33,16 +33,16 @@
                     </select>
                 </div>
 
+                {{-- lembaga akreditasi --}}
+                <div class="form-group row">
+                    <label for="exampleInputEmail1" class="form-label">Lembaga Akreditasi</label>
+                    <input name="institution" type="text" value="{{ $accreditation_data->institution }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                </div>
+
                 {{-- Hasil --}}
                 <div class="form-group row">
                     <label for="exampleInputEmail1" class="form-label">Hasil</label>
-                    <select name="id_result" id="id_result" class="form-control " aria-label="Default select example" required>
-                        @foreach ($result_data as $v_result)
-                        <option value="{{ $v_result->id }}" {{ ( $v_result->id == $accreditation_data['id_result']) ? 'selected' : '' }}>
-                            {{ $v_result->accreditation_name }}
-                        </option>
-                    @endforeach
-                    </select>
+                    <input name="result" type="text" value="{{ $accreditation_data->result }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                 </div>
 
                 {{-- Masa Berlaku (Awal) --}}
