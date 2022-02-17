@@ -44,6 +44,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // });
 
 
+Route::get('/testing',function(){
+
+    return view('dashboard/visi_misi/index');
+
+});
+
 Route::get('/certificate', [ViewCertificationController::class, 'indexCertification']);
 Route::get('/international', [ViewCertificationController::class, 'indexInternational']);
 Route::get('/document', [ViewDocumentController::class, 'indexDocument']);
