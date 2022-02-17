@@ -12,7 +12,7 @@
             <h2>Tentang</h2>
             <ol>
               <li><a href="{{ route('index') }}">Home</a></li>
-              <li>Visi-Misi</li>
+              <li>Visi Misi</li>
             </ol>
           </div>
   

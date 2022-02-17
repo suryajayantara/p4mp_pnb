@@ -19,16 +19,7 @@ class AboutController extends Controller
         //
     }
 
-    public function sambutan()
-    {
-        $webs = WebContent::where('section','sambutan')->get();
-        return view('dashboard.about.sambutan.index',compact('webs'));
-    }
-    public function sejarah()
-    {
-        $webs = WebContent::where('section','sejarah')->get();
-        return view('dashboard.about.sejarah.index',compact('webs'));
-    }
+    
 
     /**
      * Show the form for creating a new resource.

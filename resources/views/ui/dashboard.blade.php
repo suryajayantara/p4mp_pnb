@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link href={{asset('img/favicon.png')}} rel="icon">
 
-    <title>P4MP</title>
+    <title>P4MP | DASHBOARD</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -72,7 +73,7 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            {{-- <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                     aria-expanded="true" aria-controls="collapseThree">
@@ -87,7 +88,7 @@
                         <a class="collapse-item" href="cards.html">Berkas Pelatihan</a>
                     </div>
                 </div>
-            </li>
+            </li> --}}
 
              <!-- Divider -->
              <hr class="sidebar-divider">
@@ -152,7 +153,8 @@
                         <h6 class="collapse-header">Menu :</h6>
                         <a class="collapse-item" href="{{ url('/sambutan') }}">Sambutan</a>
                         <a class="collapse-item" href="{{ url('/visimisi') }}">Visi Misi</a>
-                        <a class="collapse-item" href="{{ url('/sejarah') }}">Sejarah</a>
+                        <a class="collapse-item" href="{{ url('/spmi') }}">SPMI</a>
+                        <a class="collapse-item" href="{{ url('/ami') }}">AMI</a>
                     </div>
                 </div>
             </li>

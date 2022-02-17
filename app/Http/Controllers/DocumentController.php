@@ -149,10 +149,13 @@ class DocumentController extends Controller
     public function destroy(Document $document)
     {
         try {
+
             $document->delete();
+            // dd($document['url_file']);
+            unlink('document_post/'.$document['url_file']);
             return redirect()->route('documents.index');
         } catch (\Throwable $th) {
-            echo 'sad';
+            throw $th;
         }
     }
 }

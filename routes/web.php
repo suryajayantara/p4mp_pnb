@@ -40,16 +40,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard.index');
-// });
-
-
-Route::get('/testing',function(){
-
-    return view('dashboard/visi_misi/index');
-
-});
 
 Route::get('/certificate', [ViewCertificationController::class, 'indexCertification']);
 Route::get('/international', [ViewCertificationController::class, 'indexInternational']);
@@ -74,15 +64,22 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('accreditation_internationals', AccreditationInternationalController::class);
     Route::resource('abouts', AboutController::class);
 
-    Route::get('/sambutan', [AboutController::class, 'sambutan']);
-    Route::post('/sambutan/edit/{type}', [AboutController::class, 'editsambutan']);
-
-    Route::get('/sejarah', [AboutController::class, 'sejarah']);
-    Route::get('/sejarah/edit/{id}', [AboutController::class, 'editsejarah']);
+    
 
     Route::get('/visimisi', [P4mpAboutController::class, 'visimisi']);
     Route::post('/visimisi/add', [P4mpAboutController::class, 'addvisimisi'])->name('visi-misi');
+
+    Route::get('/sambutan', [P4mpAboutController::class, 'sambutan']);
+    Route::post('/sambutan/add', [P4mpAboutController::class, 'addsambutan'])->name('sambutan');
+
+    Route::get('/spmi', [P4mpAboutController::class, 'spmi']);
+    Route::post('/spmi/add', [P4mpAboutController::class, 'addspmi'])->name('spmi');
+
+    Route::get('/ami', [P4mpAboutController::class, 'ami']);
+    Route::post('/ami/add', [P4mpAboutController::class, 'addami'])->name('ami');
+
 });
+
 
 
 
@@ -90,6 +87,11 @@ Route::resource('/', IndexController::class);
 Route::resource('detailPosts', IndexController::class);
 
 Route::get('/training', [IndexController::class, 'indextraining']);
+
+// About Route
 Route::get('/about/visimisi', [P4mpAboutController::class, 'indexvisimisi'])->name('indexvisimisi');
+Route::get('/about/sambutan', [P4mpAboutController::class, 'indexsambutan'])->name('indexsambutan');
+Route::get('/about/spmi', [P4mpAboutController::class, 'indexspmi'])->name('indexspmi');
+Route::get('/about/ami', [P4mpAboutController::class, 'indexami'])->name('indexami');
 
 Route::get('/download/{url}', [ViewDocumentController::class, 'downloadDocument'])->name('document.download');

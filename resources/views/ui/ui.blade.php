@@ -53,10 +53,12 @@
           {{-- About --}}
           <li class="dropdown"><a href="#"><span>Tentang P4MP</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="/about?section=sambutan">Sambutan Kepala P4MP</a></li>
+              <li><a href="{{ route('indexsambutan') }}">Sambutan Kepala P4MP</a></li>
               <li><a href="{{ route('indexvisimisi') }}">Visi dan Misi</a></li>
-              <li><a href="/about?section=sejarah">SPMI</a></li>
-              <li><a href="{{ url('/document') }}">AMI</a></li>
+              <li><a href="{{ route('indexspmi') }}">SPMI</a></li>
+              <li><a href="#">AMI</a></li>
+              <li><a href="{{ url('/document') }}">Dokument</a></li>
+              
             </ul>
           </li>
           {{-- Akreditasi --}}
@@ -68,13 +70,17 @@
           </li>
           {{-- Akreditasi --}}
           <li class="dropdown"><a href="#"><span>Berita</span> <i class="bi bi-chevron-down"></i></a>
-            {{-- <ul>
-              @foreach ($categories as $item)
-                <li><a href="/training"> {{$item->category_name}} </a></li>
+            <ul>
+              @foreach (\App\Models\Category::all() as $item)
+                <li><a href="#"> {{$item->category_name}} </a></li>
               @endforeach
-            </ul> --}}
+            </ul>
           </li>
+          @if (Auth::check())
+          <a class="nav-link scrollto text-white btn btn-primary px-3 py-1 m-3" href="{{ url('/login') }}"> Dashboard </a>
+          @else
           <a class="nav-link scrollto text-white btn btn-primary px-3 py-1 m-3" href="{{ url('/login') }}">Login &nbsp;<span class="text-bold ml-2">&#8594;</span> </a>
+          @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
 

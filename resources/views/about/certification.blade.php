@@ -12,7 +12,7 @@
             <h2>Tentang</h2>
             <ol>
               <li><a href="{{ route('index') }}">Home</a></li>
-              <li>BAN PT / Status Akreditasi Jurusan</li>
+              <li>Akreditasi / Status Akreditasi Program Studi</li>
             </ol>
           </div>
 
