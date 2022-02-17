@@ -55,11 +55,7 @@
             <ul>
               <li><a href="/about?section=sambutan">Sambutan Kepala P4MP</a></li>
               <li><a href="/about?section=visi_misi">Visi dan Misi</a></li>
-<<<<<<< HEAD
-              <li><a href="/about?section=sejarah">SMPI</a></li>
-=======
               <li><a href="/about?section=sejarah">SPMI</a></li>
->>>>>>> 84b9c6f577db532cb23bf7607409a00a6911b67f
               <li><a href="{{ url('/document') }}">AMI</a></li>
             </ul>
           </li>
@@ -105,7 +101,7 @@
             </p>
           </div>
           <div class="col-lg-3 col-md-6 footer-links">
-            
+
           </div>
 
         </div>

@@ -20,6 +20,7 @@
         <th scope="col">#</th>
         <th scope="col">Program Studi</th>
         <th scope="col">Jenjang</th>
+        <th scope="col">Lembaga Akreditasi</th>
         <th scope="col">Hasil</th>
         <th scope="col">Masa Berlaku (Awal)</th>
         <th scope="col">Masa Berlaku (Akhir)</th>
@@ -32,7 +33,8 @@
         <th scope="row">{{ $loop->iteration }}</th>
         <td>{{ $item->departement->departement_name }}</td>
         <td>{{ $item->level->level_name }}</td>
-        <td>{{ $item->result->accreditation_name }}</td>
+        <td>{{ $item->institution }}</td>
+        <td>{{ $item->result}}</td>
         <td>{{ $item->start_date }}</td>
         <td>{{ $item->end_date }}</td>
         <td class="row">

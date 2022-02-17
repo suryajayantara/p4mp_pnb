@@ -23,11 +23,7 @@
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                         <div class="icon"><i class="bx bx-award"></i></div>
                         <h4 class="title"><a href="">Akreditasi</a></h4>
-<<<<<<< HEAD
-                        <p class="description">Melaksanakan akreditasi setiap Program Studi dan Institusi</p>
-=======
                         <p class="description">Melaksanakan akreditasi setiap Program Studi dan Institusi </p>
->>>>>>> 84b9c6f577db532cb23bf7607409a00a6911b67f
                     </div>
                 </div>
 
@@ -35,12 +31,8 @@
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="bx bx-file"></i></div>
                         <h4 class="title"><a href="">Dokumentasi</a></h4>
-<<<<<<< HEAD
-                        <p class="description">Medokumentasikan setiap kegiatan Penjaminan Mutu</p>
-=======
                         <p class="description">Medokumentasikan setiap kegiatan Penjaminan Mutu
                         </p>
->>>>>>> 84b9c6f577db532cb23bf7607409a00a6911b67f
                     </div>
                 </div>
 

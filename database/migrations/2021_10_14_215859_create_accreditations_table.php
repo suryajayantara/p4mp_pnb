@@ -17,7 +17,7 @@ class CreateAccreditationsTable extends Migration
             $table->id();
             $table->foreignId('id_study');
             $table->foreignId('id_level');
-            $table->foreignId('id_result');
+            $table->string('result');
             $table->string('institution');
             $table->date('start_date');
             $table->date('end_date');

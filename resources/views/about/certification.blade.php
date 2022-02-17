@@ -33,6 +33,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Program Studi</th>
                                     <th scope="col">Jenjang</th>
+                                    <th scope="col">Lembaga Akreditasi</th>
                                     <th scope="col">Hasil Akreditasi</th>
                                     <th scope="col">Masa Berlaku(Awal)</th>
                                     <th scope="col">Masa Berlaku(Akhir)</th>
@@ -44,7 +45,8 @@
                                       <th scope="row">{{ ++$i }}</th>
                                       <td>{{ $certificate->departement->departement_name }}</td>
                                       <td>{{ $certificate->level->level_name }}</td>
-                                      <td>{{ $certificate->result->accreditation_name }}</td>
+                                      <td>{{ $certificate->institution }}</td>
+                                      <td>{{ $certificate->result }}</td>
                                       <td>{{ $certificate->start_date }}</td>
                                       <td>{{ $certificate->end_date }}</td>
                                     </tr>

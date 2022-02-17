@@ -34,14 +34,16 @@
                     </select>
                 </div>
 
+                {{-- Lembaga Akreditasi --}}
+                <div class="form-group row">
+                    <label for="exampleInputEmail1" class="form-label">Lembaga Akreditasi</label>
+                    <input name="institution" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                </div>
+
                 {{-- Hasil --}}
                 <div class="form-group row">
                     <label for="exampleInputEmail1" class="form-label">Hasil</label>
-                    <select name="id_result" id="id_result" class="form-control " aria-label="Default select example" required>
-                        @foreach ($results as $result)
-                            <option value="{{ $result->id }}">{{ $result->accreditation_name }}</option>
-                        @endforeach
-                    </select>
+                    <input name="result" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" required>
                 </div>
 
                 {{-- Masa Berlaku (Awal) --}}

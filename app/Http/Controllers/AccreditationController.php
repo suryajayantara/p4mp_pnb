@@ -55,7 +55,8 @@ class AccreditationController extends Controller
         $request->validate([
             'id_study' => 'required|unique:accreditations,id_study',
             'id_level' => 'required',
-            'id_result' => 'required',
+            'institution' => 'required',
+            'result' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'
         ], [
@@ -65,7 +66,8 @@ class AccreditationController extends Controller
             Accreditation::create([
                 'id_study' => $request->id_study,
                 'id_level' => $request->id_level,
-                'id_result' => $request->id_result,
+                'institution' => $request->institution,
+                'result' => $request->result,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
             ]);
@@ -96,9 +98,8 @@ class AccreditationController extends Controller
     {
         $departement_data = Departement::all();
         $level_data = Level::all();
-        $result_data = Result::all();
         $accreditation_data = Accreditation::find($id);
-        return view('dashboard.accreditation.edit')->with(compact('id', 'departement_data', 'level_data', 'accreditation_data', 'result_data',));
+        return view('dashboard.accreditation.edit')->with(compact('id', 'departement_data', 'level_data', 'accreditation_data'));
     }
 
     /**
@@ -113,7 +114,8 @@ class AccreditationController extends Controller
         $request->validate([
             'id_study' => 'required',
             'id_level' => 'required',
-            'id_result' => 'required',
+            'institution' => 'required',
+            'result' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'
         ]);
@@ -122,7 +124,8 @@ class AccreditationController extends Controller
             Accreditation::find($id)->update([
                 'id_study' => $request->id_study,
                 'id_level' => $request->id_level,
-                'id_result' => $request->id_result,
+                'institution' => $request->institution,
+                'result' => $request->result,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
             ]);
