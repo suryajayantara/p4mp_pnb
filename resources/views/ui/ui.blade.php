@@ -55,8 +55,8 @@
             <ul>
               <li><a href="/about?section=sambutan">Sambutan Kepala P4MP</a></li>
               <li><a href="/about?section=visi_misi">Visi dan Misi</a></li>
-              <li><a href="/about?section=sejarah">Sejarah</a></li>
-              <li><a href="{{ url('/document') }}">Manual Mutu</a></li>
+              <li><a href="/about?section=sejarah">SMPI</a></li>
+              <li><a href="{{ url('/document') }}">AMI</a></li>
             </ul>
           </li>
           {{-- Akreditasi --}}

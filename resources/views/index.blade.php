@@ -23,7 +23,7 @@
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                         <div class="icon"><i class="bx bx-award"></i></div>
                         <h4 class="title"><a href="">Akreditasi</a></h4>
-                        <p class="description">Memberikan serta Melaksanakan Peng-akreditasian setiap Prodi</p>
+                        <p class="description">Melaksanakan akreditasi setiap Program Studi dan Institusi</p>
                     </div>
                 </div>
 
@@ -31,7 +31,7 @@
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="bx bx-file"></i></div>
                         <h4 class="title"><a href="">Dokumentasi</a></h4>
-                        <p class="description">Mendokumentasikan setiap kegiatan tentang Pendidikan</p>
+                        <p class="description">Medokumentasikan setiap kegiatan Penjaminan Mutu</p>
                     </div>
                 </div>
 
@@ -39,7 +39,7 @@
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
                         <div class="icon"><i class="bx bx-bulb"></i></div>
                         <h4 class="title"><a href="">Mutu</a></h4>
-                        <p class="description">Menjaga Mutu dari pendidikan di Lembaga agar tetap terjaga</p>
+                        <p class="description">Menjaga mutu pendidikan di lembaga secara berkelanjutan</p>
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
                         <div class="icon"><i class="bx bx-line-chart-down"></i></div>
                         <h4 class="title"><a href="">Maju</a></h4>
-                        <p class="description">Turut berpartisipasi sebagai tonggak Kemajuan Lembaga</p>
+                        <p class="description">Turut berpartisipasi sebagai tonggak kemajuan lembaga</p>
                     </div>
                 </div>
 
