@@ -12,6 +12,7 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ViewCertificationController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\P4mpAboutController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\ViewCertification;
 use App\Http\Controllers\ViewDocumentController;
@@ -74,13 +75,13 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('abouts', AboutController::class);
 
     Route::get('/sambutan', [AboutController::class, 'sambutan']);
-    Route::get('/sambutan/edit/{id}', [AboutController::class, 'editsambutan']);
+    Route::post('/sambutan/edit/{type}', [AboutController::class, 'editsambutan']);
 
     Route::get('/sejarah', [AboutController::class, 'sejarah']);
     Route::get('/sejarah/edit/{id}', [AboutController::class, 'editsejarah']);
 
-    Route::get('/visimisi', [AboutController::class, 'visimisi']);
-    Route::get('/visimisi/edit/{id}', [AboutController::class, 'editvisimisi']);
+    Route::get('/visimisi', [P4mpAboutController::class, 'visimisi']);
+    Route::post('/visimisi/add', [P4mpAboutController::class, 'addvisimisi'])->name('visi-misi');
 });
 
 
@@ -89,6 +90,6 @@ Route::resource('/', IndexController::class);
 Route::resource('detailPosts', IndexController::class);
 
 Route::get('/training', [IndexController::class, 'indextraining']);
-Route::get('/about', [AboutController::class, 'indexabout']);
+Route::get('/about/visimisi', [P4mpAboutController::class, 'indexvisimisi'])->name('indexvisimisi');
 
 Route::get('/download/{url}', [ViewDocumentController::class, 'downloadDocument'])->name('document.download');
