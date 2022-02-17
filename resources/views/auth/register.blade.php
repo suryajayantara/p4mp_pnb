@@ -25,7 +25,7 @@
                   <form action="#!">
                     <div class="form-group" id="con_email">
                         <label for="name">Name</label>
-                        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="email@example.com">
+                        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Masukan Nama Anda">
                         @error('name')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
@@ -34,7 +34,7 @@
                       </div>
                     <div class="form-group" id="con_email">
                       <label for="email">Email</label>
-                      <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="email@example.com">
+                      <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="anda@example.com">
                       @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-group mb-4">
                       <label for="password">Password</label>
-                      <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="enter your passsword">
+                      <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukan Password Anda">
                       @error('password')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
@@ -52,8 +52,8 @@
                     </div>
 
                     <div class="form-group mb-4">
-                        <label for="password-confirm">Password</label>
-                        <input type="password" name="password_confirmation" id="password-confirm" class="form-control @error('password') is-invalid @enderror" placeholder="enter your passsword">
+                        <label for="password-confirm">Re-Password</label>
+                        <input type="password" name="password_confirmation" id="password-confirm" class="form-control @error('password') is-invalid @enderror" placeholder="Masukan Password Sekali Lagi">
                         @error('password_confirmation')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

@@ -43,7 +43,7 @@
                                           <td>{{ $document->title }}</td>
                                           <td>{{ $document->categoryDocument->category_name }}</td>
                                           <td>{{ $document->created_at }}</td>
-                                          <td><a href="">Download</a></td>
+                                          <td><a class="btn btn-primary btn-sm" href="{{route('document.download',['url' => $document->url_file ])}}">Download</a></td>
                                         </tr>
                                       @endforeach
 
