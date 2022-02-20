@@ -121,9 +121,17 @@ class P4mpAboutController extends Controller
         $path = Storage::disk('local')->get('public/sambutan.json');
         $data = json_decode($path,true);
 
+        
+
         $data['text'] = $request->content;
         $data['name'] = $request->name;
+        $file = $request->file('foto');
 
+        $fileName = 'kepala.'.$file->getClientOriginalExtension();
+
+        $file->move('img',$fileName);
+
+        $data['img'] = "img/$fileName";
         try{
             $newJson = json_encode($data);
             Storage::disk('local')->put('public/sambutan.json',$newJson);

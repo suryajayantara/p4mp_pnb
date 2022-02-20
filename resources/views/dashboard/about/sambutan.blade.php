@@ -6,14 +6,17 @@
     <div class="card-body"><h3 class="my-3 fw-bolder" style="font-weight: 600"> Sambutan </h3>
         <form action="{{ route('sambutan') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="type" value="visi-misi">
-            
+            <img src="{{asset($data['img'])}}" alt="img-kepala">
+            <div class="mb-3 p-1">
+              <label for="formFile" class="form-label">Foto Kepala Badan</label>
+              <input class="form-control m-1" type="file" name="foto" id="formFile">
+            </div>
             <textarea name="content" class="ckeditor" id="wysiwyg" placeholder="Masukan isi post disini" style="height: 100px" required> <?= $data['text'] ?> </textarea>
             <div class="my-3">
                 <label for="exampleFormControlInput1" class="form-label">Nama Pejabat</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Masukan Nama Pejabat" value="<?= $data['name'] ?>">
               </div>
-            <button type="submit" class="btn btn-lg w-100 my-2 btn-primary">Tambah</button>
+            <button type="submit" class="btn btn-lg w-100 my-2 btn-primary">Update</button>
           </form>
     </div>
 </div>

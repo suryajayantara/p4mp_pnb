@@ -155,6 +155,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         try {
+            unlink('foto_post/'.$post['url_photo']);
             $post->delete();
             return redirect()->route('posts.index');
         } catch (\Throwable $th) {

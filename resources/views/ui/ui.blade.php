@@ -55,9 +55,10 @@
             <ul>
               <li><a href="{{ route('indexsambutan') }}">Sambutan Kepala P4MP</a></li>
               <li><a href="{{ route('indexvisimisi') }}">Visi dan Misi</a></li>
+              <li><a href="{{ route('indexspmi') }}">Struktur Organisasi P4MP</a></li>
               <li><a href="{{ route('indexspmi') }}">SPMI</a></li>
-              <li><a href="#">AMI</a></li>
-              <li><a href="{{ url('/document') }}">Dokument</a></li>
+              <li><a href="{{ route('indexami') }}">AMI</a></li>
+              <li><a href="{{ url('/document') }}">Dokument Mutu</a></li>
               
             </ul>
           </li>
@@ -102,7 +103,7 @@
             <p>
               Jl Raya Bukit Jimbaran <br>
               Bukit Jimbaran, Bali 80232<br>
-              <strong>Phone:</strong> +62 3617 0198 1<br>
+              <strong>Telepon:</strong> +62 361 701981<br>
               <strong>Email:</strong> p4mp@pnb.ac.id<br>
             </p>
           </div>

@@ -5,7 +5,7 @@
 <section id="hero" class="d-flex align-items-center">
     <div class="container">
         <h1>Karena Mutu Adalah <span>Segalanya</span> </h1>
-        <h2>Di P4MP , Kami menjamin mutu dari lulusa kampus kami secara terpadu.</h2>
+        <h2>Di P4MP, kami menjamin mutu pendidikan Politeknik Negeri Bali secara berkelanjutan</h2>
         <div class="d-flex">
             <a href="#featured-services" class="btn-get-started scrollto">Mari Mulai</a>
         </div>
@@ -74,9 +74,9 @@
                     <div class="card border-0 shadow-lg" data-aos="flip-right">
                         <img src="{{asset('foto_post')}}/{{ $post->url_photo }}" class="card-img-top" alt="brt-01">
                         <div class="card-body m-3">
-                            <p style="font-size: 11px" class="mb-2">Kategori : {{ ucwords($post->category->category_name) }}</p>
+                            <p class="badge bg-success" style="font-size: 11px" >{{ ucwords($post->category->category_name) }}  </p>
                             <h5 class="card-title">{{ ucwords($post->title) }}</h5>
-                            <p class="card-text">{{ substr(strip_tags($post->content),0,30) }}...</p>
+                            <p style="font-size: 12px">{{ substr(strip_tags($post->content),0,100) }}...</p>
                             <a href="{{ route('detailPosts.show',$post->id) }}" class="btn btn-primary w-100">Baca Selengkapnya</a>
                         </div>
                     </div>
@@ -111,16 +111,16 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="info-box  mb-4">
                         <i class="bx bx-envelope"></i>
-                        <h3>Email Us</h3>
+                        <h3>Email</h3>
                         <p>p4mp@pnb.ac.id</p>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6"> 
                     <div class="info-box  mb-4">
                         <i class="bx bx-phone-call"></i>
-                        <h3>Call Us</h3>
-                        <p>+1 62 3231 3221 321</p>
+                        <h3>Telepon</h3>
+                        <p>+62 361 701981</p>
                     </div>
                 </div>
 

@@ -5,6 +5,19 @@
 <div class="card">
     <div class="card-body">
 
+        <div class="row">
+        @if ($errors->any())
+          <div class="alert alert-danger col-md-12" role="alert">
+            <h1 class="text-center mb-3"> Perhatian !</h1>
+              <ul>
+                @foreach ($errors->all() as $error)
+                    <li style="color:red !important; text-transform: capitalize;">{{ $error }}</li>
+                @endforeach
+              </ul>
+          </div>
+          @endif
+        </div>
+
         <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">

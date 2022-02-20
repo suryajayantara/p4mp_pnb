@@ -9,7 +9,7 @@
         <div class="container">
 
           <div class="d-flex justify-content-between align-items-center">
-            <h2>Tentang</h2>
+            <h2>Sertifikasi</h2>
             <ol>
               <li><a href="{{ route('index') }}">Home</a></li>
               <li>Akreditasi / Status Akreditasi Program Studi</li>
@@ -43,7 +43,7 @@
                                   @foreach ($certifications as $certificate)
                                     <tr>
                                       <th scope="row">{{ ++$i }}</th>
-                                      <td>{{ $certificate->departement->departement_name }}</td>
+                                      <td>{{ $certificate->departement->faculty->faculty_name }}{{ $certificate->departement->departement_name }}</td>
                                       <td>{{ $certificate->level->level_name }}</td>
                                       <td>{{ $certificate->institution }}</td>
                                       <td>{{ $certificate->result }}</td>
