@@ -21,6 +21,8 @@ class Accreditation extends Model
         return $this->belongsTo(Departement::class,'id_study');
     }
 
+    
+
     public function level(){
         return $this->belongsTo(Level::class,'id_level');
     }
