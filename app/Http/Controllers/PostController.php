@@ -48,14 +48,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+  
         $request->validate([
             'category_id' => 'required',
             'url_photo' => 'required|mimes:jpeg,jpg,png|max:5000',
             'title' => 'required',
             'content' => 'required'
         ]);
+        
+        $file = $request->file('url_photo');
 
-        $nama_foto = Str::replace(' ', '_', Auth::user()->name).date('_d_m_Y-H_i_s').".jpg";
+        $nama_foto = Str::replace(' ', '_', Auth::user()->name).date('_d_m_Y-H_i_s.').$file->getClientOriginalExtension();
 
         try {
             Post::create([
@@ -65,7 +68,9 @@ class PostController extends Controller
                 'title' => $request->title,
                 'content' => $request->content
             ]);
-            $request->file('url_photo')->move(public_path('foto_post'),$nama_foto);
+                
+        
+            $request->file('url_photo')->move('foto_post',$nama_foto);
             return redirect()->route('posts.index');
 
         } catch (\Throwable $th) {
