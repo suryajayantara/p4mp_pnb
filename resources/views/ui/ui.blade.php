@@ -59,7 +59,7 @@
               <li><a href="{{ route('indexspmi') }}">SPMI</a></li>
               <li><a href="{{ route('indexami') }}">AMI</a></li>
               <li><a href="{{ url('/document') }}">Dokument Mutu</a></li>
-              
+
             </ul>
           </li>
           {{-- Akreditasi --}}
@@ -73,7 +73,7 @@
           <li class="dropdown"><a href="#"><span>Berita</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               @foreach (\App\Models\Category::all() as $item)
-                <li><a href="#"> {{$item->category_name}} </a></li>
+                <li><a href="{{ route('category.index',['id' => $item->id]) }}"> {{$item->category_name}} </a></li>
               @endforeach
             </ul>
           </li>
