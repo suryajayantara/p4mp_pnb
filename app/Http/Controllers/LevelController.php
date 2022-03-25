@@ -55,7 +55,7 @@ class LevelController extends Controller
                 'level_name' => $request->level_name,
                 'desc' => $request->desc,
             ]);
-            return redirect()->route('levels.index');
+            return redirect()->route('levels.index')->with('success', 'Data Berhasil Ditambah');
 
         } catch (\Throwable $th) {
             return $th;
@@ -104,7 +104,7 @@ class LevelController extends Controller
                 'level_name' => $request->level_name,
                 'desc' => $request->desc,
             ]);
-            return redirect()->route('levels.index');
+            return redirect()->route('levels.index')->with('success', 'Data Berhasil Diubah');
         } catch (\Throwable $th) {
             throw $th;
         }

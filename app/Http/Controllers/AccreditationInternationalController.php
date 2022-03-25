@@ -78,7 +78,7 @@ class AccreditationInternationalController extends Controller
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
             ]);
-            return redirect()->route('accreditation_internationals.index');
+            return redirect()->route('accreditation_internationals.index')->with('success', 'Data Berhasil Ditambah');
 
         } catch (\Throwable $th) {
             return $th;
@@ -145,7 +145,7 @@ class AccreditationInternationalController extends Controller
                 'end_date' => $request->end_date,
             ]);
 
-            return redirect()->route('accreditation_internationals.index');
+            return redirect()->route('accreditation_internationals.index')->with('success', 'Data Berhasil Diubah');
 
         } catch (\Throwable $th) {
             return $th;

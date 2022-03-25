@@ -18,7 +18,7 @@ class CategoryController extends Controller
         $categories = Category::when($request->cari, function($query) use ($request){
             $query->where('category_name','LIKE','%'.$request->cari.'%');
         })->orderBy('id','desc')->paginate($pagination);
-        
+
         $categories->appends($request->only('cari'));
 
         return view('dashboard.category.index',compact('categories'))
@@ -52,7 +52,7 @@ class CategoryController extends Controller
                 'category_name' => $request->category_name,
                 'desc' => $request->desc,
             ]);
-            return redirect()->route('categories.index');
+            return redirect()->route('categories.index')->with('success', 'Data Berhasil Ditambah');
 
         } catch (\Throwable $th) {
             return $th;
@@ -100,7 +100,7 @@ class CategoryController extends Controller
                 'category_name' => $request->category_name,
                 'desc' => $request->desc,
             ]);
-            return redirect()->route('categories.index');
+            return redirect()->route('categories.index')->with('success', 'Data Berhasil Diubah');
         } catch (\Throwable $th) {
             throw $th;
         }

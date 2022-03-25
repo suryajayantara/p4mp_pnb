@@ -56,7 +56,7 @@ class FacultyController extends Controller
                 'faculty_name' => $request->faculty_name,
                 'desc' => $request->desc,
             ]);
-            return redirect()->route('faculties.index');
+            return redirect()->route('faculties.index')->with('success', 'Data Berhasil Ditambah');
 
         } catch (\Throwable $th) {
             return $th;
@@ -105,7 +105,7 @@ class FacultyController extends Controller
                 'faculty_name' => $request->faculty_name,
                 'desc' => $request->desc,
             ]);
-            return redirect()->route('faculties.index');
+            return redirect()->route('faculties.index')->with('success', 'Data Berhasil Diubah');
         } catch (\Throwable $th) {
             throw $th;
         }

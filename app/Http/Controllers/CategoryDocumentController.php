@@ -56,7 +56,7 @@ class CategoryDocumentController extends Controller
                 'category_name' => $request->category_name,
                 'desc' => $request->desc,
             ]);
-            return redirect()->route('category_documents.index');
+            return redirect()->route('category_documents.index')->with('success', 'Data Berhasil Ditambah');
 
         } catch (\Throwable $th) {
             return $th;
@@ -104,7 +104,7 @@ class CategoryDocumentController extends Controller
                 'category_name' => $request->category_name,
                 'desc' => $request->desc,
             ]);
-            return redirect()->route('category_documents.index');
+            return redirect()->route('category_documents.index')->with('success', 'Data Berhasil Diubah');
         } catch (\Throwable $th) {
             throw $th;
         }

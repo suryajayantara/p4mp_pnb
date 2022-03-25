@@ -22,6 +22,14 @@
 </div>
 <div class="row">
     <div class="col-xl-12">
+
+        {{-- success --}}
+        @if(session('success'))
+        <div class="mb-4 mx-2 alert alert-success" role="alert">
+            {{session('success')}}
+        </div>
+        @endif
+
         <div class="card shadow mb-4 mx-2">
             <!-- Card Header - Dropdown -->
             <div
@@ -43,6 +51,7 @@
                 {{-- </div> --}}
             </div>
             <!-- Card Body -->
+
             <div class="card-body my-3">
                 <table class="table">
                     <thead>
@@ -67,7 +76,7 @@
                                         <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" onclick = "return confirm('Yakin hapus kategori?')">Hapus</button> 
+                                            <button type="submit" class="btn btn-danger" onclick = "return confirm('Yakin hapus kategori?')">Hapus</button>
                                         </form>
                                     </div>
                                 </td>
@@ -84,8 +93,8 @@
 </div>
 
 
-  
-  
+
+
 @endsection
 
 @section('push')
