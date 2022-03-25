@@ -16,6 +16,7 @@ use App\Http\Controllers\P4mpAboutController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\ViewCertification;
 use App\Http\Controllers\ViewDocumentController;
+use App\Http\Controllers\ViewPostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -64,7 +65,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('accreditation_internationals', AccreditationInternationalController::class);
     Route::resource('abouts', AboutController::class);
 
-    
+
 
     Route::get('/visimisi', [P4mpAboutController::class, 'visimisi']);
     Route::post('/visimisi/add', [P4mpAboutController::class, 'addvisimisi'])->name('visi-misi');
@@ -84,7 +85,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-
+// news category
+Route::get('/berita/{id}', [ViewPostController::class, 'index'])->name('category.index');
 
 Route::resource('/', IndexController::class);
 Route::resource('detailPosts', IndexController::class);

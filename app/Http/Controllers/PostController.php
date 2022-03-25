@@ -22,7 +22,7 @@ class PostController extends Controller
         $posts = Post::when($request->cari, function($query) use ($request){
             $query->where('title','LIKE','%'.$request->cari.'%');
         })->orderBy('id','desc')->paginate($pagination);
-        
+
         $posts->appends($request->only('cari'));
 
         return view('dashboard.post.index',compact('posts'))
@@ -48,14 +48,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-  
+
         $request->validate([
             'category_id' => 'required',
             'url_photo' => 'required|mimes:jpeg,jpg,png|max:5000',
             'title' => 'required',
             'content' => 'required'
         ]);
-        
+
         $file = $request->file('url_photo');
 
         $nama_foto = Str::replace(' ', '_', Auth::user()->name).date('_d_m_Y-H_i_s.').$file->getClientOriginalExtension();
@@ -68,8 +68,8 @@ class PostController extends Controller
                 'title' => $request->title,
                 'content' => $request->content
             ]);
-                
-        
+
+
             $request->file('url_photo')->move('foto_post',$nama_foto);
             return redirect()->route('posts.index');
 
@@ -118,7 +118,7 @@ class PostController extends Controller
         ]);
 
         date_default_timezone_set('Asia/Singapore');
-        $nama_foto = Str::replace(' ', '_', Auth::user()->name).date('_d_m_Y-H_i_s').".jpg";
+
 
         if($request->file('url_photo') == ""){
             try {
@@ -129,22 +129,25 @@ class PostController extends Controller
                     'content' => $request->content
                 ]);
                 return redirect()->route('posts.index');
-    
+
             } catch (\Throwable $th) {
                 return $th;
             }
         }
         else{
             try {
+                $file = $request->file('url_photo');
+
+                $nama_foto = Str::replace(' ', '_', Auth::user()->name).date('_d_m_Y-H_i_s.').$file->getClientOriginalExtension();
                 $post->update([
                     'category_id' => $request->category_id,
                     'url_photo' => $nama_foto,
                     'title' => $request->title,
                     'content' => $request->content
                 ]);
-                $request->file('url_photo')->move(public_path('foto_post'),$nama_foto);
+                $request->file('url_photo')->move('foto_post',$nama_foto);
                 return redirect()->route('posts.index');
-    
+
             } catch (\Throwable $th) {
                 return $th;
             }
@@ -157,11 +160,12 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
         try {
+            $post = Post::find($id);
             unlink('foto_post/'.$post['url_photo']);
-            $post->delete();
+            $post = Post::destroy($id);
             return redirect()->route('posts.index');
         } catch (\Throwable $th) {
             echo 'sad';
