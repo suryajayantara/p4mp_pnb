@@ -60,7 +60,7 @@ class DepartementController extends Controller
                 'id_faculty' => $request->id_faculty,
                 'departement_name' => $request->departement_name,
             ]);
-            return redirect()->route('departements.index');
+            return redirect()->route('departements.index')->with('success', 'Data Berhasil Ditambah');
 
         } catch (\Throwable $th) {
             return $th;
@@ -112,7 +112,7 @@ class DepartementController extends Controller
                 'id_faculty' => $request->id_faculty,
                 'departement_name' => $request->departement_name,
             ]);
-            return redirect()->route('departements.index');
+            return redirect()->route('departements.index')->with('success', 'Data Berhasil Diubah');
 
         } catch (\Throwable $th) {
             return $th;

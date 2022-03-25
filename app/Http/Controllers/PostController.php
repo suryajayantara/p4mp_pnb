@@ -71,7 +71,7 @@ class PostController extends Controller
 
 
             $request->file('url_photo')->move('foto_post',$nama_foto);
-            return redirect()->route('posts.index');
+            return redirect()->route('posts.index')->with('success', 'Data Berhasil Ditambah');
 
         } catch (\Throwable $th) {
             return $th;
@@ -128,7 +128,7 @@ class PostController extends Controller
                     'title' => $request->title,
                     'content' => $request->content
                 ]);
-                return redirect()->route('posts.index');
+                return redirect()->route('posts.index')->with('success', 'Data Berhasil Diubah');
 
             } catch (\Throwable $th) {
                 return $th;
@@ -146,7 +146,7 @@ class PostController extends Controller
                     'content' => $request->content
                 ]);
                 $request->file('url_photo')->move('foto_post',$nama_foto);
-                return redirect()->route('posts.index');
+                return redirect()->route('posts.index')->with('success', 'Data Berhasil Diubah');
 
             } catch (\Throwable $th) {
                 return $th;

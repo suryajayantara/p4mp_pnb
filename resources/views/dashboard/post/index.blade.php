@@ -22,6 +22,14 @@
 </div>
 <div class="row">
     <div class="col-xl-12">
+
+        {{-- success --}}
+        @if(session('success'))
+        <div class="mb-4 mx-2 alert alert-success" role="alert">
+            {{session('success')}}
+        </div>
+        @endif
+
         <div class="card shadow mb-4 mx-2">
             <div
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -41,6 +49,9 @@
                     </div> --}}
                 {{-- </div> --}}
             </div>
+
+
+
             <div class="card-body my-3">
                 <div class="row mb-4">
                     @foreach ($posts as $post)
@@ -55,7 +66,7 @@
                                     <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger w-100" onclick = "return confirm('Yakin hapus post?')">Hapus</button> 
+                                        <button type="submit" class="btn btn-danger w-100" onclick = "return confirm('Yakin hapus post?')">Hapus</button>
                                     </form>
                                 </div>
                             </div>
@@ -67,10 +78,10 @@
                   </div>
             </div>
         </div>
-    
+
 </div>
-  
-  
+
+
 @endsection
 
 @section('push')

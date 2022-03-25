@@ -52,7 +52,11 @@ class DocumentController extends Controller
             'title' => 'required',
             'id_category' => 'required',
             'desc' => 'required'
+        ],[
+            'url_file.mimes' => "Format file yang di dukung (pdf,xlsx)",
+            'url_file.max' => "Format file maksimal 5 MB"
         ]);
+
         $filename = date('d_m_Y-H_i_s').'.'.$request->file('url_file')->getClientOriginalName();
         try {
             Document::create([
@@ -62,7 +66,7 @@ class DocumentController extends Controller
                 'desc' => $request->desc
             ]);
             $request->file('url_file')->move(public_path('document_post'),$filename);
-            return redirect()->route('documents.index');
+            return redirect()->route('documents.index')->with('success', 'Data Berhasil Ditambah');
 
         } catch (\Throwable $th) {
             return $th;
@@ -106,9 +110,10 @@ class DocumentController extends Controller
             'title' => 'required',
             'id_category' => 'required',
             'desc' => 'required'
+        ],[
+            'url_file.mimes' => "Format file yang di dukung (pdf,xlsx)",
+            'url_file.max' => "Format file maksimal 5 MB"
         ]);
-
-
 
         if($request->file('url_file') == ""){
             try {
@@ -118,7 +123,7 @@ class DocumentController extends Controller
                     'id_category' =>$request->id_category,
                     'desc' => $request->desc,
                 ]);
-                return redirect()->route('documents.index');
+                return redirect()->route('documents.index')->with('success', 'Data Berhasil Diubah');
             } catch (\Throwable $th) {
                 throw $th;
             }
@@ -132,7 +137,7 @@ class DocumentController extends Controller
                         'desc' => $request->desc
                     ]);
                     $request->file('url_file')->move(public_path('document_post'),$filename);
-                    return redirect()->route('documents.index');
+                    return redirect()->route('documents.index')->with('success', 'Data Berhasil Diubah');
 
                 } catch (\Throwable $th) {
                     return $th;

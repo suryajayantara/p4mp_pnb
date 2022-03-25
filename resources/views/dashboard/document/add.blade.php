@@ -12,7 +12,12 @@
                 {{-- dokumen --}}
                 <div class="form-group row">
                     <label for="exampleInputEmail1" class="form-label">Dokumen</label>
-                    <input name="url_file" type="file" class="form-control mb-3" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                    <input name="url_file" type="file" class="form-control mb-3 @error('url_file') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                    @error('url_file')
+                        <div class="invalid-feedback" role="alert">
+                            <strong> {{ $message }} </strong>
+                        </div>
+                    @enderror
 
                 </div>
 

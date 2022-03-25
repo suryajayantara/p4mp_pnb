@@ -14,6 +14,14 @@
         <a href="{{ route('results.create') }}" class="btn btn-success">Tambah Data</a>
     </div>
 </div>
+
+{{-- success --}}
+@if(session('success'))
+<div class="mb-4 mx-2 alert alert-success" role="alert">
+    {{session('success')}}
+</div>
+@endif
+
 <table class="table">
     <thead>
       <tr>
