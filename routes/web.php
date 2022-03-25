@@ -69,6 +69,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/visimisi', [P4mpAboutController::class, 'visimisi']);
     Route::post('/visimisi/add', [P4mpAboutController::class, 'addvisimisi'])->name('visi-misi');
 
+    Route::get('/struktur', [P4mpAboutController::class, 'struktur']);
+    Route::post('/struktur/add', [P4mpAboutController::class, 'addstruktur'])->name('struktur');
+
     Route::get('/sambutan', [P4mpAboutController::class, 'sambutan']);
     Route::post('/sambutan/add', [P4mpAboutController::class, 'addsambutan'])->name('sambutan');
 

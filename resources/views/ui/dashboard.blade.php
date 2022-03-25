@@ -73,22 +73,21 @@
                 </div>
             </li>
 
-            {{-- <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                     aria-expanded="true" aria-controls="collapseThree">
-                    <i class="fas fa-fw fa-graduation-cap"></i>
-                    <span>Kegiatan</span>
+                    <i class="fas fa-fw fa-file"></i>
+                    <span>Dokumen</span>
                 </a>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Aktivitas:</h6>
-                        <a class="collapse-item" href="buttons.html">Kunjungan</a>
-                        <a class="collapse-item" href="cards.html">Agenda Pelatihan</a>
-                        <a class="collapse-item" href="cards.html">Berkas Pelatihan</a>
+                      
+                        <a class="collapse-item" href="{{ route('documents.index') }}">Dokument</a>
+                        <a class="collapse-item" href="{{ route('category_documents.index') }}">Kategori Dokument</a>
                     </div>
                 </div>
-            </li> --}}
+            </li>
 
              <!-- Divider -->
              <hr class="sidebar-divider">
@@ -152,6 +151,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu :</h6>
                         <a class="collapse-item" href="{{ url('/sambutan') }}">Sambutan</a>
+                        <a class="collapse-item" href="{{ url('/struktur') }}">Struktur</a>
                         <a class="collapse-item" href="{{ url('/visimisi') }}">Visi Misi</a>
                         <a class="collapse-item" href="{{ url('/spmi') }}">SPMI</a>
                         <a class="collapse-item" href="{{ url('/ami') }}">AMI</a>
