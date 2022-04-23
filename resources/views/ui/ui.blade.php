@@ -55,7 +55,7 @@
             <ul>
               <li><a href="{{ route('indexsambutan') }}">Sambutan Kepala P4MP</a></li>
               <li><a href="{{ route('indexvisimisi') }}">Visi dan Misi</a></li>
-              <li><a href="{{ route('indexspmi') }}">Struktur Organisasi P4MP</a></li>
+              <li><a href="{{ route('indexstruktur') }}">Struktur Organisasi P4MP</a></li>
               <li><a href="{{ route('indexspmi') }}">SPMI</a></li>
               <li><a href="{{ route('indexami') }}">AMI</a></li>
               <li><a href="{{ url('/document') }}">Dokument Mutu</a></li>

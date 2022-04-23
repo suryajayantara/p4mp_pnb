@@ -96,6 +96,7 @@ Route::get('/training', [IndexController::class, 'indextraining']);
 // About Route
 Route::get('/about/visimisi', [P4mpAboutController::class, 'indexvisimisi'])->name('indexvisimisi');
 Route::get('/about/sambutan', [P4mpAboutController::class, 'indexsambutan'])->name('indexsambutan');
+Route::get('/about/struktur', [P4mpAboutController::class, 'indexstruktur'])->name('indexstruktur');
 Route::get('/about/spmi', [P4mpAboutController::class, 'indexspmi'])->name('indexspmi');
 Route::get('/about/ami', [P4mpAboutController::class, 'indexami'])->name('indexami');
 

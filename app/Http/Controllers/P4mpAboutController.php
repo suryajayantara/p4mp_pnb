@@ -121,7 +121,7 @@ class P4mpAboutController extends Controller
         $path = Storage::disk('local')->get('public/sambutan.json');
         $data = json_decode($path,true);
 
-        
+
 
         $data['text'] = $request->content;
         $data['name'] = $request->name;
@@ -150,11 +150,12 @@ class P4mpAboutController extends Controller
         // return view('dashboard.about.struktur',compact('data'));
     }
 
-    public function indexstruktur(Request $request)
+    public function indexstruktur()
     {
-        $path = Storage::disk('local')->get('public/sturktur.json');
-        $data = json_decode($path,true);
-        return view('about.struktur',compact('data'));
+        // $path = Storage::disk('local')->get('public/sturktur.json');
+        // $data = json_decode($path,true);
+        // return view('about.struktur',compact('data'));
+        return view('about.struktur');
     }
 
     public function addstruktur(Request $request)
@@ -162,7 +163,7 @@ class P4mpAboutController extends Controller
         $path = Storage::disk('local')->get('public/sambutan.json');
         $data = json_decode($path,true);
 
-        
+
 
         $data['text'] = $request->content;
         $data['name'] = $request->name;
